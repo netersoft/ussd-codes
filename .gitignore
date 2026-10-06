@@ -64,3 +64,6 @@ gradlew-signing-report
 lib/generated/
 # Legacy Java app, kept locally as a reference for the port
 .legacy/
+
+# Playwright MCP screenshots and logs
+.playwright-mcp/

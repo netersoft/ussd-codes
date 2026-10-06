@@ -26,6 +26,7 @@ dart run tool/build_catalog.dart
 ```
 
 - Never change the `id` of a published code: users' favorites refer to it.
+- After a merged catalog change, publish with `dart run tool/build_site.dart <netersoft.github.io checkout>` (catalog + public site), then a PR there.
 - Bump `version` in `catalog/meta.json` on every data change.
 
 ## Code Quality

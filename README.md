@@ -64,7 +64,13 @@ The codes live in [`catalog/`](catalog/README.md), one JSON file per operator. A
 dart run tool/build_catalog.dart   # validates and builds assets/catalog/catalog.json
 ```
 
-Once the change is merged, publish the built file so installed apps receive it: copy `assets/catalog/catalog.json` to `ussd-codes/catalog.json` in [netersoft.github.io](https://github.com/netersoft/netersoft.github.io) and open a PR there.
+Once the change is merged, publish it so installed apps receive it. The command below regenerates the public site in a [netersoft.github.io](https://github.com/netersoft/netersoft.github.io) checkout: `ussd-codes/catalog.json`, plus one page per country and operator and a sitemap. Then open a PR there:
+
+```bash
+dart run tool/build_site.dart ~/Dev/Projects/Web/netersoft.github.io
+```
+
+The site (https://netersoft.github.io/ussd-codes/) lists the codes for search engines and links to the Play Store. Its pages are built by `lib/core/catalog/site.dart`, in French except Nigeria (English).
 
 [catalog/README.md](catalog/README.md) describes the format, the update flow and the data still to verify.
 

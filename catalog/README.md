@@ -84,7 +84,7 @@ catalog/
 
    The build refuses duplicate ids, placeholders without a param and characters that cannot be dialed. CI fails when `assets/catalog/catalog.json` was not rebuilt.
 
-4. Once merged, publish: copy `assets/catalog/catalog.json` to `ussd-codes/catalog.json` in [netersoft.github.io](https://github.com/netersoft/netersoft.github.io) and open a PR there. Installed apps pick it up within 12 hours, or right away with "Check for updates" in the settings.
+4. Once merged, publish: `dart run tool/build_site.dart <netersoft.github.io checkout>` writes `ussd-codes/catalog.json` and the site's pages there; open a PR in [netersoft.github.io](https://github.com/netersoft/netersoft.github.io). Installed apps pick it up within 12 hours, or right away with "Check for updates" in the settings.
 
 A change to the format itself (a new field the app must understand) needs an app release first. Bump `Catalog.supportedSchemaVersion` in `lib/core/catalog/models.dart`. Apps that only know the older format then ignore the new catalog rather than misreading it.
 
