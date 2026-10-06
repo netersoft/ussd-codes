@@ -30,6 +30,37 @@ class FakeTelephonyService extends TelephonyService {
   UssdResult ussdResult = const UssdUnavailable();
   final sentUssd = <String>[];
 
+  /// The app icon's shortcuts, as last set.
+  List<({String id, String label})> shortcuts = const [];
+  final pinned = <String>[];
+  String? launchCodeId;
+  void Function(String codeId)? _onShortcutOpened;
+
+  @override
+  bool get canPinShortcut => true;
+
+  @override
+  Future<String?> takeLaunchCodeId() async {
+    final id = launchCodeId;
+    launchCodeId = null;
+    return id;
+  }
+
+  @override
+  void onShortcutOpened(void Function(String codeId) onOpen) => _onShortcutOpened = onOpen;
+
+  /// Simulates a shortcut tapped while the app runs.
+  void openShortcut(String codeId) => _onShortcutOpened?.call(codeId);
+
+  @override
+  Future<void> setShortcuts(List<({String id, String label})> codes) async => shortcuts = codes;
+
+  @override
+  Future<bool> pinShortcut({required String id, required String label}) async {
+    pinned.add(id);
+    return true;
+  }
+
   @override
   Future<UssdResult> sendUssd(String code, {Duration timeout = const Duration(seconds: 30)}) async {
     sentUssd.add(code);

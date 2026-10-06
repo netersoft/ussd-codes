@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../core/catalog/models.dart';
+import '../../core/providers/catalog_provider.dart';
 import '../../core/providers/library_provider.dart';
 import '../../core/providers/settings_provider.dart';
 import '../../core/services/i18n/translations.g.dart';
@@ -77,6 +78,16 @@ class CodeActionsSheet extends ConsumerWidget {
               onTap: () async {
                 await Clipboard.setData(ClipboardData(text: code.code));
                 done(t.codeCopied);
+              },
+            ),
+          if (ref.read(telephonyServiceProvider).canPinShortcut)
+            ListTile(
+              leading: const Icon(Icons.add_to_home_screen),
+              title: Text(t.addToHomeScreen),
+              onTap: () async {
+                // The launcher asks the user to confirm.
+                final pinned = await ref.read(telephonyServiceProvider).pinShortcut(id: code.id, label: code.label.text);
+                done(pinned ? null : t.shortcutsUnsupported);
               },
             ),
           ListTile(
