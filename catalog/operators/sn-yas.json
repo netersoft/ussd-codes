@@ -1,0 +1,65 @@
+{
+  "id": "sn-yas",
+  "country": "sn",
+  "name": "Yas",
+  "formerName": "Free",
+  "mccMnc": [
+    "60802"
+  ],
+  "codes": [
+    {
+      "id": "sn-yas.solde",
+      "label": {
+        "fr": "Solde crédit",
+        "en": "Airtime balance"
+      },
+      "code": "#176#",
+      "category": "account"
+    },
+    {
+      "id": "sn-yas.forfaits-internet-jour",
+      "label": {
+        "fr": "Forfaits internet journaliers",
+        "en": "Daily data bundles"
+      },
+      "code": "#100#",
+      "category": "data"
+    },
+    {
+      "id": "sn-yas.illimax",
+      "label": {
+        "fr": "Forfaits Illimax",
+        "en": "Illimax bundles"
+      },
+      "code": "#155#",
+      "category": "data"
+    },
+    {
+      "id": "sn-yas.emprunt",
+      "label": {
+        "fr": "Crédit d'urgence (Lebalma)",
+        "en": "Emergency credit (Lebalma)"
+      },
+      "code": "#188#",
+      "category": "recharge"
+    },
+    {
+      "id": "sn-yas.forfaits-internationaux",
+      "label": {
+        "fr": "Forfaits internationaux (roaming)",
+        "en": "International (roaming) bundles"
+      },
+      "code": "#155*5#",
+      "category": "services"
+    },
+    {
+      "id": "sn-yas.mixx",
+      "label": {
+        "fr": "Mixx by Yas",
+        "en": "Mixx by Yas"
+      },
+      "code": "#150#",
+      "category": "money"
+    }
+  ]
+}

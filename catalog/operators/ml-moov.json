@@ -1,0 +1,29 @@
+{
+  "id": "ml-moov",
+  "country": "ml",
+  "name": "Moov Africa",
+  "formerName": "Malitel",
+  "mccMnc": [
+    "61001"
+  ],
+  "codes": [
+    {
+      "id": "ml-moov.moov-money",
+      "label": {
+        "fr": "Moov Money",
+        "en": "Moov Money"
+      },
+      "code": "*166#",
+      "category": "money"
+    },
+    {
+      "id": "ml-moov.moov-money-credit",
+      "label": {
+        "fr": "Moov Money – Envoyer du crédit",
+        "en": "Moov Money – Send airtime"
+      },
+      "code": "*166*1#",
+      "category": "money"
+    }
+  ]
+}

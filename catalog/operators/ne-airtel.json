@@ -1,0 +1,19 @@
+{
+  "id": "ne-airtel",
+  "country": "ne",
+  "name": "Airtel",
+  "mccMnc": [
+    "61402"
+  ],
+  "codes": [
+    {
+      "id": "ne-airtel.solde",
+      "label": {
+        "fr": "Solde (crédit, bonus, internet)",
+        "en": "Balance (airtime, bonus, data)"
+      },
+      "code": "*121#",
+      "category": "account"
+    }
+  ]
+}

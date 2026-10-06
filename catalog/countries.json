@@ -9,7 +9,8 @@
       "dialCode": "229",
       "operators": [
         "bj-moov",
-        "bj-mtn"
+        "bj-mtn",
+        "bj-celtiis"
       ]
     },
     {
@@ -33,7 +34,8 @@
       "dialCode": "225",
       "operators": [
         "ci-moov",
-        "ci-mtn"
+        "ci-mtn",
+        "ci-orange"
       ]
     },
     {
@@ -44,7 +46,8 @@
       },
       "dialCode": "223",
       "operators": [
-        "ml-orange"
+        "ml-orange",
+        "ml-moov"
       ]
     },
     {
@@ -56,7 +59,8 @@
       "dialCode": "227",
       "operators": [
         "ne-moov",
-        "ne-orange"
+        "ne-orange",
+        "ne-airtel"
       ]
     },
     {
@@ -82,7 +86,8 @@
       },
       "dialCode": "221",
       "operators": [
-        "sn-orange"
+        "sn-orange",
+        "sn-yas"
       ]
     },
     {
