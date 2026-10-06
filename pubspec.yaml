@@ -47,9 +47,6 @@ dependencies:
   slang_flutter: ^4.18.0
   injectable: ^3.0.0
   marionette_flutter: ^0.6.0
-  firebase_core: ^4.12.1
-  firebase_crashlytics: ^5.2.6
-  firebase_analytics: ^12.4.5
   flutter_widget_from_html_core: ^0.17.4
 dev_dependencies:
   flutter_test:

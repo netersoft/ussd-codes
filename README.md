@@ -25,7 +25,6 @@ Features:
 - Routing: go_router (`go_router_builder`)
 - Local storage: SharedPreferences
 - i18n: [Slang](https://pub.dev/packages/slang) (French base, English)
-- Crash reporting and analytics: Firebase (Crashlytics + Analytics), inactive until configured
 - Native: a small Kotlin channel (`ussd_codes/telephony` in `MainActivity.kt`) to dial, read the SIM operators and read the legacy app's database
 
 ## Prerequisites
@@ -102,15 +101,9 @@ flutter test --coverage
   - Components and modals: code tile, run sheet, add sheet, country picker.
 - `tool/build_catalog.dart`: the catalog build and check script.
 
-Runtime composition starts from `lib/main.dart` → `lib/core/bootstrap/app_bootstrap.dart` (env, Firebase, DI, locale) → `lib/app.dart`. `MainScreen` waits for `appStartupProvider` while the native splash stays up. That provider loads the catalog and runs the legacy import.
+Runtime composition starts from `lib/main.dart` → `lib/core/bootstrap/app_bootstrap.dart` (env, DI, locale) → `lib/app.dart`. `MainScreen` waits for `appStartupProvider` while the native splash stays up. That provider loads the catalog and runs the legacy import.
 
 Generated files (`*.g.dart`, `*.config.dart`) are excluded from git. To rebuild them, run `dart run slang` and `dart run build_runner build`.
-
-## Firebase (Crash Reporting + Analytics)
-
-`lib/firebase_options.dart` is still the starter's placeholder, so Crashlytics and Analytics stay silent no-ops. To turn them on, run `flutterfire configure` with the project's Firebase project. Running a code logs a `run_code` event with the code id and the outcome, never the values typed.
-
-The [privacy policy](#privacy-policy) states that the app sends no analytics or crash reports: update it before shipping a build with Firebase configured.
 
 ## Privacy policy
 

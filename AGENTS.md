@@ -40,7 +40,7 @@ flutter test
 
 - **Entry point**: `lib/main.dart`
 - **Catalog** (`lib/core/catalog/`): pure Dart models, validation and search (also used by `tool/`), plus the repository (bundled copy, remote updates, disk cache)
-- **Core layer** (`lib/core/`): providers, services (telephony channel, prefs, Firebase), library (favorites, personal codes, legacy import), routes
+- **Core layer** (`lib/core/`): providers, services (telephony channel, prefs), library (favorites, personal codes, legacy import), routes
 - **View layer** (`lib/view/`): screens, components, modals, themes
 - **State management**: Riverpod with code generation (`riverpod_generator`)
 - **Routing**: go_router
