@@ -135,5 +135,6 @@
     "toConfirm": "Prix à confirmer",
     "buyLabel": "Forfait ${volume} – ${validity}",
     "footer": "Prix relevés le ${date} sur les sites des opérateurs. Les offres changent souvent : vérifiez le prix avant de valider l'achat."
-  }
+  },
+  "licenseNotice": "Logiciel libre sous licence GNU GPL v3 (code) et CC BY-SA 4.0 (contenus). © 2018-2026 Netersoft"
 }

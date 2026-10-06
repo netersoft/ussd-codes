@@ -305,6 +305,12 @@ class SettingsListWrapper extends ConsumerWidget {
                         style: const TextStyle(fontSize: 16.0),
                         textAlign: TextAlign.justify,
                       ),
+                      const SizedBox(height: 16),
+                      Text(
+                        context.t.licenseNotice,
+                        style: const TextStyle(fontSize: 12.0),
+                        textAlign: TextAlign.center,
+                      ),
                     ],
                   ),
                 ),
