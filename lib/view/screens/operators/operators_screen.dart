@@ -88,7 +88,8 @@ class OperatorsScreen extends ConsumerWidget {
   }
 }
 
-/// An operator's codes: the user's own first, then the catalog's by category.
+/// An operator's codes: favorites first (as in the legacy app), then the
+/// user's own codes, then the catalog's by category.
 class OperatorCodesList extends ConsumerWidget {
   final Operator operator;
 
@@ -96,8 +97,16 @@ class OperatorCodesList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final favoriteIds = ref.watch(favoritesProvider).toSet();
     final custom = ref.watch(customCodesProvider).where((code) => code.operatorId == operator.id).toList();
-    final byCategory = groupBy(operator.codes, (UssdCode code) => code.category);
+    final favorites = [
+      for (final code in custom)
+        if (favoriteIds.contains(code.id)) (code: code.toUssdCode(), isCustom: true),
+      for (final code in operator.codes)
+        if (favoriteIds.contains(code.id)) (code: code, isCustom: false),
+    ];
+    final byCategory = groupBy(operator.codes.where((code) => !favoriteIds.contains(code.id)), (UssdCode code) => code.category);
+    final otherCustom = custom.where((code) => !favoriteIds.contains(code.id)).toList();
 
     final items = <Widget>[
       if (operator.formerName != null)
@@ -105,9 +114,13 @@ class OperatorCodesList extends ConsumerWidget {
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
           child: Text(operator.displayName, style: Theme.of(context).textTheme.bodySmall),
         ),
-      if (custom.isNotEmpty) ...[
+      if (favorites.isNotEmpty) ...[
+        SectionHeader(context.t.favorites),
+        for (final favorite in favorites) CodeTile(code: favorite.code, operator: operator, isCustom: favorite.isCustom),
+      ],
+      if (otherCustom.isNotEmpty) ...[
         SectionHeader(context.t.myCodes),
-        for (final code in custom) CodeTile(code: code.toUssdCode(), operator: operator, isCustom: true),
+        for (final code in otherCustom) CodeTile(code: code.toUssdCode(), operator: operator, isCustom: true),
       ],
       for (final category in CodeCategory.values)
         if (byCategory[category] case final codes?) ...[

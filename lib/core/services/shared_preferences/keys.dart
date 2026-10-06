@@ -8,4 +8,7 @@ abstract class PrefKeys {
   static const customCodes = 'customCodes';
   static const catalogLastCheck = 'catalogLastCheck';
   static const legacyImported = 'legacyImported';
+  static const firstLaunch = 'firstLaunch';
+  static const launchCount = 'launchCount';
+  static const reviewRequested = 'reviewRequested';
 }

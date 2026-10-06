@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.telephony.SubscriptionManager
 import android.telephony.TelephonyManager
+import com.google.android.play.core.review.ReviewManagerFactory
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -21,8 +22,24 @@ class MainActivity : FlutterActivity() {
                 "getSimOperators" -> result.success(simOperators())
                 "dial" -> result.success(dial(call.argument<String>("code")!!, call.argument<Boolean>("direct") ?: false))
                 "readLegacyData" -> result.success(readLegacyData())
+                "requestReview" -> requestReview { shown -> result.success(shown) }
                 else -> result.notImplemented()
             }
+        }
+    }
+
+    /**
+     * Opens the Play In-App Review flow. Play decides whether the dialog
+     * actually shows (quota), so "done" only means the flow ran.
+     */
+    private fun requestReview(done: (Boolean) -> Unit) {
+        val manager = ReviewManagerFactory.create(this)
+        manager.requestReviewFlow().addOnCompleteListener { request ->
+            if (!request.isSuccessful) {
+                done(false)
+                return@addOnCompleteListener
+            }
+            manager.launchReviewFlow(this, request.result).addOnCompleteListener { done(true) }
         }
     }
 

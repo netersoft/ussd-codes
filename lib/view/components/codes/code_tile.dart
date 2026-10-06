@@ -55,10 +55,21 @@ class CodeTile extends ConsumerWidget {
         ),
       ),
       isThreeLine: source != null,
-      trailing: IconButton(
-        tooltip: isFavorite ? context.t.removeFromFavorites : context.t.addToFavorites,
-        icon: Icon(isFavorite ? Icons.star : Icons.star_border, color: isFavorite ? Colors.amber.shade700 : null),
-        onPressed: () => ref.read(favoritesProvider.notifier).toggle(code.id),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (isCustom)
+            IconButton(
+              tooltip: context.t.delete,
+              icon: const Icon(Icons.delete_outline),
+              onPressed: () => confirmDeleteCustomCode(context, ref, code.id, messenger: ScaffoldMessenger.of(context)),
+            ),
+          IconButton(
+            tooltip: isFavorite ? context.t.removeFromFavorites : context.t.addToFavorites,
+            icon: Icon(isFavorite ? Icons.star : Icons.star_border, color: isFavorite ? Colors.amber.shade700 : null),
+            onPressed: () => ref.read(favoritesProvider.notifier).toggle(code.id),
+          ),
+        ],
       ),
       onTap: () => showRunCodeSheet(context, code: code, operator: operator),
       onLongPress: () => showCodeActionsSheet(context, code: code, operator: operator, isCustom: isCustom),
