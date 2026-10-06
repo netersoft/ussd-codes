@@ -16,6 +16,7 @@ import '../../../core/providers/settings_provider.dart';
 import '../../../core/routes/app_route.dart';
 import '../../../core/services/i18n/config.dart';
 import '../../../core/services/i18n/translations.g.dart';
+import '../../components/codes/code_texts.dart';
 import '../../components/misc/floating_modal.dart';
 import '../../themes/app_theme.dart';
 
@@ -67,10 +68,52 @@ class SettingsListWrapper extends ConsumerWidget {
       );
   }
 
+  /// Lets the user pick the Quick Settings tile's code among the favorites.
+  void _pickTileCode(BuildContext context, WidgetRef ref) {
+    final favorites = [
+      for (final id in ref.read(favoritesProvider).reversed) ?ref.read(resolvedCodeProvider(id)),
+    ];
+    final choice = ref.read(tileCodeChoiceProvider);
+    showFloatingModalBottomSheet<void>(
+      context: context,
+      builder: (context) => Material(
+        child: SafeArea(
+          top: false,
+          child: RadioGroup<String?>(
+            groupValue: favorites.any((favorite) => favorite.code.id == choice) ? choice : null,
+            onChanged: (id) {
+              ref.read(tileCodeChoiceProvider.notifier).set(id);
+              context.pop();
+            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                RadioListTile<String?>(title: Text(context.t.quickTileLatestFavorite), value: null),
+                for (final favorite in favorites)
+                  RadioListTile<String?>(
+                    title: Text(favorite.code.label.text),
+                    subtitle: favorite.operator == null ? null : Text(favorite.operator!.displayName),
+                    value: favorite.code.id,
+                  ),
+                if (favorites.isEmpty)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
+                    child: Text(context.t.quickTileNoFavorites, style: TextStyle(color: Theme.of(context).hintColor)),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.read(settingsProvider.notifier);
     final directCall = ref.watch(directCallProvider);
+    final tileChoice = ref.watch(tileCodeChoiceProvider);
+    final tileCode = ref.watch(tileCodeProvider);
     final catalog = ref.watch(currentCatalogProvider).value;
     final isAndroid = defaultTargetPlatform == TargetPlatform.android;
 
@@ -184,6 +227,26 @@ class SettingsListWrapper extends ConsumerWidget {
                 description: Text(context.t.directCallDescription),
                 initialValue: directCall,
                 onToggle: (value) => ref.read(directCallProvider.notifier).set(value),
+              ),
+            if (isAndroid)
+              SettingsTile.navigation(
+                leading: const Icon(Icons.grid_view),
+                title: Text(context.t.quickTile),
+                description: Text(context.t.quickTileDescription),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 140),
+                      child: Text(
+                        tileChoice == null ? context.t.quickTileLatestFavorite : (tileCode?.code.label.text ?? ''),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const Icon(Icons.chevron_right),
+                  ],
+                ),
+                onPressed: (context) => _pickTileCode(context, ref),
               ),
           ],
         ),

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Quick Settings tile name, before a code is chosen. -->
+    <string name="tile_label">Code USSD</string>
+</resources>

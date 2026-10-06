@@ -52,6 +52,12 @@ class FakeTelephonyService extends TelephonyService {
   /// Simulates a shortcut tapped while the app runs.
   void openShortcut(String codeId) => _onShortcutOpened?.call(codeId);
 
+  /// The Quick Settings tile's code, as last set.
+  ({String id, String label, String code})? tileCode;
+
+  @override
+  Future<void> setTileCode(({String id, String label, String code})? tile) async => tileCode = tile;
+
   @override
   Future<void> setShortcuts(List<({String id, String label})> codes) async => shortcuts = codes;
 

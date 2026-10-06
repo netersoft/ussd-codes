@@ -44,6 +44,7 @@ class MainActivity : FlutterActivity() {
                 "sendUssd" -> sendUssd(call.argument<String>("code")!!) { response -> result.success(response) }
                 "takeLaunchCodeId" -> result.success(launchCodeId).also { launchCodeId = null }
                 "setShortcuts" -> result.success(setShortcuts(call.argument<List<Map<String, String>>>("codes")!!))
+                "setTileCode" -> result.success(setTileCode(call.argument<String>("id"), call.argument<String>("label"), call.argument<String>("code")))
                 "pinShortcut" -> result.success(pinShortcut(call.argument<String>("id")!!, call.argument<String>("label")!!))
                 else -> result.notImplemented()
             }
@@ -82,6 +83,13 @@ class MainActivity : FlutterActivity() {
         } catch (e: Exception) {
             false
         }
+    }
+
+    /** The code of the Quick Settings tile (Android 7+), null for none. */
+    private fun setTileCode(id: String?, label: String?, code: String?): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) return false
+        CodeTileService.save(this, id, label, code)
+        return true
     }
 
     /**
@@ -278,8 +286,8 @@ class MainActivity : FlutterActivity() {
     // ORMLite stores booleans as 0/1 on Android; accept "true" too, just in case.
     private fun String?.isTrue() = this == "1" || this.equals("true", ignoreCase = true)
 
-    private companion object {
-        const val PICK_PHONE_NUMBER = 4201
+    companion object {
+        private const val PICK_PHONE_NUMBER = 4201
         const val EXTRA_CODE_ID = "codeId"
     }
 }

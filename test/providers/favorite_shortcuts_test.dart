@@ -27,7 +27,9 @@ void main() {
       ],
     );
     await container.read(currentCatalogProvider.future);
-    container.listen(favoriteShortcutsProvider, (_, _) {}, fireImmediately: true);
+    container
+      ..listen(favoriteShortcutsProvider, (_, _) {}, fireImmediately: true)
+      ..listen(quickSettingsTileProvider, (_, _) {}, fireImmediately: true);
   });
 
   tearDown(() {
@@ -59,5 +61,30 @@ void main() {
     await favorite('bj-mtn.solde-mtn');
 
     expect(telephony.shortcuts, isEmpty);
+  });
+
+  group('Quick Settings tile', () {
+    test('opens the latest favorite by default', () async {
+      expect(telephony.tileCode, isNull);
+
+      await favorite('bj-mtn.solde-mtn');
+      await favorite('bj-mtn.mtn-bip-me');
+
+      expect(telephony.tileCode?.id, 'bj-mtn.mtn-bip-me');
+      // Placeholders are left for the run sheet.
+      expect(telephony.tileCode?.code, '*151*…#');
+    });
+
+    test('opens the favorite picked in the settings, until it stops being one', () async {
+      await favorite('bj-mtn.solde-mtn');
+      await favorite('bj-mtn.mtn-bip-me');
+      await container.read(tileCodeChoiceProvider.notifier).set('bj-mtn.solde-mtn');
+      await container.pump();
+
+      expect(telephony.tileCode?.id, 'bj-mtn.solde-mtn');
+
+      await favorite('bj-mtn.solde-mtn');
+      expect(telephony.tileCode?.id, 'bj-mtn.mtn-bip-me');
+    });
   });
 }
