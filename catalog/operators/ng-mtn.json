@@ -7,108 +7,92 @@
   ],
   "codes": [
     {
-      "id": "ng-mtn.daily-plans-10mb-24h-n100",
+      "id": "ng-mtn.solde",
       "label": {
-        "en": "Daily Plans 10MB/24H/N100"
+        "fr": "Solde",
+        "en": "Balance"
       },
-      "code": "*104#",
-      "category": "data"
+      "code": "*310#",
+      "category": "account"
     },
     {
-      "id": "ng-mtn.daily-plans-25mb-24h-n150",
+      "id": "ng-mtn.recharge",
       "label": {
-        "en": "Daily Plans 25MB/24H/N150"
+        "fr": "Recharge",
+        "en": "Top up"
       },
-      "code": "*112#",
-      "category": "data"
+      "code": "*311*{voucher}#",
+      "category": "recharge",
+      "params": [
+        {
+          "key": "voucher",
+          "type": "number",
+          "label": {
+            "fr": "Code de la carte de recharge",
+            "en": "Top-up voucher code"
+          }
+        }
+      ]
     },
     {
-      "id": "ng-mtn.daily-plans-50mb-24h-n200",
+      "id": "ng-mtn.forfaits-internet",
       "label": {
-        "en": "Daily Plans 50MB/24H/N200"
-      },
-      "code": "*113#",
-      "category": "data"
-    },
-    {
-      "id": "ng-mtn.weekly-plans-25mb-7d-n400",
-      "label": {
-        "en": "Weekly Plans 25MB/7D/N400"
-      },
-      "code": "*105#",
-      "category": "data"
-    },
-    {
-      "id": "ng-mtn.monthly-plans-260mb-30d-n1000",
-      "label": {
-        "en": "Monthly Plans 260MB/30D/N1000"
-      },
-      "code": "*106#",
-      "category": "data"
-    },
-    {
-      "id": "ng-mtn.monthly-plans-350mb-30d-n1300",
-      "label": {
-        "en": "Monthly Plans 350MB/30D/N1300"
-      },
-      "code": "*109#",
-      "category": "data"
-    },
-    {
-      "id": "ng-mtn.monthly-plans-750mb-30d-n2000",
-      "label": {
-        "en": "Monthly Plans 750MB/30D/N2000"
-      },
-      "code": "*110#",
-      "category": "data"
-    },
-    {
-      "id": "ng-mtn.monthly-plans-1gb-30d-n3500",
-      "label": {
-        "en": "Monthly Plans 1GB/30D/N3500"
-      },
-      "code": "*111#",
-      "category": "data"
-    },
-    {
-      "id": "ng-mtn.monthly-plans-4-5gb-30d-n6500",
-      "label": {
-        "en": "Monthly Plans 4.5GB/30D/N6500"
-      },
-      "code": "*129#",
-      "category": "data"
-    },
-    {
-      "id": "ng-mtn.monthly-plans-7-5gb-30d-n8000",
-      "label": {
-        "en": "Monthly Plans 7.5GB/30D/N8000"
-      },
-      "code": "*101#",
-      "category": "data"
-    },
-    {
-      "id": "ng-mtn.night-plan-9pm-6am-4-5gb-30d-n2500",
-      "label": {
-        "en": "Night Plan (9pm-6am) 4.5GB/30D/N2500"
-      },
-      "code": "*102#",
-      "category": "data"
-    },
-    {
-      "id": "ng-mtn.weekend-plan-4-5gb-30d-n3000",
-      "label": {
-        "en": "Weekend Plan 4.5GB/30D/N3000"
-      },
-      "code": "*108#",
-      "category": "data"
-    },
-    {
-      "id": "ng-mtn.data-plans",
-      "label": {
+        "fr": "Forfaits internet",
         "en": "Data plans"
       },
-      "code": "*131#",
+      "code": "*312#",
       "category": "data"
+    },
+    {
+      "id": "ng-mtn.solde-internet",
+      "label": {
+        "fr": "Solde internet",
+        "en": "Data balance"
+      },
+      "code": "*323#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.emprunter",
+      "label": {
+        "fr": "Emprunter du crédit ou des données",
+        "en": "Borrow airtime or data"
+      },
+      "code": "*303#",
+      "category": "recharge"
+    },
+    {
+      "id": "ng-mtn.partager",
+      "label": {
+        "fr": "Partager du crédit ou des données",
+        "en": "Share airtime or data"
+      },
+      "code": "*321#",
+      "category": "transfer"
+    },
+    {
+      "id": "ng-mtn.nin",
+      "label": {
+        "fr": "Vérification NIN et liaison NIN-SIM",
+        "en": "NIN verification and NIN-SIM linkage"
+      },
+      "code": "*996#",
+      "category": "services"
     }
-  ]
+  ],
+  "redirects": {
+    "ng-mtn.daily-plans-10mb-24h-n100": "ng-mtn.forfaits-internet",
+    "ng-mtn.daily-plans-25mb-24h-n150": "ng-mtn.forfaits-internet",
+    "ng-mtn.daily-plans-50mb-24h-n200": "ng-mtn.forfaits-internet",
+    "ng-mtn.data-plans": "ng-mtn.forfaits-internet",
+    "ng-mtn.monthly-plans-1gb-30d-n3500": "ng-mtn.forfaits-internet",
+    "ng-mtn.monthly-plans-260mb-30d-n1000": "ng-mtn.forfaits-internet",
+    "ng-mtn.monthly-plans-350mb-30d-n1300": "ng-mtn.forfaits-internet",
+    "ng-mtn.monthly-plans-4-5gb-30d-n6500": "ng-mtn.forfaits-internet",
+    "ng-mtn.monthly-plans-7-5gb-30d-n8000": "ng-mtn.forfaits-internet",
+    "ng-mtn.monthly-plans-750mb-30d-n2000": "ng-mtn.forfaits-internet",
+    "ng-mtn.night-plan-9pm-6am-4-5gb-30d-n2500": "ng-mtn.forfaits-internet",
+    "ng-mtn.weekend-plan-4-5gb-30d-n3000": "ng-mtn.forfaits-internet",
+    "ng-mtn.weekly-plans-25mb-7d-n400": "ng-mtn.forfaits-internet"
+  }
 }

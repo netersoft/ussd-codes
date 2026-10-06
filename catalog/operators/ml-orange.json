@@ -9,7 +9,8 @@
     {
       "id": "ml-orange.consultation-de-credit",
       "label": {
-        "fr": "Consultation de crédit"
+        "fr": "Solde",
+        "en": "Balance"
       },
       "code": "#123#",
       "category": "account"
@@ -17,7 +18,8 @@
     {
       "id": "ml-orange.transfert-de-credit",
       "label": {
-        "fr": "Transfert de crédit"
+        "fr": "Transfert de crédit (code par défaut 00000)",
+        "en": "Airtime transfer (default PIN 00000)"
       },
       "code": "*116*{recipient}*{amount}*{pin}#",
       "category": "transfer",
@@ -51,7 +53,8 @@
     {
       "id": "ml-orange.transfert-de-credit-changer-de-code-secret",
       "label": {
-        "fr": "Transfert de crédit : changer de code secret"
+        "fr": "Transfert de crédit : changer de code secret",
+        "en": "Airtime transfer: change PIN"
       },
       "code": "*117*{old_pin}*{new_pin}*{new_pin_confirm}#",
       "category": "transfer",
@@ -85,212 +88,137 @@
     {
       "id": "ml-orange.sos-credit-djiguiya",
       "label": {
-        "fr": "SOS Crédit - Djiguiya"
+        "fr": "SOS Crédit (Djiguiya)",
+        "en": "Emergency credit (Djiguiya)"
       },
       "code": "#170#",
-      "category": "help"
+      "category": "recharge"
     },
     {
       "id": "ml-orange.bip-appelle-moi",
       "label": {
-        "fr": "Bip : Appelle-moi"
+        "fr": "Bip : appelle-moi",
+        "en": "Bip: call me"
       },
       "code": "#101#141#",
-      "category": "help"
+      "category": "services"
     },
     {
       "id": "ml-orange.bip-envoie-moi-du-credit",
       "label": {
-        "fr": "Bip : Envoie moi du crédit"
+        "fr": "Bip : envoie-moi du crédit",
+        "en": "Bip: send me airtime"
       },
       "code": "#101#142#",
-      "category": "help"
-    },
-    {
-      "id": "ml-orange.internet-everywhere",
-      "label": {
-        "fr": "Internet everywhere"
-      },
-      "code": "#101#212#",
-      "category": "data"
-    },
-    {
-      "id": "ml-orange.forfaits-internet-mobile-acheter-un-forfait-inte",
-      "label": {
-        "fr": "Forfaits internet mobile - Acheter un forfait internet"
-      },
-      "code": "#101#21#",
-      "category": "data"
-    },
-    {
-      "id": "ml-orange.forfaits-internet-mobile-offrir-un-forfait-a-un",
-      "label": {
-        "fr": "Forfaits internet mobile - Offrir un forfait à un tiers"
-      },
-      "code": "#101#23#",
-      "category": "data"
-    },
-    {
-      "id": "ml-orange.forfaits-internet-mobile-consulter-le-solde-de-v",
-      "label": {
-        "fr": "Forfaits internet mobile - Consulter le solde de votre forfait"
-      },
-      "code": "#101#22#",
-      "category": "data"
-    },
-    {
-      "id": "ml-orange.forfaits-appels-orange",
-      "label": {
-        "fr": "Forfaits appels Orange"
-      },
-      "code": "#101#65#",
-      "category": "data"
-    },
-    {
-      "id": "ml-orange.sewa",
-      "label": {
-        "fr": "Séwa"
-      },
-      "code": "#101#63#",
       "category": "services"
-    },
-    {
-      "id": "ml-orange.programme-de-fidelisation-inscription",
-      "label": {
-        "fr": "Programme de fidélisation - Inscription"
-      },
-      "code": "#101#53#",
-      "category": "services"
-    },
-    {
-      "id": "ml-orange.a-sara-nye",
-      "label": {
-        "fr": "A Sara Nyé"
-      },
-      "code": "#355#",
-      "category": "services"
-    },
-    {
-      "id": "ml-orange.pass-voyage-orange",
-      "label": {
-        "fr": "Pass Voyage Orange"
-      },
-      "code": "#100#",
-      "category": "data"
     },
     {
       "id": "ml-orange.le-portail-101",
       "label": {
-        "fr": "Le portail #101#"
+        "fr": "Le portail #101#",
+        "en": "The #101# portal"
       },
       "code": "#101#",
       "category": "services"
     },
     {
-      "id": "ml-orange.cmoi-activer-le-service",
+      "id": "ml-orange.forfaits-internet-mobile-acheter-un-forfait-inte",
       "label": {
-        "fr": "Cmoi - Activer le service"
+        "fr": "Acheter un forfait internet",
+        "en": "Buy a data bundle"
       },
-      "code": "#101#9#1",
-      "category": "services"
+      "code": "#101#21#",
+      "category": "data"
     },
     {
-      "id": "ml-orange.cmoi-desactiver-le-service",
+      "id": "ml-orange.pass-jour",
       "label": {
-        "fr": "Cmoi - Désactiver le service"
+        "fr": "Pass internet jour",
+        "en": "Daily data pass"
       },
-      "code": "#101#9#2",
-      "category": "services"
+      "code": "#101#2111#",
+      "category": "data"
     },
     {
-      "id": "ml-orange.cmoi-verifier-le-statut-du-service",
+      "id": "ml-orange.pass-semaine",
       "label": {
-        "fr": "Cmoi - Vérifier le statut du service"
+        "fr": "Pass internet semaine",
+        "en": "Weekly data pass"
       },
-      "code": "#101#9#3",
-      "category": "account"
+      "code": "#101#2112#",
+      "category": "data"
     },
     {
-      "id": "ml-orange.wele-tones",
+      "id": "ml-orange.pass-mois",
       "label": {
-        "fr": "Wélé tones"
+        "fr": "Pass internet mois",
+        "en": "Monthly data pass"
       },
-      "code": "#101#32#",
-      "category": "services"
+      "code": "#101#2113#",
+      "category": "data"
     },
     {
-      "id": "ml-orange.illimites-de-orange",
+      "id": "ml-orange.forfaits-internet-mobile-consulter-le-solde-de-v",
       "label": {
-        "fr": "Illimités de Orange"
+        "fr": "Solde internet",
+        "en": "Data balance"
       },
-      "code": "#101#62#",
+      "code": "#101#22#",
+      "category": "data"
+    },
+    {
+      "id": "ml-orange.forfaits-internet-mobile-offrir-un-forfait-a-un",
+      "label": {
+        "fr": "Offrir un forfait internet",
+        "en": "Gift a data bundle"
+      },
+      "code": "#101#23#",
       "category": "data"
     },
     {
       "id": "ml-orange.orange-money",
       "label": {
-        "fr": "Orange Money"
+        "fr": "Orange Money",
+        "en": "Orange Money"
       },
       "code": "#144#",
       "category": "money"
     },
     {
-      "id": "ml-orange.orange-money-transfert-intra-regional",
+      "id": "ml-orange.orange-money-solde",
       "label": {
-        "fr": "Orange Money - Transfert intra régional"
+        "fr": "Orange Money – Solde",
+        "en": "Orange Money – Balance"
       },
-      "code": "#144#1*2#",
+      "code": "#144#6#",
+      "category": "money"
+    },
+    {
+      "id": "ml-orange.orange-money-recharger-mon-numero",
+      "label": {
+        "fr": "Orange Money – Recharger son numéro",
+        "en": "Orange Money – Top up your number"
+      },
+      "code": "#144#21#",
       "category": "money"
     },
     {
       "id": "ml-orange.orange-money-recharger-un-autre-numero",
       "label": {
-        "fr": "Orange Money - Recharger un autre numéro"
+        "fr": "Orange Money – Recharger un autre numéro",
+        "en": "Orange Money – Top up another number"
       },
-      "code": "#144#8*{merchant}*{amount}*{pin}#",
-      "category": "money",
-      "params": [
-        {
-          "key": "merchant",
-          "type": "number",
-          "label": {
-            "fr": "Code marchand",
-            "en": "Merchant code"
-          }
-        },
-        {
-          "key": "amount",
-          "type": "amount",
-          "label": {
-            "fr": "Montant",
-            "en": "Amount"
-          }
-        },
-        {
-          "key": "pin",
-          "type": "pin",
-          "label": {
-            "fr": "Code secret",
-            "en": "PIN"
-          }
-        }
-      ]
-    },
-    {
-      "id": "ml-orange.orange-money-frais-de-scolarite",
-      "label": {
-        "fr": "Orange Money - Frais de scolarité"
-      },
-      "code": "#144#3*5#",
-      "category": "money"
-    },
-    {
-      "id": "ml-orange.orange-money-sani-web",
-      "label": {
-        "fr": "Orange Money - Sani Web"
-      },
-      "code": "#144#3*6#",
+      "code": "#144#22#",
       "category": "money"
     }
-  ]
+  ],
+  "redirects": {
+    "ml-orange.forfaits-appels-orange": "ml-orange.forfaits-internet-mobile-acheter-un-forfait-inte",
+    "ml-orange.illimites-de-orange": "ml-orange.forfaits-internet-mobile-acheter-un-forfait-inte",
+    "ml-orange.internet-everywhere": "ml-orange.forfaits-internet-mobile-acheter-un-forfait-inte",
+    "ml-orange.orange-money-frais-de-scolarite": "ml-orange.orange-money",
+    "ml-orange.orange-money-sani-web": "ml-orange.orange-money",
+    "ml-orange.orange-money-transfert-intra-regional": "ml-orange.orange-money",
+    "ml-orange.pass-voyage-orange": "ml-orange.forfaits-internet-mobile-acheter-un-forfait-inte"
+  }
 }

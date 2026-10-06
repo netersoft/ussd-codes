@@ -130,4 +130,34 @@ void main() {
       expect(benin.localNumber('+228 90 00 00 00'), '0022890000000');
     });
   });
+
+  group('Catalog redirects', () {
+    const code = UssdCode(id: 'bj-mtn.forfaits', label: LocalizedText({'fr': 'Forfaits'}), code: '*123#', category: CodeCategory.data);
+    Catalog catalogWith(Map<String, String> redirects) => Catalog(
+      version: 1,
+      updatedAt: '2026-10-06',
+      countries: [
+        Country(
+          id: 'bj',
+          name: const LocalizedText({'fr': 'Bénin'}),
+          operators: [
+            Operator(id: 'bj-mtn', countryId: 'bj', name: 'MTN', codes: const [code], redirects: redirects),
+          ],
+        ),
+      ],
+      deviceCodes: const [],
+    );
+
+    test('finds a removed code under the code replacing it', () {
+      final catalog = catalogWith({'bj-mtn.forfait-5mo': 'bj-mtn.forfaits'});
+      expect(catalog.entryById('bj-mtn.forfait-5mo')?.code.id, 'bj-mtn.forfaits');
+      expect(catalog.validate(), isEmpty);
+    });
+
+    test('rejects redirects to unknown codes, from live codes or other operators', () {
+      expect(catalogWith({'bj-mtn.old': 'bj-mtn.missing'}).validate(), [contains('unknown code')]);
+      expect(catalogWith({'bj-mtn.forfaits': 'bj-mtn.forfaits'}).validate(), [contains('still a code id')]);
+      expect(catalogWith({'bj-moov.old': 'bj-mtn.forfaits'}).validate(), [contains('must start with')]);
+    });
+  });
 }

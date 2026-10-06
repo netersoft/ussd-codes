@@ -7,17 +7,29 @@
   ],
   "codes": [
     {
-      "id": "ci-moov.moov-money-payez-vos-factures",
+      "id": "ci-moov.rechargement-par-carte",
       "label": {
-        "fr": "Moov money – Payez vos factures"
+        "fr": "Rechargement par carte",
+        "en": "Top up with a voucher"
       },
-      "code": "*155*1*1#",
-      "category": "money"
+      "code": "*101*{voucher}#",
+      "category": "recharge",
+      "params": [
+        {
+          "key": "voucher",
+          "type": "number",
+          "label": {
+            "fr": "Les 14 chiffres du code de recharge",
+            "en": "The 14 digits of the voucher"
+          }
+        }
+      ]
     },
     {
       "id": "ci-moov.rechargement-par-un-tiers",
       "label": {
-        "fr": "Rechargement par un tiers"
+        "fr": "Recharger un tiers",
+        "en": "Top up someone else"
       },
       "code": "*109*{voucher}*{recipient}#",
       "category": "recharge",
@@ -41,27 +53,19 @@
       ]
     },
     {
-      "id": "ci-moov.rechargement-par-carte",
+      "id": "ci-moov.credit-secours",
       "label": {
-        "fr": "Rechargement par carte"
+        "fr": "Moov Crédit Secours",
+        "en": "Moov emergency credit"
       },
-      "code": "*101*{voucher}#",
-      "category": "recharge",
-      "params": [
-        {
-          "key": "voucher",
-          "type": "number",
-          "label": {
-            "fr": "Les 14 chiffres du code de recharge",
-            "en": "The 14 digits of the voucher"
-          }
-        }
-      ]
+      "code": "*444#",
+      "category": "recharge"
     },
     {
       "id": "ci-moov.transfert-de-credit",
       "label": {
-        "fr": "Transfert de crédit"
+        "fr": "Transfert de crédit",
+        "en": "Airtime transfer"
       },
       "code": "*102*{amount}*{recipient}*{pin}#",
       "category": "transfer",
@@ -95,7 +99,8 @@
     {
       "id": "ci-moov.transfert-de-credit-inscription",
       "label": {
-        "fr": "Transfert de credit - Inscription"
+        "fr": "Transfert de crédit : créer son code secret",
+        "en": "Airtime transfer: set your PIN"
       },
       "code": "*102*9999*{new_pin}#",
       "category": "transfer",
@@ -111,45 +116,12 @@
       ]
     },
     {
-      "id": "ci-moov.moov-4g",
-      "label": {
-        "fr": "Moov 4G"
-      },
-      "code": "*303*3#",
-      "category": "data"
-    },
-    {
-      "id": "ci-moov.wifi-universite",
-      "label": {
-        "fr": "Wifi Université"
-      },
-      "code": "*303*2#",
-      "category": "data"
-    },
-    {
       "id": "ci-moov.moov-bip",
       "label": {
-        "fr": "Moov Bip"
+        "fr": "Rappelle-moi",
+        "en": "Call me back"
       },
       "code": "*108*{recipient}#",
-      "category": "help",
-      "params": [
-        {
-          "key": "recipient",
-          "type": "phone",
-          "label": {
-            "fr": "Numéro",
-            "en": "Number"
-          }
-        }
-      ]
-    },
-    {
-      "id": "ci-moov.numeros-favoris-ajoutez-un-numero",
-      "label": {
-        "fr": "Numéros favoris – Ajoutez un numéro"
-      },
-      "code": "*107*1*{recipient}#",
       "category": "services",
       "params": [
         {
@@ -163,67 +135,154 @@
       ]
     },
     {
-      "id": "ci-moov.numeros-favoris-supprimez-un-numero",
+      "id": "ci-moov.mon-numero",
       "label": {
-        "fr": "Numéros favoris – Supprimez un numéro"
+        "fr": "Connaître son numéro",
+        "en": "My number"
       },
-      "code": "*107*0*{recipient}#",
-      "category": "services",
-      "params": [
-        {
-          "key": "recipient",
-          "type": "phone",
-          "label": {
-            "fr": "Numéro",
-            "en": "Number"
-          }
-        }
-      ]
+      "code": "*106#",
+      "category": "account"
+    },
+    {
+      "id": "ci-moov.mon-profil",
+      "label": {
+        "fr": "Connaître son profil",
+        "en": "My profile"
+      },
+      "code": "*505*5#",
+      "category": "account"
+    },
+    {
+      "id": "ci-moov.code-puk",
+      "label": {
+        "fr": "Connaître son code PUK",
+        "en": "My PUK code"
+      },
+      "code": "*388#",
+      "category": "account"
+    },
+    {
+      "id": "ci-moov.statut-identification",
+      "label": {
+        "fr": "Statut d'identification",
+        "en": "ID registration status"
+      },
+      "code": "*338#",
+      "category": "account"
     },
     {
       "id": "ci-moov.numeros-favoris-consultez-la-liste",
       "label": {
-        "fr": "Numéros favoris – Consultez la liste"
+        "fr": "Numéros préférés",
+        "en": "Favorite numbers"
       },
-      "code": "*107*2#",
+      "code": "*107#",
       "category": "services"
     },
     {
-      "id": "ci-moov.moov-rfi",
+      "id": "ci-moov.pass-internet",
       "label": {
-        "fr": "Moov RFI"
+        "fr": "Acheter un pass internet",
+        "en": "Buy a data pass"
       },
-      "code": "*224#",
+      "code": "*303*3*1#",
+      "category": "data"
+    },
+    {
+      "id": "ci-moov.volume-internet",
+      "label": {
+        "fr": "Consulter son volume internet",
+        "en": "Data balance"
+      },
+      "code": "*303*3*2*1#",
+      "category": "data"
+    },
+    {
+      "id": "ci-moov.pass-internet-tiers",
+      "label": {
+        "fr": "Acheter un pass pour un tiers",
+        "en": "Buy a data pass for someone"
+      },
+      "code": "*303*3*4#",
+      "category": "data"
+    },
+    {
+      "id": "ci-moov.forfait-izy-heures",
+      "label": {
+        "fr": "Forfait appels Izy heures+",
+        "en": "Izy heures+ call bundle"
+      },
+      "code": "*303*1#",
       "category": "services"
     },
     {
-      "id": "ci-moov.moov-money-envoyez-et-recevez-de-largent-en-fran",
+      "id": "ci-moov.moov-money",
       "label": {
-        "fr": "Moov Money – Envoyez et recevez de l’argent en france"
+        "fr": "Moov Money",
+        "en": "Moov Money"
+      },
+      "code": "*155#",
+      "category": "money"
+    },
+    {
+      "id": "ci-moov.moov-money-transfert",
+      "label": {
+        "fr": "Moov Money – Envoyer de l'argent",
+        "en": "Moov Money – Send money"
+      },
+      "code": "*155*1*1#",
+      "category": "money"
+    },
+    {
+      "id": "ci-moov.moov-money-envoyez-de-largent-dans-la-sous-regio",
+      "label": {
+        "fr": "Moov Money – Transfert international",
+        "en": "Moov Money – International transfer"
       },
       "code": "*155*1*3#",
       "category": "money"
     },
     {
-      "id": "ci-moov.moov-money-moov-epargne-plus",
+      "id": "ci-moov.moov-money-retrait",
       "label": {
-        "fr": "Moov money - Moov Epargne plus"
+        "fr": "Moov Money – Retrait chez un agent",
+        "en": "Moov Money – Cash out at an agent"
       },
-      "code": "*155*3*8*1#",
+      "code": "*155*2*1#",
       "category": "money"
     },
     {
-      "id": "ci-moov.moov-money-achat-de-marchandise",
+      "id": "ci-moov.moov-money-achat-credit",
       "label": {
-        "fr": "Moov money – Achat de marchandise"
+        "fr": "Moov Money – Acheter du crédit",
+        "en": "Moov Money – Buy airtime"
       },
-      "code": "*155*3*7#",
+      "code": "*155*3*1#",
+      "category": "money"
+    },
+    {
+      "id": "ci-moov.moov-money-forfaits",
+      "label": {
+        "fr": "Moov Money – Acheter un forfait",
+        "en": "Moov Money – Buy a bundle"
+      },
+      "code": "*155*9#",
+      "category": "money"
+    },
+    {
+      "id": "ci-moov.moov-money-payez-vos-factures",
+      "label": {
+        "fr": "Moov Money – Payer une facture (CIE, SODECI…)",
+        "en": "Moov Money – Pay a bill (CIE, SODECI…)"
+      },
+      "code": "*155*4#",
       "category": "money"
     },
     {
       "id": "ci-moov.moov-money-canal",
       "label": {
-        "fr": "Moov money – Canal+"
+        "fr": "Moov Money – Réabonnement Canal+ / Iroko+",
+        "en": "Moov Money – Canal+ / Iroko+ renewal"
       },
       "code": "*155*4*3#",
       "category": "money"
@@ -231,26 +290,45 @@
     {
       "id": "ci-moov.moov-money-petro-ivoire",
       "label": {
-        "fr": "Moov money – Pétro Ivoire"
+        "fr": "Moov Money – Carburant / gaz",
+        "en": "Moov Money – Fuel / gas"
       },
       "code": "*155*3*3#",
       "category": "money"
     },
     {
-      "id": "ci-moov.moov-money-envoyez-de-largent-dans-la-sous-regio",
+      "id": "ci-moov.moov-money-achat-de-marchandise",
       "label": {
-        "fr": "Moov money – Envoyez de l’argent dans la sous région"
+        "fr": "Moov Money – Payer un commerçant",
+        "en": "Moov Money – Pay a merchant"
       },
-      "code": "*155*1*3#",
+      "code": "*155*3*4#",
       "category": "money"
     },
     {
       "id": "ci-moov.moov-money-inscrivez-ou-reinscrivez-vos-enfants",
       "label": {
-        "fr": "Moov money – Inscrivez ou réinscrivez vos enfants"
+        "fr": "Moov Money – Éducation nationale (inscriptions)",
+        "en": "Moov Money – School registration"
       },
       "code": "*155*7*6#",
       "category": "money"
+    },
+    {
+      "id": "ci-moov.moov-money-solde",
+      "label": {
+        "fr": "Moov Money – Solde",
+        "en": "Moov Money – Balance"
+      },
+      "code": "*155*6*1#",
+      "category": "money"
     }
-  ]
+  ],
+  "redirects": {
+    "ci-moov.moov-4g": "ci-moov.pass-internet",
+    "ci-moov.moov-money-envoyez-et-recevez-de-largent-en-fran": "ci-moov.moov-money-envoyez-de-largent-dans-la-sous-regio",
+    "ci-moov.moov-money-moov-epargne-plus": "ci-moov.moov-money",
+    "ci-moov.numeros-favoris-ajoutez-un-numero": "ci-moov.numeros-favoris-consultez-la-liste",
+    "ci-moov.numeros-favoris-supprimez-un-numero": "ci-moov.numeros-favoris-consultez-la-liste"
+  }
 }

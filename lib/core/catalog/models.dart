@@ -146,6 +146,10 @@ class Operator {
   final List<String> mccMnc;
   final List<UssdCode> codes;
 
+  /// Ids of removed codes to the code that replaces them, so favorites
+  /// follow (e.g. an expired bundle to the bundles menu).
+  final Map<String, String> redirects;
+
   const Operator({
     required this.id,
     required this.countryId,
@@ -153,6 +157,7 @@ class Operator {
     required this.codes,
     this.formerName,
     this.mccMnc = const [],
+    this.redirects = const {},
   });
 
   factory Operator.fromJson(Map<String, dynamic> json, {String? countryId}) => Operator(
@@ -162,6 +167,7 @@ class Operator {
     formerName: json['formerName'] as String?,
     mccMnc: [for (final value in (json['mccMnc'] as List<dynamic>? ?? const [])) value as String],
     codes: [for (final code in json['codes'] as List<dynamic>) UssdCode.fromJson(code as Map<String, dynamic>)],
+    redirects: (json['redirects'] as Map<String, dynamic>? ?? const {}).cast<String, String>(),
   );
 
   String get displayName => formerName == null ? name : '$name (ex-$formerName)';
@@ -172,6 +178,7 @@ class Operator {
     if (formerName != null) 'formerName': formerName,
     'mccMnc': mccMnc,
     'codes': [for (final code in codes) code.toJson()],
+    if (redirects.isNotEmpty) 'redirects': redirects,
   };
 }
 
@@ -270,7 +277,11 @@ class Catalog {
 
   Iterable<CodeEntry> get entries => _codesById.values;
 
-  CodeEntry? entryById(String id) => _codesById[id];
+  /// Removed code ids to the ids of the codes replacing them.
+  late final Map<String, String> redirects = {for (final op in operators) ...op.redirects};
+
+  /// The code with [id], following [redirects] for removed codes.
+  CodeEntry? entryById(String id) => _codesById[redirects[id] ?? id];
 
   Country? countryById(String? id) => countries.firstWhereOrNull((country) => country.id == id);
 
@@ -325,6 +336,13 @@ class Catalog {
     }
     for (final code in deviceCodes) {
       checkCode(code, 'device');
+    }
+    for (final op in operators) {
+      for (final MapEntry(key: from, value: to) in op.redirects.entries) {
+        if (!from.startsWith('${op.id}.')) errors.add('${op.id}: redirect $from must start with "${op.id}."');
+        if (_codesById.containsKey(from)) errors.add('${op.id}: redirect $from is still a code id');
+        if (!_codesById.containsKey(to)) errors.add('${op.id}: redirect $from points to unknown code $to');
+      }
     }
     return errors;
   }

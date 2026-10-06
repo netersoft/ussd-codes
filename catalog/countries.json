@@ -20,6 +20,7 @@
       },
       "dialCode": "237",
       "operators": [
+        "cm-mtn",
         "cm-orange"
       ]
     },

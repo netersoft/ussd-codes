@@ -1,145 +1,71 @@
 {
   "id": "tg-togocel",
   "country": "tg",
-  "name": "Togocel",
+  "name": "Yas",
+  "formerName": "Togocel",
   "mccMnc": [
     "61501"
   ],
   "codes": [
     {
-      "id": "tg-togocel.consultation-de-solde-tmoney",
+      "id": "tg-togocel.solde",
       "label": {
-        "fr": "Consultation de solde TMoney"
+        "fr": "Solde crédit",
+        "en": "Airtime balance"
       },
-      "code": "*145*7*1#",
-      "category": "money"
-    },
-    {
-      "id": "tg-togocel.tmoney-3-dernieres-transactions",
-      "label": {
-        "fr": "TMoney : 3 dernières transactions"
-      },
-      "code": "*145*7*2*{pin}#",
-      "category": "money",
-      "params": [
-        {
-          "key": "pin",
-          "type": "pin",
-          "label": {
-            "fr": "Code secret",
-            "en": "PIN"
-          }
-        }
-      ]
-    },
-    {
-      "id": "tg-togocel.souscription-gratuite",
-      "label": {
-        "fr": "Souscription gratuite"
-      },
-      "code": "*104*2*1#",
-      "category": "services"
-    },
-    {
-      "id": "tg-togocel.forfait-internet-10mo-1j-50f",
-      "label": {
-        "fr": "Forfait Internet 10Mo/1j/50F"
-      },
-      "code": "*104*2*2#",
-      "category": "data"
-    },
-    {
-      "id": "tg-togocel.forfait-internet-50mo-1j-200f",
-      "label": {
-        "fr": "Forfait Internet 50Mo/1j/200F"
-      },
-      "code": "*104*2*3#",
-      "category": "data"
-    },
-    {
-      "id": "tg-togocel.forfait-internet-100mo-1j-350f",
-      "label": {
-        "fr": "Forfait internet 100Mo/1j/350F"
-      },
-      "code": "*104*2*4#",
-      "category": "data"
-    },
-    {
-      "id": "tg-togocel.forfait-internet-250mo-3j-600f",
-      "label": {
-        "fr": "Forfait internet 250Mo/3j/600F"
-      },
-      "code": "*104*2*5#",
-      "category": "data"
-    },
-    {
-      "id": "tg-togocel.forfait-internet-600mo-7j-1500f",
-      "label": {
-        "fr": "Forfait internet 600Mo/7j/1500F"
-      },
-      "code": "*104*2*6#",
-      "category": "data"
-    },
-    {
-      "id": "tg-togocel.forfait-internet-1-7go-30j-5000f",
-      "label": {
-        "fr": "Forfait internet 1.7Go/30j/5000F"
-      },
-      "code": "*104*2*7#",
-      "category": "data"
-    },
-    {
-      "id": "tg-togocel.forfait-internet-3-5go-30j-10000f",
-      "label": {
-        "fr": "Forfait internet 3.5Go/30j/10000F"
-      },
-      "code": "*104*2*8#",
-      "category": "data"
-    },
-    {
-      "id": "tg-togocel.forfait-internet-5-5go-30j-15000f",
-      "label": {
-        "fr": "Forfait internet 5.5Go/30j/15000F"
-      },
-      "code": "*104*2*9#",
-      "category": "data"
-    },
-    {
-      "id": "tg-togocel.forfait-internet-11go-90j-30000f",
-      "label": {
-        "fr": "Forfait internet 11Go/90j/30000F"
-      },
-      "code": "*104*2*10#",
-      "category": "data"
-    },
-    {
-      "id": "tg-togocel.activation-tmoney",
-      "label": {
-        "fr": "Activation TMoney"
-      },
-      "code": "*145#",
-      "category": "money"
+      "code": "*909*0#",
+      "category": "account"
     },
     {
       "id": "tg-togocel.statut-forfait",
       "label": {
-        "fr": "Statut forfait"
+        "fr": "Soldes (crédit, forfaits)",
+        "en": "Balances (airtime, bundles)"
       },
-      "code": "*444*2#",
-      "category": "data"
+      "code": "*444#",
+      "category": "account"
     },
     {
       "id": "tg-togocel.autres-options",
       "label": {
-        "fr": "Autres options"
+        "fr": "Menu Yas",
+        "en": "Yas menu"
       },
-      "code": "*104#",
+      "code": "*909#",
       "category": "services"
+    },
+    {
+      "id": "tg-togocel.mon-numero",
+      "label": {
+        "fr": "Connaître son numéro",
+        "en": "My number"
+      },
+      "code": "*555#",
+      "category": "account"
+    },
+    {
+      "id": "tg-togocel.recharge-moi",
+      "label": {
+        "fr": "Recharge-moi",
+        "en": "Top me up"
+      },
+      "code": "*218#",
+      "category": "recharge"
+    },
+    {
+      "id": "tg-togocel.emprunt",
+      "label": {
+        "fr": "Emprunter du crédit ou des données",
+        "en": "Borrow airtime or data"
+      },
+      "code": "*445#",
+      "category": "recharge"
     },
     {
       "id": "tg-togocel.transfert-de-credit",
       "label": {
-        "fr": "Transfert de crédit"
+        "fr": "Transfert de crédit (code par défaut 1234)",
+        "en": "Airtime transfer (default PIN 1234)"
       },
       "code": "*216*{recipient}*{amount}*{pin}#",
       "category": "transfer",
@@ -173,7 +99,8 @@
     {
       "id": "tg-togocel.code-secret-de-transfert-de-credit",
       "label": {
-        "fr": "Code secret de transfert de crédit"
+        "fr": "Transfert de crédit : changer de code secret",
+        "en": "Airtime transfer: change PIN"
       },
       "code": "*217*{old_pin}*{new_pin}*{new_pin_confirm}#",
       "category": "transfer",
@@ -205,54 +132,153 @@
       ]
     },
     {
-      "id": "tg-togocel.tmoney-modification-du-code-secret",
+      "id": "tg-togocel.forfaits-internet",
       "label": {
-        "fr": "TMoney : Modification du code secret"
+        "fr": "Forfaits Net",
+        "en": "Net data bundles"
       },
-      "code": "*145*7*3*{old_pin}*{new_pin}*{new_pin_confirm}#",
-      "category": "money",
-      "params": [
-        {
-          "key": "old_pin",
-          "type": "pin",
-          "label": {
-            "fr": "Ancien code secret",
-            "en": "Old PIN"
-          }
-        },
-        {
-          "key": "new_pin",
-          "type": "pin",
-          "label": {
-            "fr": "Nouveau code secret",
-            "en": "New PIN"
-          }
-        },
-        {
-          "key": "new_pin_confirm",
-          "type": "pin",
-          "label": {
-            "fr": "Confirmation du nouveau code",
-            "en": "Confirm new PIN"
-          }
-        }
-      ]
+      "code": "*909*2#",
+      "category": "data"
     },
     {
-      "id": "tg-togocel.mc-accedez-a-une-multitude-de-services",
+      "id": "tg-togocel.souscription-gratuite",
       "label": {
-        "fr": "MC+ : Accédez à une multitude de services"
+        "fr": "Activer l'internet",
+        "en": "Turn on mobile data"
       },
-      "code": "*102#",
+      "code": "*104*2*1#",
+      "category": "data"
+    },
+    {
+      "id": "tg-togocel.forfaits-ovo",
+      "label": {
+        "fr": "Forfaits mixtes OVO",
+        "en": "OVO mixed bundles"
+      },
+      "code": "*909*3#",
+      "category": "services"
+    },
+    {
+      "id": "tg-togocel.forfaits-lema",
+      "label": {
+        "fr": "Forfaits appels Léma",
+        "en": "Léma call bundles"
+      },
+      "code": "*909*4#",
+      "category": "services"
+    },
+    {
+      "id": "tg-togocel.forfaits-international",
+      "label": {
+        "fr": "Forfaits appels internationaux",
+        "en": "International call bundles"
+      },
+      "code": "*909*62#",
       "category": "services"
     },
     {
       "id": "tg-togocel.activation-du-roaming-prepaye",
       "label": {
-        "fr": "Activation du roaming prépayé"
+        "fr": "Roaming prépayé : activer",
+        "en": "Prepaid roaming: on"
       },
-      "code": "*104*1#",
+      "code": "*909*611#",
       "category": "services"
+    },
+    {
+      "id": "tg-togocel.roaming-desactiver",
+      "label": {
+        "fr": "Roaming prépayé : désactiver",
+        "en": "Prepaid roaming: off"
+      },
+      "code": "*909*613#",
+      "category": "services"
+    },
+    {
+      "id": "tg-togocel.mc-accedez-a-une-multitude-de-services",
+      "label": {
+        "fr": "MC+ : infos et divertissement",
+        "en": "MC+: info and entertainment"
+      },
+      "code": "*909*5*3#",
+      "category": "services"
+    },
+    {
+      "id": "tg-togocel.activation-tmoney",
+      "label": {
+        "fr": "Mixx by Yas",
+        "en": "Mixx by Yas"
+      },
+      "code": "*145#",
+      "category": "money"
+    },
+    {
+      "id": "tg-togocel.mixx-transfert",
+      "label": {
+        "fr": "Mixx – Transfert d'argent",
+        "en": "Mixx – Send money"
+      },
+      "code": "*145*1#",
+      "category": "money"
+    },
+    {
+      "id": "tg-togocel.mixx-retrait",
+      "label": {
+        "fr": "Mixx – Retrait",
+        "en": "Mixx – Cash out"
+      },
+      "code": "*145*2#",
+      "category": "money"
+    },
+    {
+      "id": "tg-togocel.mixx-credit-forfaits",
+      "label": {
+        "fr": "Mixx – Acheter du crédit ou un forfait",
+        "en": "Mixx – Buy airtime or a bundle"
+      },
+      "code": "*145*3#",
+      "category": "money"
+    },
+    {
+      "id": "tg-togocel.mixx-factures",
+      "label": {
+        "fr": "Mixx – Payer une facture",
+        "en": "Mixx – Pay a bill"
+      },
+      "code": "*145*4#",
+      "category": "money"
+    },
+    {
+      "id": "tg-togocel.mixx-marchand",
+      "label": {
+        "fr": "Mixx – Payer un commerçant",
+        "en": "Mixx – Pay a merchant"
+      },
+      "code": "*145*5#",
+      "category": "money"
+    },
+    {
+      "id": "tg-togocel.mixx-selfcare",
+      "label": {
+        "fr": "Mixx – Code secret oublié, annulation de transfert",
+        "en": "Mixx – Forgotten PIN, transfer cancellation"
+      },
+      "code": "*145*8#",
+      "category": "money"
     }
-  ]
+  ],
+  "redirects": {
+    "tg-togocel.consultation-de-solde-tmoney": "tg-togocel.activation-tmoney",
+    "tg-togocel.forfait-internet-1-7go-30j-5000f": "tg-togocel.forfaits-internet",
+    "tg-togocel.forfait-internet-100mo-1j-350f": "tg-togocel.forfaits-internet",
+    "tg-togocel.forfait-internet-10mo-1j-50f": "tg-togocel.forfaits-internet",
+    "tg-togocel.forfait-internet-11go-90j-30000f": "tg-togocel.forfaits-internet",
+    "tg-togocel.forfait-internet-250mo-3j-600f": "tg-togocel.forfaits-internet",
+    "tg-togocel.forfait-internet-3-5go-30j-10000f": "tg-togocel.forfaits-internet",
+    "tg-togocel.forfait-internet-5-5go-30j-15000f": "tg-togocel.forfaits-internet",
+    "tg-togocel.forfait-internet-50mo-1j-200f": "tg-togocel.forfaits-internet",
+    "tg-togocel.forfait-internet-600mo-7j-1500f": "tg-togocel.forfaits-internet",
+    "tg-togocel.tmoney-3-dernieres-transactions": "tg-togocel.activation-tmoney",
+    "tg-togocel.tmoney-modification-du-code-secret": "tg-togocel.mixx-selfcare"
+  }
 }

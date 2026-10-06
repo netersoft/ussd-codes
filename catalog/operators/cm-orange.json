@@ -7,9 +7,28 @@
   ],
   "codes": [
     {
+      "id": "cm-orange.consultation-de-credit",
+      "label": {
+        "fr": "Solde (crédit, bonus, internet : puis 0)",
+        "en": "Balance (airtime, bonus, data: then 0)"
+      },
+      "code": "#123#",
+      "category": "account"
+    },
+    {
+      "id": "cm-orange.mon-numero",
+      "label": {
+        "fr": "Connaître son numéro",
+        "en": "My number"
+      },
+      "code": "#99#",
+      "category": "account"
+    },
+    {
       "id": "cm-orange.rechargement-de-compte",
       "label": {
-        "fr": "Rechargement de compte"
+        "fr": "Recharge par carte",
+        "en": "Top up with a voucher"
       },
       "code": "*188*{voucher}#",
       "category": "recharge",
@@ -25,166 +44,137 @@
       ]
     },
     {
-      "id": "cm-orange.consultation-de-credit",
-      "label": {
-        "fr": "Consultation de crédit"
-      },
-      "code": "#123#",
-      "category": "account"
-    },
-    {
-      "id": "cm-orange.consultation-de-credit-promo",
-      "label": {
-        "fr": "Consultation de crédit promo"
-      },
-      "code": "#123*2#",
-      "category": "data"
-    },
-    {
-      "id": "cm-orange.consultation-de-credit-promo-sms",
-      "label": {
-        "fr": "Consultation de crédit promo SMS"
-      },
-      "code": "#123*3#",
-      "category": "data"
-    },
-    {
-      "id": "cm-orange.changement-de-code-secret-p2p",
-      "label": {
-        "fr": "Changement de code secret p2p"
-      },
-      "code": "#143#",
-      "category": "services"
-    },
-    {
       "id": "cm-orange.sos-credit",
       "label": {
-        "fr": "SOS Crédit"
+        "fr": "SOS Crédit",
+        "en": "Emergency credit"
       },
       "code": "#133#",
-      "category": "help"
-    },
-    {
-      "id": "cm-orange.portail-d-information-ussd",
-      "label": {
-        "fr": "Portail d'information USSD"
-      },
-      "code": "#111#",
-      "category": "services"
+      "category": "recharge"
     },
     {
       "id": "cm-orange.transfert-de-credit-compte-a-compte",
       "label": {
-        "fr": "Transfert de crédit compte à compte"
+        "fr": "Transfert de crédit",
+        "en": "Airtime transfer"
       },
-      "code": "#144#",
-      "category": "transfer"
-    },
-    {
-      "id": "cm-orange.call-me-back",
-      "label": {
-        "fr": "Call me back"
-      },
-      "code": "#146#",
-      "category": "services"
-    },
-    {
-      "id": "cm-orange.prolongation-validite",
-      "label": {
-        "fr": "Prolongation validité"
-      },
-      "code": "#147#",
-      "category": "services"
-    },
-    {
-      "id": "cm-orange.consultation-de-bonus-data",
-      "label": {
-        "fr": "Consultation de bonus data"
-      },
-      "code": "#145#",
-      "category": "data"
-    },
-    {
-      "id": "cm-orange.consultation-du-score-de-fidelisation",
-      "label": {
-        "fr": "Consultation du score de fidélisation"
-      },
-      "code": "#140#",
-      "category": "services"
-    },
-    {
-      "id": "cm-orange.changement-de-plan-tarifaire",
-      "label": {
-        "fr": "Changement de plan tarifaire"
-      },
-      "code": "#141#",
-      "category": "data"
-    },
-    {
-      "id": "cm-orange.orange-money",
-      "label": {
-        "fr": "Orange Money"
-      },
-      "code": "#150#",
-      "category": "money"
-    },
-    {
-      "id": "cm-orange.pay-for-me",
-      "label": {
-        "fr": "Pay For Me"
-      },
-      "code": "#200*{recipient}#",
-      "category": "help",
+      "code": "#144*{recipient}*{amount}#",
+      "category": "transfer",
       "params": [
         {
           "key": "recipient",
           "type": "phone",
           "label": {
-            "fr": "Numéro du correspondant",
-            "en": "Contact's number"
+            "fr": "Numéro du bénéficiaire",
+            "en": "Recipient number"
+          }
+        },
+        {
+          "key": "amount",
+          "type": "amount",
+          "label": {
+            "fr": "Montant",
+            "en": "Amount"
           }
         }
       ]
     },
     {
-      "id": "cm-orange.xl-live",
+      "id": "cm-orange.call-me-back",
       "label": {
-        "fr": "XL Live"
+        "fr": "Bip Me (rappelle-moi)",
+        "en": "Bip Me (call me back)"
       },
-      "code": "#111*41#",
+      "code": "#146*{recipient}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro du bénéficiaire",
+            "en": "Recipient number"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm-orange.forfaits-internet",
+      "label": {
+        "fr": "Forfaits internet",
+        "en": "Data bundles"
+      },
+      "code": "#145*2#",
+      "category": "data"
+    },
+    {
+      "id": "cm-orange.solde-internet",
+      "label": {
+        "fr": "Solde internet",
+        "en": "Data balance"
+      },
+      "code": "#145*1#",
+      "category": "data"
+    },
+    {
+      "id": "cm-orange.sos-data",
+      "label": {
+        "fr": "SOS Data",
+        "en": "Emergency data"
+      },
+      "code": "#145*3#",
+      "category": "data"
+    },
+    {
+      "id": "cm-orange.mes-megas",
+      "label": {
+        "fr": "Mes mégas à ma façon",
+        "en": "Build your own data bundle"
+      },
+      "code": "#131*421#",
+      "category": "data"
+    },
+    {
+      "id": "cm-orange.pack-sms",
+      "label": {
+        "fr": "Pack SMS",
+        "en": "SMS pack"
+      },
+      "code": "#131*1#",
       "category": "services"
     },
     {
-      "id": "cm-orange.consultation-en-cours-de-consommation-postpaid",
+      "id": "cm-orange.portail-d-information-ussd",
       "label": {
-        "fr": "Consultation en cours de consommation postpaid"
+        "fr": "Portail des services",
+        "en": "Services portal"
       },
-      "code": "#122#",
-      "category": "account"
-    },
-    {
-      "id": "cm-orange.telechargement-application-xl-browser",
-      "label": {
-        "fr": "Téléchargement application XL Browser"
-      },
-      "code": "#142#",
+      "code": "#111#",
       "category": "services"
     },
     {
-      "id": "cm-orange.inscription-a-la-communaute-bamoun",
+      "id": "cm-orange.meilleurs-deals",
       "label": {
-        "fr": "Inscription à la communauté Bamoun"
+        "fr": "Meilleurs deals",
+        "en": "Best deals"
       },
-      "code": "#160#",
+      "code": "#111*0#",
       "category": "services"
     },
     {
-      "id": "cm-orange.portail-d-informations-football-fan-club",
+      "id": "cm-orange.orange-money",
       "label": {
-        "fr": "Portail d'Informations Football Fan Club"
+        "fr": "Orange Money",
+        "en": "Orange Money"
       },
-      "code": "#157#",
-      "category": "services"
+      "code": "#150#",
+      "category": "money"
     }
-  ]
+  ],
+  "redirects": {
+    "cm-orange.changement-de-plan-tarifaire": "cm-orange.solde-internet",
+    "cm-orange.consultation-de-bonus-data": "cm-orange.solde-internet",
+    "cm-orange.consultation-de-credit-promo": "cm-orange.solde-internet",
+    "cm-orange.consultation-de-credit-promo-sms": "cm-orange.solde-internet"
+  }
 }

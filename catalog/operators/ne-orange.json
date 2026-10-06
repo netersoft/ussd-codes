@@ -1,7 +1,8 @@
 {
   "id": "ne-orange",
   "country": "ne",
-  "name": "Orange",
+  "name": "Zamani Telecom",
+  "formerName": "Orange",
   "mccMnc": [
     "61404"
   ],
@@ -9,7 +10,8 @@
     {
       "id": "ne-orange.mon-statut",
       "label": {
-        "fr": "Mon Statut"
+        "fr": "Mon statut",
+        "en": "My status"
       },
       "code": "#427#",
       "category": "account"
@@ -17,7 +19,8 @@
     {
       "id": "ne-orange.transfert-de-credit",
       "label": {
-        "fr": "Transfert de crédit"
+        "fr": "Transfert de crédit",
+        "en": "Airtime transfer"
       },
       "code": "#122#",
       "category": "transfer"
@@ -25,39 +28,35 @@
     {
       "id": "ne-orange.aagadji-sos-credit",
       "label": {
-        "fr": "Aagadji [SOS Crédit]"
+        "fr": "Aagadji (SOS crédit)",
+        "en": "Aagadji (emergency credit)"
       },
       "code": "#141#",
-      "category": "help"
+      "category": "recharge"
     },
     {
       "id": "ne-orange.activation-biyamini-pay-for-me",
       "label": {
-        "fr": "Activation : Biyamini (Pay for me)"
+        "fr": "Biyamini (paie pour moi) : activer",
+        "en": "Biyamini (pay for me): on"
       },
       "code": "#909#1#",
-      "category": "help"
+      "category": "services"
     },
     {
       "id": "ne-orange.liste-des-numeros-biyamini",
       "label": {
-        "fr": "Liste des numéros Biyamini"
+        "fr": "Biyamini : liste des numéros",
+        "en": "Biyamini: numbers"
       },
       "code": "#909#2#",
       "category": "services"
     },
     {
-      "id": "ne-orange.forfaits-orange-mix",
-      "label": {
-        "fr": "Forfaits Orange Mix"
-      },
-      "code": "#225#2#1#",
-      "category": "data"
-    },
-    {
       "id": "ne-orange.amintchi",
       "label": {
-        "fr": "Amintchi"
+        "fr": "Amintchi",
+        "en": "Amintchi"
       },
       "code": "#225#1#",
       "category": "services"
@@ -65,154 +64,93 @@
     {
       "id": "ne-orange.pass-internet-sawki",
       "label": {
-        "fr": "Pass Internet Sawki"
+        "fr": "Pass internet",
+        "en": "Data passes"
       },
       "code": "#225#4#",
       "category": "data"
     },
     {
-      "id": "ne-orange.parrainage-internet",
-      "label": {
-        "fr": "Parrainage Internet"
-      },
-      "code": "#225#4#5#3#",
-      "category": "data"
-    },
-    {
-      "id": "ne-orange.no-credit-bip",
-      "label": {
-        "fr": "No Crédit Bip"
-      },
-      "code": "#122#",
-      "category": "help"
-    },
-    {
       "id": "ne-orange.orange-money",
       "label": {
-        "fr": "Orange Money"
+        "fr": "Zamani Cash",
+        "en": "Zamani Cash"
       },
       "code": "#144#",
       "category": "money"
     },
     {
-      "id": "ne-orange.bank-to-wallet-orange-money",
+      "id": "ne-orange.zamani-cash-solde",
       "label": {
-        "fr": "Bank to wallet - Orange Money"
+        "fr": "Zamani Cash – Solde",
+        "en": "Zamani Cash – Balance"
       },
-      "code": "#144#5*1#",
-      "category": "money"
-    },
-    {
-      "id": "ne-orange.retrait-d-argent-orange-money",
-      "label": {
-        "fr": "Retrait d'argent - Orange Money"
-      },
-      "code": "#146#",
-      "category": "money"
-    },
-    {
-      "id": "ne-orange.abonnement-canal-orange-money",
-      "label": {
-        "fr": "Abonnement Canal+ - Orange Money"
-      },
-      "code": "#144#3#",
-      "category": "money"
-    },
-    {
-      "id": "ne-orange.achat-de-billet-de-bus-orange-money",
-      "label": {
-        "fr": "Achat de billet de bus - Orange Money"
-      },
-      "code": "#144#4#",
+      "code": "#144#63#",
       "category": "money"
     },
     {
       "id": "ne-orange.achat-de-credit-orange-money",
       "label": {
-        "fr": "Achat de crédit - Orange Money"
+        "fr": "Zamani Cash – Acheter du crédit",
+        "en": "Zamani Cash – Buy airtime"
       },
-      "code": "#144#2*1#",
+      "code": "#144#21#",
       "category": "money"
     },
     {
-      "id": "ne-orange.achat-de-pass-internet-3g-orange-money",
+      "id": "ne-orange.zamani-cash-credit-tiers",
       "label": {
-        "fr": "Achat de Pass Internet 3G - Orange Money"
+        "fr": "Zamani Cash – Acheter du crédit pour un tiers",
+        "en": "Zamani Cash – Buy airtime for someone"
       },
-      "code": "#144#2#",
+      "code": "#144#22#",
       "category": "money"
     },
     {
       "id": "ne-orange.paiement-de-facture-nigelec-orange-money",
       "label": {
-        "fr": "Paiement de facture NIGELEC - Orange Money"
+        "fr": "Zamani Cash – Facture NIGELEC",
+        "en": "Zamani Cash – NIGELEC bill"
       },
-      "code": "#144#3#2#",
-      "category": "money"
-    },
-    {
-      "id": "ne-orange.paiement-de-facture-orange-orange-money",
-      "label": {
-        "fr": "Paiement de facture Orange - Orange Money"
-      },
-      "code": "#144#3#1#",
+      "code": "#144#32#",
       "category": "money"
     },
     {
       "id": "ne-orange.paiement-de-facture-seen-orange-money",
       "label": {
-        "fr": "Paiement de facture SEEN - Orange Money"
+        "fr": "Zamani Cash – Facture SEEN",
+        "en": "Zamani Cash – SEEN bill"
       },
-      "code": "#144#3#5#",
+      "code": "#144#35#",
       "category": "money"
     },
     {
-      "id": "ne-orange.transfert-d-argent-orange-money",
+      "id": "ne-orange.bank-to-wallet-orange-money",
       "label": {
-        "fr": "Transfert D'argent - Orange Money"
+        "fr": "Zamani Cash – Banque ↔ portefeuille",
+        "en": "Zamani Cash – Bank ↔ wallet"
       },
-      "code": "#144#1*1#",
+      "code": "#144#51#",
       "category": "money"
     },
     {
-      "id": "ne-orange.facebook-ussd",
+      "id": "ne-orange.zamani-cash-code-secret",
       "label": {
-        "fr": "Facebook USSD"
+        "fr": "Zamani Cash – Créer ou changer son code secret",
+        "en": "Zamani Cash – Set or change your PIN"
       },
-      "code": "#135#",
-      "category": "services"
-    },
-    {
-      "id": "ne-orange.labaroun-kassoua",
-      "label": {
-        "fr": "Labaroun Kassoua"
-      },
-      "code": "#139#",
-      "category": "services"
-    },
-    {
-      "id": "ne-orange.magic-voice",
-      "label": {
-        "fr": "Magic Voice"
-      },
-      "code": "#140#",
-      "category": "services"
-    },
-    {
-      "id": "ne-orange.dandali-rbt",
-      "label": {
-        "fr": "Dandali RBT"
-      },
-      "code": "#124#",
-      "category": "services"
-    },
-    {
-      "id": "ne-orange.ofc-actualites-football",
-      "label": {
-        "fr": "OFC - Actualités Football"
-      },
-      "code": "#203#",
-      "category": "services"
+      "code": "#144#61#",
+      "category": "money"
     }
-  ]
+  ],
+  "redirects": {
+    "ne-orange.abonnement-canal-orange-money": "ne-orange.orange-money",
+    "ne-orange.achat-de-billet-de-bus-orange-money": "ne-orange.orange-money",
+    "ne-orange.achat-de-pass-internet-3g-orange-money": "ne-orange.orange-money",
+    "ne-orange.forfaits-orange-mix": "ne-orange.pass-internet-sawki",
+    "ne-orange.paiement-de-facture-orange-orange-money": "ne-orange.orange-money",
+    "ne-orange.parrainage-internet": "ne-orange.pass-internet-sawki",
+    "ne-orange.retrait-d-argent-orange-money": "ne-orange.orange-money",
+    "ne-orange.transfert-d-argent-orange-money": "ne-orange.orange-money"
+  }
 }
