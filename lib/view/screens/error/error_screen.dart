@@ -53,7 +53,7 @@ class ErrorScreenContent extends StatelessWidget {
           const SizedBox(height: 30),
           OutlinedButton(
             onPressed: () {
-              context.pushReplacement(const RedirectionRoute().location);
+              context.go(const MainRoute().location);
             },
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.orange,

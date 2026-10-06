@@ -1,4 +1,4 @@
-# Flutter Starter - Agent Guide
+# Codes USSD - Agent Guide
 
 ## Project Setup
 
@@ -9,63 +9,59 @@ flutter pub get
 # Generate Slang translations
 dart run slang
 
-# Run codegen (Riverpod, JSON serializable, Hive)
+# Run codegen (Riverpod, go_router, injectable)
 dart run build_runner build
 
 # Run app
-flutter run
+flutter run --flavor dev
 ```
 
-## Essential Commands
+## USSD catalog
+
+The codes live in `catalog/` (one JSON file per operator), not in the app code. See `catalog/README.md`.
 
 ```bash
-# Rename app (all displays)
-dart run rename_app:main all="My App Name"
-
-# Change Android/iOS package name
-dart run change_app_package_name:main com.new.package.name
-
-# Generate launcher icons (from assets/images/launcher/icon.png)
-dart run icons_launcher:create
-
-# Generate splash screen
-dart run flutter_native_splash:create
-
-# Remove default splash
-dart run flutter_native_splash:remove
+# Validate catalog/ and rebuild the bundled assets/catalog/catalog.json
+dart run tool/build_catalog.dart
 ```
+
+- Never change the `id` of a published code: users' favorites refer to it.
+- Bump `version` in `catalog/meta.json` on every data change.
 
 ## Code Quality
 
 ```bash
-# Lint + static analysis
 flutter analyze
-dart analyze
-
-# Format
 dart format .
+flutter test
 ```
 
 ## Architecture
 
 - **Entry point**: `lib/main.dart`
-- **Core layer** (`lib/core/`): providers, services, models, routes, helpers, data
-- **View layer** (`lib/view/`): screens, components, layouts, themes
+- **Catalog** (`lib/core/catalog/`): pure Dart models, validation and search (also used by `tool/`), plus the repository (bundled copy, remote updates, disk cache)
+- **Core layer** (`lib/core/`): providers, services (telephony channel, prefs, Firebase), library (favorites, personal codes, legacy import), routes
+- **View layer** (`lib/view/`): screens, components, modals, themes
 - **State management**: Riverpod with code generation (`riverpod_generator`)
 - **Routing**: go_router
-- **Local storage**: Hive CE + SharedPreferences
-- **API**: REST with json_serializable
+- **Local storage**: SharedPreferences
+- **Native**: `android/app/src/main/kotlin/.../MainActivity.kt`, channel `ussd_codes/telephony` (dial, SIM operators, legacy database)
 
 ## Environment
 
-- Copy `.env.example` to `.env` before running
+- Copy `.env.example` to `.env` before running (all values are public)
 - SDK: `>=3.8.0 <4.0.0`
 
 ## Testing
 
-Unit tests live under `test/` (`api/`, `helpers/`, `providers/`), using `mocktail` with a
-GetIt test-locator override (`test/helpers/test_utils.dart`) to mock infrastructure
-singletons. There are no widget, golden, or integration tests yet.
+Unit and widget tests live under `test/`.
+
+- `catalog/`: models, sources, repository, search.
+- `library/`: legacy import.
+- `screens/`: run sheet, operators screen.
+- `providers/` and `services/`.
+
+`test/helpers/app_harness.dart` pumps widgets with the bundled catalog and a fake telephony service.
 
 ```bash
 flutter test

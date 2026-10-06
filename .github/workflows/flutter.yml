@@ -37,8 +37,10 @@ jobs:
           dart run build_runner build --delete-conflicting-outputs
           dart format .
 
+      # Every value in .env is public (see README > Environment variables):
+      # CI uses the example file as is.
       - name: Create .env
-        run: touch .env
+        run: cp .env.example .env
 
       - name: Verify formatting
         run: dart format --set-exit-if-changed .
@@ -46,10 +48,11 @@ jobs:
       - name: Analyze
         run: flutter analyze
 
+      - name: Check the bundled catalog is built from catalog/
+        run: dart run tool/build_catalog.dart --check
+
       - name: Test
-        run: |
-          echo "${{ secrets.ENV_FILE }}" > .env
-          flutter test --coverage
+        run: flutter test --coverage
 
       # Generated files (*.g.dart, *.config.dart, firebase_options.dart) are
       # excluded from the count -- they're regenerated glue, not code this
@@ -100,8 +103,12 @@ jobs:
           dart run slang
           dart run build_runner build --delete-conflicting-outputs
 
+      # ENV_FILE sets the production values (e.g. APP_CATALOG_URL); without
+      # it, the example file's public defaults are used.
       - name: Create .env
-        run: echo "${{ secrets.ENV_FILE }}" > .env
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+        run: if [ -n "$ENV_FILE" ]; then printf '%s\n' "$ENV_FILE" > .env; else cp .env.example .env; fi
 
       # Signed with the debug key unless the project has its own key.properties +
       # keystore configured (see android/app/build.gradle). Good enough to smoke-test
@@ -143,8 +150,12 @@ jobs:
           dart run slang
           dart run build_runner build --delete-conflicting-outputs
 
+      # ENV_FILE sets the production values (e.g. APP_CATALOG_URL); without
+      # it, the example file's public defaults are used.
       - name: Create .env
-        run: echo "${{ secrets.ENV_FILE }}" > .env
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+        run: if [ -n "$ENV_FILE" ]; then printf '%s\n' "$ENV_FILE" > .env; else cp .env.example .env; fi
 
       # No code signing available for a shared starter template (that requires a
       # real Apple Developer account/certificates), so this only proves the iOS

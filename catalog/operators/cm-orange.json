@@ -1,0 +1,190 @@
+{
+  "id": "cm-orange",
+  "country": "cm",
+  "name": "Orange",
+  "mccMnc": [
+    "62402"
+  ],
+  "codes": [
+    {
+      "id": "cm-orange.rechargement-de-compte",
+      "label": {
+        "fr": "Rechargement de compte"
+      },
+      "code": "*188*{voucher}#",
+      "category": "recharge",
+      "params": [
+        {
+          "key": "voucher",
+          "type": "number",
+          "label": {
+            "fr": "Code de recharge",
+            "en": "Top-up voucher code"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm-orange.consultation-de-credit",
+      "label": {
+        "fr": "Consultation de crédit"
+      },
+      "code": "#123#",
+      "category": "account"
+    },
+    {
+      "id": "cm-orange.consultation-de-credit-promo",
+      "label": {
+        "fr": "Consultation de crédit promo"
+      },
+      "code": "#123*2#",
+      "category": "data"
+    },
+    {
+      "id": "cm-orange.consultation-de-credit-promo-sms",
+      "label": {
+        "fr": "Consultation de crédit promo SMS"
+      },
+      "code": "#123*3#",
+      "category": "data"
+    },
+    {
+      "id": "cm-orange.changement-de-code-secret-p2p",
+      "label": {
+        "fr": "Changement de code secret p2p"
+      },
+      "code": "#143#",
+      "category": "services"
+    },
+    {
+      "id": "cm-orange.sos-credit",
+      "label": {
+        "fr": "SOS Crédit"
+      },
+      "code": "#133#",
+      "category": "help"
+    },
+    {
+      "id": "cm-orange.portail-d-information-ussd",
+      "label": {
+        "fr": "Portail d'information USSD"
+      },
+      "code": "#111#",
+      "category": "services"
+    },
+    {
+      "id": "cm-orange.transfert-de-credit-compte-a-compte",
+      "label": {
+        "fr": "Transfert de crédit compte à compte"
+      },
+      "code": "#144#",
+      "category": "transfer"
+    },
+    {
+      "id": "cm-orange.call-me-back",
+      "label": {
+        "fr": "Call me back"
+      },
+      "code": "#146#",
+      "category": "services"
+    },
+    {
+      "id": "cm-orange.prolongation-validite",
+      "label": {
+        "fr": "Prolongation validité"
+      },
+      "code": "#147#",
+      "category": "services"
+    },
+    {
+      "id": "cm-orange.consultation-de-bonus-data",
+      "label": {
+        "fr": "Consultation de bonus data"
+      },
+      "code": "#145#",
+      "category": "data"
+    },
+    {
+      "id": "cm-orange.consultation-du-score-de-fidelisation",
+      "label": {
+        "fr": "Consultation du score de fidélisation"
+      },
+      "code": "#140#",
+      "category": "services"
+    },
+    {
+      "id": "cm-orange.changement-de-plan-tarifaire",
+      "label": {
+        "fr": "Changement de plan tarifaire"
+      },
+      "code": "#141#",
+      "category": "data"
+    },
+    {
+      "id": "cm-orange.orange-money",
+      "label": {
+        "fr": "Orange Money"
+      },
+      "code": "#150#",
+      "category": "money"
+    },
+    {
+      "id": "cm-orange.pay-for-me",
+      "label": {
+        "fr": "Pay For Me"
+      },
+      "code": "#200*{recipient}#",
+      "category": "help",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro du correspondant",
+            "en": "Contact's number"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm-orange.xl-live",
+      "label": {
+        "fr": "XL Live"
+      },
+      "code": "#111*41#",
+      "category": "services"
+    },
+    {
+      "id": "cm-orange.consultation-en-cours-de-consommation-postpaid",
+      "label": {
+        "fr": "Consultation en cours de consommation postpaid"
+      },
+      "code": "#122#",
+      "category": "account"
+    },
+    {
+      "id": "cm-orange.telechargement-application-xl-browser",
+      "label": {
+        "fr": "Téléchargement application XL Browser"
+      },
+      "code": "#142#",
+      "category": "services"
+    },
+    {
+      "id": "cm-orange.inscription-a-la-communaute-bamoun",
+      "label": {
+        "fr": "Inscription à la communauté Bamoun"
+      },
+      "code": "#160#",
+      "category": "services"
+    },
+    {
+      "id": "cm-orange.portail-d-informations-football-fan-club",
+      "label": {
+        "fr": "Portail d'Informations Football Fan Club"
+      },
+      "code": "#157#",
+      "category": "services"
+    }
+  ]
+}

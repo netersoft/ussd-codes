@@ -1,0 +1,522 @@
+{
+  "id": "sn-orange",
+  "country": "sn",
+  "name": "Orange",
+  "mccMnc": [
+    "60801"
+  ],
+  "codes": [
+    {
+      "id": "sn-orange.recharger-une-carte-de-credit",
+      "label": {
+        "fr": "Recharger une carte de crédit"
+      },
+      "code": "*123*{voucher}#",
+      "category": "recharge",
+      "params": [
+        {
+          "key": "voucher",
+          "type": "number",
+          "label": {
+            "fr": "Code de la carte de recharge",
+            "en": "Top-up voucher code"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn-orange.sos-credit",
+      "label": {
+        "fr": "SOS Crédit"
+      },
+      "code": "*77*{amount}#",
+      "category": "help",
+      "params": [
+        {
+          "key": "amount",
+          "type": "amount",
+          "label": {
+            "fr": "Montant",
+            "en": "Amount"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn-orange.achat-et-suivi-pass-volume-pour-internet",
+      "label": {
+        "fr": "Achat et suivi pass volume pour Internet"
+      },
+      "code": "#1234#",
+      "category": "data"
+    },
+    {
+      "id": "sn-orange.facebook-ussd",
+      "label": {
+        "fr": "Facebook USSD"
+      },
+      "code": "#707#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.allo-s-cool",
+      "label": {
+        "fr": "Allo S cool"
+      },
+      "code": "#205#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.allo-1h",
+      "label": {
+        "fr": "Allo 1h"
+      },
+      "code": "#255#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.avis-de-joignabilite",
+      "label": {
+        "fr": "Avis de joignabilité"
+      },
+      "code": "#888#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.avoir-son-numero-de-telephone",
+      "label": {
+        "fr": "Avoir son numéro de téléphone"
+      },
+      "code": "#237#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.bonus-zone",
+      "label": {
+        "fr": "Bonus Zone"
+      },
+      "code": "#222#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.consultation-changement-profil",
+      "label": {
+        "fr": "Consultation/Changement Profil"
+      },
+      "code": "#605#",
+      "category": "account"
+    },
+    {
+      "id": "sn-orange.consultation-cout-et-duree-du-dernier-appel-emis",
+      "label": {
+        "fr": "Consultation coût et durée du dernier appel émis ou du dernier SMS envoyé"
+      },
+      "code": "#123##",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.consultation-du-solde-de-credit-recharge",
+      "label": {
+        "fr": "Consultation du solde de crédit rechargé"
+      },
+      "code": "#123#",
+      "category": "recharge"
+    },
+    {
+      "id": "sn-orange.dalal-tones",
+      "label": {
+        "fr": "Dalal Tones"
+      },
+      "code": "#26028#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.fayalma",
+      "label": {
+        "fr": "Fayalma"
+      },
+      "code": "#666#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.identification-du-reseau-utilise-par-un-numero",
+      "label": {
+        "fr": "Identification du réseau utilisé par un numéro"
+      },
+      "code": "#808#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.identification-de-son-numero",
+      "label": {
+        "fr": "Identification de son numéro"
+      },
+      "code": "#236#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.illimix-illimineex",
+      "label": {
+        "fr": "Illimix / Illimineex"
+      },
+      "code": "#250#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.konec-tel",
+      "label": {
+        "fr": "Konec tel"
+      },
+      "code": "#220#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.mlouma-avoir-des-infos-sur-le-prix-des-denrees",
+      "label": {
+        "fr": "mLouma - Avoir des infos sur le prix des denrées"
+      },
+      "code": "#112#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.orange-football-club",
+      "label": {
+        "fr": "Orange Football Club"
+      },
+      "code": "#555#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.orange-money",
+      "label": {
+        "fr": "Orange Money"
+      },
+      "code": "#144#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-sargal",
+      "label": {
+        "fr": "Orange Sargal"
+      },
+      "code": "#221#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.orange-woma",
+      "label": {
+        "fr": "Orange Woma"
+      },
+      "code": "#321#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.rappelle-moi",
+      "label": {
+        "fr": "Rappelle-moi"
+      },
+      "code": "#120#",
+      "category": "help"
+    },
+    {
+      "id": "sn-orange.samay-niit",
+      "label": {
+        "fr": "Samay niit"
+      },
+      "code": "#444#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.seddo",
+      "label": {
+        "fr": "Seddo"
+      },
+      "code": "#116#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.services-futes",
+      "label": {
+        "fr": "Services Futés"
+      },
+      "code": "#111#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.transfert-bonus",
+      "label": {
+        "fr": "Transfert Bonus"
+      },
+      "code": "#999#",
+      "category": "transfer"
+    },
+    {
+      "id": "sn-orange.video-a-la-demande",
+      "label": {
+        "fr": "Video à la demande"
+      },
+      "code": "#100#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.waax-ba-mar",
+      "label": {
+        "fr": "Waax Ba Mar"
+      },
+      "code": "#121#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.wotel",
+      "label": {
+        "fr": "Wotel"
+      },
+      "code": "*121*290#",
+      "category": "services"
+    },
+    {
+      "id": "sn-orange.orange-money-consultation-de-solde",
+      "label": {
+        "fr": "Orange Money - Consultation de solde"
+      },
+      "code": "#144#1*{pin}#",
+      "category": "money",
+      "params": [
+        {
+          "key": "pin",
+          "type": "pin",
+          "label": {
+            "fr": "Code secret",
+            "en": "PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn-orange.orange-money-transfert",
+      "label": {
+        "fr": "Orange Money - Transfert"
+      },
+      "code": "#144#2*{recipient}*{amount}*{pin}#",
+      "category": "money",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro",
+            "en": "Number"
+          }
+        },
+        {
+          "key": "amount",
+          "type": "amount",
+          "label": {
+            "fr": "Montant",
+            "en": "Amount"
+          }
+        },
+        {
+          "key": "pin",
+          "type": "pin",
+          "label": {
+            "fr": "Code secret",
+            "en": "PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn-orange.orange-money-paiement-facture-sonatel-fixe",
+      "label": {
+        "fr": "Orange Money - Paiement Facture Sonatel Fixe"
+      },
+      "code": "#144#31#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-money-paiement-facture-orange-teranga",
+      "label": {
+        "fr": "Orange Money - Paiement Facture Orange Teranga"
+      },
+      "code": "#144#32#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-money-paiement-facture-excaf",
+      "label": {
+        "fr": "Orange Money - Paiement Facture Excaf"
+      },
+      "code": "#144#33#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-money-paiement-facture-senelec",
+      "label": {
+        "fr": "Orange Money - Paiement Facture Senelec"
+      },
+      "code": "#144#34#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-money-paiement-facture-canal",
+      "label": {
+        "fr": "Orange Money - Paiement Facture Canal"
+      },
+      "code": "#144#35#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-money-donations",
+      "label": {
+        "fr": "Orange Money - Donations"
+      },
+      "code": "#144#36#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-money-education-universites",
+      "label": {
+        "fr": "Orange Money - Education - Universités"
+      },
+      "code": "#144#371#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-money-education-ugb",
+      "label": {
+        "fr": "Orange Money - Education - UGB"
+      },
+      "code": "#144#372#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-money-education-sama-pc",
+      "label": {
+        "fr": "Orange Money - Education - Sama PC"
+      },
+      "code": "#144#373#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-money-education-ecoles-superieures",
+      "label": {
+        "fr": "Orange Money - Education - Ecoles Supérieures"
+      },
+      "code": "#144#374#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-money-education-colleges",
+      "label": {
+        "fr": "Orange Money - Education - Collèges"
+      },
+      "code": "#144#375#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-money-education-autres",
+      "label": {
+        "fr": "Orange Money - Education - Autres"
+      },
+      "code": "#144#376#",
+      "category": "money"
+    },
+    {
+      "id": "sn-orange.orange-money-achat-de-credit-telephonique",
+      "label": {
+        "fr": "Orange Money - Achat de crédit téléphonique"
+      },
+      "code": "#144#41*{amount}*{pin}#",
+      "category": "money",
+      "params": [
+        {
+          "key": "amount",
+          "type": "amount",
+          "label": {
+            "fr": "Montant",
+            "en": "Amount"
+          }
+        },
+        {
+          "key": "pin",
+          "type": "pin",
+          "label": {
+            "fr": "Code secret",
+            "en": "PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn-orange.orange-money-transfert-international",
+      "label": {
+        "fr": "Orange Money - Transfert international"
+      },
+      "code": "#144#5*{recipient}*{amount}*{pin}#",
+      "category": "money",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro avec indicatif du pays",
+            "en": "Number with country code"
+          }
+        },
+        {
+          "key": "amount",
+          "type": "amount",
+          "label": {
+            "fr": "Montant",
+            "en": "Amount"
+          }
+        },
+        {
+          "key": "pin",
+          "type": "pin",
+          "label": {
+            "fr": "Code secret",
+            "en": "PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn-orange.orange-money-cinq-dernieres-operations",
+      "label": {
+        "fr": "Orange Money - Cinq dernières opérations"
+      },
+      "code": "#144#6*{pin}#",
+      "category": "money",
+      "params": [
+        {
+          "key": "pin",
+          "type": "pin",
+          "label": {
+            "fr": "Code secret",
+            "en": "PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn-orange.orange-money-options-solde",
+      "label": {
+        "fr": "Orange Money - Options - Solde"
+      },
+      "code": "#144#71*{pin}#",
+      "category": "money",
+      "params": [
+        {
+          "key": "pin",
+          "type": "pin",
+          "label": {
+            "fr": "Code secret",
+            "en": "PIN"
+          }
+        }
+      ]
+    }
+  ]
+}

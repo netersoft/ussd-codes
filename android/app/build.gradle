@@ -37,7 +37,7 @@ if (flutterMinSdkVersion == null) {
 }
 
 android {
-    namespace "com.example.flutter_project_template"
+    namespace "com.neteru.mobileussdcodex"
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -51,8 +51,9 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.flutter_project_template"
+        // Same id as the legacy Java app on the Play Store, so this version
+        // updates it (versionCode must stay above the legacy 12).
+        applicationId "com.neteru.mobileussdcodex"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion flutterMinSdkVersion.toInteger()
@@ -79,16 +80,16 @@ android {
         dev {
             dimension "env"
             applicationIdSuffix ".dev"
-            resValue "string", "app_name", "App Name (Dev)"
+            resValue "string", "app_name", "Codes USSD (Dev)"
         }
         staging {
             dimension "env"
             applicationIdSuffix ".staging"
-            resValue "string", "app_name", "App Name (Staging)"
+            resValue "string", "app_name", "Codes USSD (Staging)"
         }
         prod {
             dimension "env"
-            resValue "string", "app_name", "App Name"
+            resValue "string", "app_name", "Codes USSD"
         }
     }
 
