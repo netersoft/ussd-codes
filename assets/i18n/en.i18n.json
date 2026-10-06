@@ -135,5 +135,6 @@
     "toConfirm": "Price to confirm",
     "buyLabel": "${volume} bundle – ${validity}",
     "footer": "Prices taken on ${date} from the operators' sites. Offers change often: check the price before confirming the purchase."
-  }
+  },
+  "licenseNotice": "Free software under the GNU GPL v3 (code) and CC BY-SA 4.0 (content). © 2018-2026 Netersoft"
 }

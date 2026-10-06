@@ -146,3 +146,14 @@ iOS flavors need a one-time Xcode setup (schemes and configurations per flavor) 
 ## Release Builds
 
 Pushing a `v*` tag (or running the workflow manually) builds an Android APK (`prod` flavor) and an unsigned iOS build in CI. Both builds need the quality job to pass first. The `ENV_FILE` secret, when set, provides the production `.env`; without it, CI uses `.env.example`.
+
+## License
+
+Codes USSD is free software by Netersoft.
+
+- **Code**: the source code (`lib/`, `test/`, `tool/` and the platform folders) is licensed under the [GNU General Public License v3.0](LICENSE).
+- **Content**: the texts, translations and pictures made by Netersoft for the app are licensed under [Creative Commons Attribution-ShareAlike 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+- **Third-party files** keep their own licenses: the Montserrat and Open Sans fonts (SIL Open Font License 1.1, `assets/fonts/*/OFL.txt`).
+- **Names and icons**: the Netersoft name, the Codes USSD name, and the app icons and logos (`assets/images/launcher/`) are not covered by these licenses. A modified version must use another name and icon.
+
+Copyright © 2018-2026 Netersoft.
