@@ -98,6 +98,7 @@
   "catalogUpdateFailed": "Update failed. Check your connection.",
   "catalogRemoteDisabled": "Online updates are not available yet.",
   "rateApp": "Rate the app",
+  "privacyPolicy": "Privacy policy",
   "contactUs": "Contact us",
   "contactUsDescription": "Suggest your country's codes or report an error",
   "suggestCodesSubject": "USSD Codes: codes suggestion"

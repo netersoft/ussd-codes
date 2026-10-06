@@ -13,6 +13,7 @@ import '../../../core/helpers/ui/dialog_helper.dart';
 import '../../../core/providers/catalog_provider.dart';
 import '../../../core/providers/library_provider.dart';
 import '../../../core/providers/settings_provider.dart';
+import '../../../core/routes/app_route.dart';
 import '../../../core/services/i18n/config.dart';
 import '../../../core/services/i18n/translations.g.dart';
 import '../../components/misc/floating_modal.dart';
@@ -245,6 +246,12 @@ class SettingsListWrapper extends ConsumerWidget {
                   ),
                 ),
               },
+            ),
+            SettingsTile.navigation(
+              leading: const Icon(Icons.privacy_tip),
+              trailing: const Icon(Icons.chevron_right),
+              title: Text(context.t.privacyPolicy),
+              onPressed: (context) => const PrivacyPolicyRoute().push<void>(context),
             ),
             if (Settings.contactEmail.isNotEmpty)
               SettingsTile.navigation(

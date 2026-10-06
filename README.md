@@ -110,6 +110,16 @@ Generated files (`*.g.dart`, `*.config.dart`) are excluded from git. To rebuild 
 
 `lib/firebase_options.dart` is still the starter's placeholder, so Crashlytics and Analytics stay silent no-ops. To turn them on, run `flutterfire configure` with the project's Firebase project. Running a code logs a `run_code` event with the code id and the outcome, never the values typed.
 
+The [privacy policy](#privacy-policy) states that the app sends no analytics or crash reports: update it before shipping a build with Firebase configured.
+
+## Privacy policy
+
+The privacy policy ships in the app (`assets/docs/<locale>/privacy_policy.html`, one per app language, opened from Settings). The store listings link to the public copy at https://netersoft.github.io/ussd-codes/privacy/ (English: `/en/`), served by GitHub Pages from the public `netersoft/netersoft.github.io` repository, next to the catalog. After editing the policy, regenerate the pages and push that repository:
+
+```bash
+python3 tool/build_privacy_pages.py ~/Dev/Projects/Web/netersoft.github.io
+```
+
 ## Quality
 
 ```bash
