@@ -8,7 +8,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/catalog/models.dart';
 import '../../core/providers/catalog_provider.dart';
 import '../../core/providers/library_provider.dart';
-import '../../core/services/analytics/service.dart';
 import '../../core/services/i18n/translations.g.dart';
 import '../../core/services/telephony/service.dart';
 import '../components/codes/code_texts.dart';
@@ -73,7 +72,6 @@ class _RunCodeSheetState extends ConsumerState<RunCodeSheet> {
       final result = await ref.read(telephonyServiceProvider).sendUssd(widget.code.fill(_values));
       if (!mounted) return;
       if (result case UssdAnswered(:final text)) {
-        unawaited(AnalyticsService.logEvent('run_code', parameters: {'code_id': widget.code.id, 'outcome': 'answered'}));
         setState(() {
           _dialing = false;
           _response = text;
@@ -93,7 +91,6 @@ class _RunCodeSheetState extends ConsumerState<RunCodeSheet> {
     final navigator = Navigator.of(context);
 
     final outcome = await ref.read(telephonyServiceProvider).dial(widget.code.fill(_values), direct: direct, isDeviceCode: widget.code.isDeviceCode);
-    unawaited(AnalyticsService.logEvent('run_code', parameters: {'code_id': widget.code.id, 'outcome': outcome.name}));
 
     if (!mounted) return;
     navigator.pop();
