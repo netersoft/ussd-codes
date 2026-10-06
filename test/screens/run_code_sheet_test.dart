@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ussd_codes/core/catalog/models.dart';
 import 'package:ussd_codes/core/services/shared_preferences/keys.dart';
-import 'package:ussd_codes/view/modals/run_code_sheet.dart';
-
 import 'package:ussd_codes/core/services/shared_preferences/service.dart';
+import 'package:ussd_codes/view/modals/run_code_sheet.dart';
 
 import '../helpers/app_harness.dart';
 import '../helpers/test_utils.dart';
