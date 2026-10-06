@@ -49,13 +49,13 @@ The app bundles `.env` as an asset, so every value in it is **public**.
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `APP_CATALOG_URL` | Public URL of the built catalog, which the app downloads to update its codes. When empty, the app only uses its bundled catalog. | `https://example.com/catalog.json` |
-| `APP_CONTACT_EMAIL` | Where users send code suggestions and corrections. When empty, the contact and report actions are hidden. | `neterustudio@gmail.com` |
+| `APP_CATALOG_URL` | Public URL of the built catalog, which the app downloads to update its codes. When empty, the app only uses its bundled catalog. | `https://netersoft.github.io/ussd-codes/catalog.json` |
+| `APP_CONTACT_EMAIL` | Where users send code suggestions and corrections. When empty, the contact and report actions are hidden. | `support.netersoft@gmail.com` |
 | `APP_PRIMARY_COLOR` | Primary theme color, hex | `#008000` |
 | `APP_SECONDARY_COLOR` | Secondary theme color, hex | `#32DC32` |
 | `APP_ACCENT_COLOR` | Accent theme color, hex | `#f5f5f5` |
 
-`APP_CATALOG_URL` must be reachable without authentication. This repository is private, so its `raw.githubusercontent.com` URLs don't qualify. Publish `assets/catalog/catalog.json` somewhere public (GitHub Pages, a public repo, Firebase Hosting...) before you set it.
+`APP_CATALOG_URL` must be reachable without authentication. This repository is private, so the catalog is published on GitHub Pages, in the public [netersoft.github.io](https://github.com/netersoft/netersoft.github.io) repository (see [USSD catalog](#ussd-catalog)).
 
 ## USSD catalog
 
@@ -64,6 +64,8 @@ The codes live in [`catalog/`](catalog/README.md), one JSON file per operator. A
 ```bash
 dart run tool/build_catalog.dart   # validates and builds assets/catalog/catalog.json
 ```
+
+Once the change is merged, publish the built file so installed apps receive it: copy `assets/catalog/catalog.json` to `ussd-codes/catalog.json` in [netersoft.github.io](https://github.com/netersoft/netersoft.github.io) and open a PR there.
 
 [catalog/README.md](catalog/README.md) describes the format, the update flow and the data still to verify.
 
@@ -127,7 +129,7 @@ Each flavor has its own `applicationId` suffix (`.dev`, `.staging`, none for `pr
 
 To update the existing Play Store listing:
 
-- Sign `prod` with the legacy app's upload key (`android/key.properties`, see `android/app/build.gradle`), or request a key reset in the Play Console.
+- Sign `prod` with the legacy app's key: the `neteru-key` alias of the Neteru upload keystore, shared with the other Neteru apps. Put the keystore at `android/app/upload-keystore.jks` and its credentials in `android/key.properties` (template: `android/key.properties.example`). Both are gitignored; `android/app/build.gradle` uses them for release builds when present.
 - Keep `versionCode` above the legacy `12` (`version` in `pubspec.yaml`).
 
 iOS flavors need a one-time Xcode setup (schemes and configurations per flavor) before `--flavor` works there. Until then, use `flutter run` without a flavor.
