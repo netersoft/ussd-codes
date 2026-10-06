@@ -113,5 +113,28 @@
   "privacyPolicy": "Privacy policy",
   "contactUs": "Contact us",
   "contactUsDescription": "Suggest your country's codes or report an error",
-  "suggestCodesSubject": "USSD Codes: codes suggestion"
+  "suggestCodesSubject": "USSD Codes: codes suggestion",
+
+  "plansTab": "Bundles",
+  "plans": {
+    "title": "Data bundle comparator",
+    "notCovered": "The comparator covers Benin, Togo and Côte d'Ivoire for now.",
+    "noMatch": "No bundle matches these filters.",
+    "anyDuration": "Any length",
+    "day": "1 day",
+    "week": "≤ 7 days",
+    "month": "30 days",
+    "anyBudget": "Any price",
+    "upTo": "≤ ${price}",
+    "night": "Night",
+    "sortPerGb": "Price per GB",
+    "sortPrice": "Price",
+    "sortVolume": "Volume",
+    "perGb": "${price}/GB",
+    "hours": "${n} h",
+    "days": "${n} days",
+    "toConfirm": "Price to confirm",
+    "buyLabel": "${volume} bundle – ${validity}",
+    "footer": "Prices taken on ${date} from the operators' sites. Offers change often: check the price before confirming the purchase."
+  }
 }

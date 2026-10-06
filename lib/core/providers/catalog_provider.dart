@@ -93,3 +93,23 @@ List<UssdCode> deviceCodes(Ref ref) {
       if (code.brand == null || manufacturer.contains(code.brand!)) code,
   ];
 }
+
+typedef PlanEntry = ({DataPlan plan, Operator operator});
+
+/// The current time, overridden in tests (plans' freshness depends on it).
+@Riverpod(keepAlive: true)
+DateTime Function() clock(Ref ref) => DateTime.now;
+
+/// Internet bundles of a country that are recent enough to show (see
+/// [DataPlan.freshness]), with their operator.
+@riverpod
+List<PlanEntry> countryPlans(Ref ref, String countryId) {
+  final country = ref.watch(currentCatalogProvider).value?.countryById(countryId);
+  if (country == null) return const [];
+  final now = ref.watch(clockProvider)();
+  return [
+    for (final op in country.operators)
+      for (final plan in op.plans)
+        if (plan.freshness(now) != PlanFreshness.expired) (plan: plan, operator: op),
+  ];
+}

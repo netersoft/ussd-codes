@@ -13,12 +13,16 @@ const _englishCountries = {'ng'};
 /// The public site generated from the catalog: one page per country, per
 /// operator and for the phone codes, plus a sitemap. Keys are paths relative
 /// to the site root (`ussd-codes/` on netersoft.github.io).
-Map<String, String> buildSite(Catalog catalog) {
+/// Internet bundles get a comparison page per country, with the prices still
+/// fresh at [now] (see [DataPlan.freshness]).
+Map<String, String> buildSite(Catalog catalog, {DateTime? now}) {
+  final date = now ?? DateTime.now();
   final pages = <String, String>{
     'index.html': _homePage(catalog),
     'telephone/index.html': _devicePage(catalog),
     for (final country in catalog.countries) ...{
-      '${country.id}/index.html': _countryPage(catalog, country),
+      '${country.id}/index.html': _countryPage(catalog, country, hasPlans: _shownPlans(country, date).isNotEmpty),
+      if (_shownPlans(country, date).isNotEmpty) '${country.id}/forfaits/index.html': _plansPage(catalog, country, date),
       for (final op in country.operators) '${_operatorPath(op)}index.html': _operatorPage(catalog, country, op),
     },
   };
@@ -80,20 +84,56 @@ class _Texts {
   String get phoneIntro => _fr
       ? "Codes gérés par le téléphone lui-même, quel que soit l'opérateur : IMEI, menus de test, renvoi d'appel."
       : 'Codes handled by the phone itself, whatever the operator: IMEI, test menus, call forwarding.';
-  String updated(String isoDate) {
+  String date(String isoDate) {
     final date = DateTime.parse(isoDate);
     const fr = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
     const en = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    return _fr
-        ? 'Codes vérifiés le ${date.day} ${fr[date.month - 1]} ${date.year}. Une erreur ? Écrivez à '
-        : 'Codes checked on ${en[date.month - 1]} ${date.day}, ${date.year}. Spotted an error? Write to ';
+    return _fr ? '${date.day} ${fr[date.month - 1]} ${date.year}' : '${en[date.month - 1]} ${date.day}, ${date.year}';
   }
+
+  String updated(String isoDate) =>
+      _fr ? 'Codes vérifiés le ${date(isoDate)}. Une erreur ? Écrivez à ' : 'Codes checked on ${date(isoDate)}. Spotted an error? Write to ';
 
   String get home => _fr ? 'Accueil' : 'Home';
   String get homeTitle => _fr ? 'Codes USSD des opérateurs africains' : 'USSD codes of African operators';
   String get homeIntro => _fr
       ? 'Solde, recharge, forfaits internet, transfert de crédit et mobile money : les codes USSD des opérateurs mobiles, vérifiés et classés par pays.'
       : 'Balance, top-up, data bundles, airtime transfer and mobile money: mobile operators’ USSD codes, checked and sorted by country.';
+  String get plansLink => _fr ? 'Comparer les forfaits internet' : 'Compare data bundles';
+  String plansTitle(String country) => _fr ? 'Forfaits internet ${_inCountry(country)} : le comparatif' : 'Data bundles in $country: price comparison';
+  String plansIntro(String country) => _fr
+      ? 'Les forfaits internet des opérateurs ${_inCountry(country)}, du moins cher au plus cher pour 1 Go, par durée. Selon l’opérateur, le code d’achat active le forfait ou ouvre le menu des forfaits.'
+      : 'Data bundles of the operators in $country, from cheapest to dearest per GB, by length. Depending on the operator, the purchase code activates the bundle or opens the bundles menu.';
+  String bucket(int index) => switch (index) {
+    0 => _fr ? 'À la journée' : 'Daily',
+    1 => _fr ? 'Quelques jours à une semaine' : 'A few days to a week',
+    2 => _fr ? 'Au mois' : 'Monthly',
+    _ => _fr ? 'La nuit' : 'At night',
+  };
+  String perGb(String price) => _fr ? '$price le Go' : '$price per GB';
+  String get toConfirm => _fr ? 'prix à confirmer' : 'price to confirm';
+  String validity(DataPlan plan) {
+    final hours = plan.validityHours;
+    if (hours % 24 == 0 && hours > 24) return _fr ? '${hours ~/ 24} jours' : '${hours ~/ 24} days';
+    return '$hours h';
+  }
+
+  String volume(int megabytes) {
+    if (megabytes < 1024) return '$megabytes ${_fr ? 'Mo' : 'MB'}';
+    final gb = (megabytes / 1024).toStringAsFixed(2).replaceFirst(RegExp(r'\.?0+$'), '');
+    return '${_fr ? gb.replaceAll('.', ',') : gb} ${_fr ? 'Go' : 'GB'}';
+  }
+
+  String price(num value) {
+    final digits = value.round().toString();
+    final grouped = digits.replaceAllMapped(RegExp(r'\B(?=(\d{3})+(?!\d))'), (_) => _fr ? '\u202f' : ',');
+    return '$grouped F';
+  }
+
+  String plansFooter(String isoDate) => _fr
+      ? 'Prix relevés le ${date(isoDate)} sur les sites des opérateurs. Les offres changent souvent : vérifiez le prix avant de valider l’achat.'
+      : 'Prices taken on ${date(isoDate)} from the operators’ sites. Offers change often: check the price before confirming the purchase.';
+
   String codesCount(int count) => _fr ? '$count codes' : '$count codes';
 }
 
@@ -202,7 +242,7 @@ ${_footer(t, catalog)}''',
   );
 }
 
-String _countryPage(Catalog catalog, Country country) {
+String _countryPage(Catalog catalog, Country country, {required bool hasPlans}) {
   final lang = _englishCountries.contains(country.id) ? 'en' : 'fr';
   final t = _Texts(lang);
   final name = _countryName(country, lang);
@@ -221,7 +261,7 @@ String _countryPage(Catalog catalog, Country country) {
         '''
 ${_nav(t, [(t.appName, '')])}
 <h1>${country.flag} ${_esc(t.countryTitle(name))}</h1>
-<h2>${t.operators}</h2>
+${hasPlans ? '<p><a href="$siteBaseUrl/${country.id}/forfaits/">${_esc(t.plansLink)}</a></p>\n' : ''}<h2>${t.operators}</h2>
 <ul>
 ${operators.join('\n')}
 </ul>
@@ -250,6 +290,57 @@ ${_nav(t, [(t.appName, ''), ('${country.flag} $countryName', '${country.id}/')])
 ${op.formerName == null ? '' : '<p class="muted">${_esc(op.name)}, ${_esc(t.formerly(op.formerName!))}.</p>\n'}<p>${_esc(t.operatorIntro(op.name, countryName))}</p>
 ${hasParams ? '<p class="muted">${_esc(t.placeholders)}</p>\n' : ''}${_codesByCategory(t, op.codes)}
 <h2>${t.appName}</h2>
+${_appBlock(t)}
+${_footer(t, catalog)}''',
+  );
+}
+
+List<({DataPlan plan, Operator operator})> _shownPlans(Country country, DateTime now) => [
+  for (final op in country.operators)
+    for (final plan in op.plans)
+      if (plan.freshness(now) != PlanFreshness.expired) (plan: plan, operator: op),
+];
+
+String _planItem(_Texts t, ({DataPlan plan, Operator operator}) entry, DateTime now) {
+  final (:plan, :operator) = entry;
+  final note = plan.note?.resolve(t.lang);
+  final details = [
+    operator.name,
+    if (!plan.night && note != null) note,
+    t.perGb(t.price(plan.pricePerGb)),
+    if (plan.freshness(now) == PlanFreshness.stale) t.toConfirm,
+  ].join(' · ');
+  final title = '${t.volume(plan.volumeMb)} · ${plan.night ? (note ?? '') : t.validity(plan)}';
+  final left = '<span><strong>${_esc(title)}</strong><br><span class="muted">${_esc(details)}</span></span>';
+  final right = '<span><strong>${_esc(t.price(plan.price))}</strong> <code>${_esc(plan.code)}</code></span>';
+  return '<li>$left$right</li>';
+}
+
+String _plansPage(Catalog catalog, Country country, DateTime now) {
+  final lang = _englishCountries.contains(country.id) ? 'en' : 'fr';
+  final t = _Texts(lang);
+  final name = _countryName(country, lang);
+  final plans = _shownPlans(country, now)..sort((a, b) => a.plan.pricePerGb.compareTo(b.plan.pricePerGb));
+  int bucketOf(DataPlan plan) => plan.night ? 3 : (plan.validityHours <= 24 ? 0 : (plan.validityHours < 28 * 24 ? 1 : 2));
+  final sections = [
+    for (var bucket = 0; bucket < 4; bucket++)
+      if (plans.where((entry) => bucketOf(entry.plan) == bucket).toList() case final inBucket when inBucket.isNotEmpty)
+        '<h2>${_esc(t.bucket(bucket))}</h2>\n<ul class="codes">\n${inBucket.map((entry) => _planItem(t, entry, now)).join('\n')}\n</ul>',
+  ];
+  final checkedAt = (plans.map((entry) => entry.plan.checkedAt).toList()..sort()).first;
+  return _page(
+    lang: lang,
+    title: t.plansTitle(name),
+    description: t.plansIntro(name),
+    path: '${country.id}/forfaits/index.html',
+    breadcrumb: [(t.home, ''), (name, '${country.id}/'), (t.plansLink, '${country.id}/forfaits/')],
+    body:
+        '''
+${_nav(t, [(t.appName, ''), ('${country.flag} $name', '${country.id}/')])}
+<h1>${_esc(t.plansTitle(name))}</h1>
+<p>${_esc(t.plansIntro(name))}</p>
+${sections.join('\n')}
+<p class="muted">${_esc(t.plansFooter(checkedAt))}</p>
 ${_appBlock(t)}
 ${_footer(t, catalog)}''',
   );
