@@ -5,6 +5,7 @@ abstract class PrefKeys {
   static const selectedCountry = 'selectedCountry';
   static const detectedCountry = 'detectedCountry';
   static const directCall = 'directCall';
+  static const tileCode = 'tileCode';
   static const favorites = 'favorites';
   static const customCodes = 'customCodes';
   static const catalogLastCheck = 'catalogLastCheck';

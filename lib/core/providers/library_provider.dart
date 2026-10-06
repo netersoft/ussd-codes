@@ -143,6 +143,54 @@ void favoriteShortcuts(Ref ref) {
   unawaited(ref.read(telephonyServiceProvider).setShortcuts(shortcuts));
 }
 
+/// Code picked for the Quick Settings tile (null: the latest favorite).
+@Riverpod(keepAlive: true)
+class TileCodeChoice extends _$TileCodeChoice {
+  SharedPreferencesService get _prefs => locator<SharedPreferencesService>();
+
+  @override
+  String? build() => _prefs.getString(PrefKeys.tileCode);
+
+  Future<void> set(String? id) async {
+    state = id;
+    if (id == null) {
+      await _prefs.remove(PrefKeys.tileCode);
+    } else {
+      await _prefs.setString(PrefKeys.tileCode, id);
+    }
+  }
+}
+
+/// The code the Quick Settings tile opens: the one picked, while it is
+/// still a favorite, else the latest favorite.
+@Riverpod(keepAlive: true)
+ResolvedCode? tileCode(Ref ref) {
+  final favorites = ref.watch(favoritesProvider);
+  final choice = ref.watch(tileCodeChoiceProvider);
+  final id = favorites.contains(choice) ? choice : favorites.lastOrNull;
+  if (id == null) return null;
+  return _resolveCode(id, catalog: ref.watch(currentCatalogProvider).value, customCodes: ref.watch(customCodesProvider));
+}
+
+/// Keeps the Quick Settings tile on [tileCodeProvider].
+@Riverpod(keepAlive: true)
+void quickSettingsTile(Ref ref) {
+  final entry = ref.watch(tileCodeProvider);
+  unawaited(
+    ref
+        .read(telephonyServiceProvider)
+        .setTileCode(
+          entry == null
+              ? null
+              : (
+                  id: entry.code.id,
+                  label: entry.code.label.resolve(LocaleSettings.instance.currentLocale.languageCode),
+                  code: entry.code.code.replaceAll(UssdCode.placeholderPattern, '…'),
+                ),
+        ),
+  );
+}
+
 @Riverpod(keepAlive: true)
 ReviewPrompt reviewPrompt(Ref ref) => ReviewPrompt(locator<SharedPreferencesService>(), ref.watch(telephonyServiceProvider));
 

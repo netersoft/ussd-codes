@@ -50,7 +50,9 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   /// opens the code of the shortcut that launched the app, if any.
   Future<void> _onStarted() async {
     _started = true;
-    ref.listenManual(favoriteShortcutsProvider, (_, _) {}, fireImmediately: true);
+    ref
+      ..listenManual(favoriteShortcutsProvider, (_, _) {}, fireImmediately: true)
+      ..listenManual(quickSettingsTileProvider, (_, _) {}, fireImmediately: true);
     final codeId = await ref.read(telephonyServiceProvider).takeLaunchCodeId();
     if (codeId != null) _openCode(codeId);
   }

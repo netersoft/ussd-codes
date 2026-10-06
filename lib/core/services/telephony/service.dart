@@ -177,6 +177,16 @@ class TelephonyService {
     }
   }
 
+  /// The code of the Quick Settings tile (Android 7+), null for none.
+  Future<void> setTileCode(({String id, String label, String code})? tile) async {
+    if (!_isAndroid) return;
+    try {
+      await _channel.invokeMethod<bool>('setTileCode', {'id': tile?.id, 'label': tile?.label, 'code': tile?.code});
+    } on PlatformException catch (e) {
+      LogHelper.w('Unable to set the tile code', error: e);
+    }
+  }
+
   /// Asks the launcher to pin a shortcut to the code. False when it can't.
   Future<bool> pinShortcut({required String id, required String label}) async {
     if (!_isAndroid) return false;
