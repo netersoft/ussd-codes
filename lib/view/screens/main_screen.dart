@@ -9,6 +9,7 @@ import '../../core/routes/app_route.dart';
 import '../../core/services/i18n/translations.g.dart';
 import '../components/codes/code_texts.dart';
 import '../components/misc/status.dart';
+import '../modals/run_code_sheet.dart';
 import '../themes/app_theme.dart';
 import 'device/device_codes_screen.dart';
 import 'favorites/favorites_screen.dart';
@@ -26,6 +27,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   int _index = 0;
 
   late final AppLifecycleListener _lifecycle;
+  bool _started = false;
 
   @override
   void initState() {
@@ -38,7 +40,34 @@ class _MainScreenState extends ConsumerState<MainScreen> {
     ref.listenManual(appStartupProvider, (_, startup) {
       if (!startup.isLoading) FlutterNativeSplash.remove();
       if (startup.value case final country?) _showCountryDetected(country);
+      if (startup.hasValue && !_started) _onStarted();
     }, fireImmediately: true);
+
+    ref.read(telephonyServiceProvider).onShortcutOpened(_openCode);
+  }
+
+  /// Once the catalog is ready: keeps the app icon's shortcuts in sync and
+  /// opens the code of the shortcut that launched the app, if any.
+  Future<void> _onStarted() async {
+    _started = true;
+    ref.listenManual(favoriteShortcutsProvider, (_, _) {}, fireImmediately: true);
+    final codeId = await ref.read(telephonyServiceProvider).takeLaunchCodeId();
+    if (codeId != null) _openCode(codeId);
+  }
+
+  /// Opens the run sheet of a code chosen from a home screen shortcut: it
+  /// still asks for confirmation, since codes can spend money.
+  void _openCode(String codeId) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final entry = ref.read(resolvedCodeProvider(codeId));
+      if (entry == null) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.t.codeNotFound), behavior: SnackBarBehavior.floating));
+        return;
+      }
+      Navigator.of(context).popUntil((route) => route.isFirst);
+      showRunCodeSheet(context, code: entry.code, operator: entry.operator);
+    });
   }
 
   @override

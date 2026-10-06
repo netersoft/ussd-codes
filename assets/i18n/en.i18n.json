@@ -70,6 +70,9 @@
   "emptyUssdResponse": "The operator sent no text back.",
   "continueInDialer": "Continue",
   "closeAction": "Close",
+  "addToHomeScreen": "Add to home screen",
+  "shortcutsUnsupported": "Your home screen doesn't support shortcuts.",
+  "codeNotFound": "This code is no longer available.",
   "digitsOnly": "Digits only",
 
   "addCode": "Add a code",

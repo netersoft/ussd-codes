@@ -4,7 +4,10 @@ import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.pm.ShortcutInfo
+import android.content.pm.ShortcutManager
 import android.database.sqlite.SQLiteDatabase
+import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.Build
 import android.os.Handler
@@ -19,11 +22,18 @@ import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
     private var pendingContactPick: MethodChannel.Result? = null
+    private var channel: MethodChannel? = null
+
+    /** Code a shortcut opened the app on, until Dart takes it. */
+    private var launchCodeId: String? = null
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
 
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "ussd_codes/telephony").setMethodCallHandler { call, result ->
+        launchCodeId = intent?.getStringExtra(EXTRA_CODE_ID)
+        val channel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "ussd_codes/telephony")
+        this.channel = channel
+        channel.setMethodCallHandler { call, result ->
             when (call.method) {
                 "getSimOperators" -> result.success(simOperators())
                 "getNetworkCountries" -> result.success(networkCountries())
@@ -32,8 +42,61 @@ class MainActivity : FlutterActivity() {
                 "requestReview" -> requestReview { shown -> result.success(shown) }
                 "pickPhoneNumber" -> pickPhoneNumber(result)
                 "sendUssd" -> sendUssd(call.argument<String>("code")!!) { response -> result.success(response) }
+                "takeLaunchCodeId" -> result.success(launchCodeId).also { launchCodeId = null }
+                "setShortcuts" -> result.success(setShortcuts(call.argument<List<Map<String, String>>>("codes")!!))
+                "pinShortcut" -> result.success(pinShortcut(call.argument<String>("id")!!, call.argument<String>("label")!!))
                 else -> result.notImplemented()
             }
+        }
+    }
+
+    // A shortcut tapped while the app runs (singleTop): open its code now.
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        intent.getStringExtra(EXTRA_CODE_ID)?.let { channel?.invokeMethod("openCode", it) }
+    }
+
+    private fun shortcut(id: String, label: String): ShortcutInfo =
+        ShortcutInfo.Builder(this, "code:$id")
+            .setShortLabel(label)
+            .setLongLabel(label)
+            .setIcon(Icon.createWithResource(this, R.drawable.ic_shortcut_code))
+            .setIntent(
+                Intent(this, MainActivity::class.java)
+                    .setAction(Intent.ACTION_VIEW)
+                    .putExtra(EXTRA_CODE_ID, id)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP),
+            )
+            .build()
+
+    /**
+     * The shortcuts shown on a long press on the app icon (Android 7.1+):
+     * [codes] are maps with "id" and "label". Returns whether they were set.
+     */
+    private fun setShortcuts(codes: List<Map<String, String>>): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N_MR1) return false
+        val manager = getSystemService(ShortcutManager::class.java) ?: return false
+        val shortcuts = codes.take(manager.maxShortcutCountPerActivity).map { shortcut(it["id"]!!, it["label"]!!) }
+        return try {
+            manager.setDynamicShortcuts(shortcuts)
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    /**
+     * Asks the launcher to pin a shortcut to the code on the home screen
+     * (Android 8+); the launcher confirms with the user. Returns false when
+     * the launcher doesn't support it.
+     */
+    private fun pinShortcut(id: String, label: String): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return false
+        val manager = getSystemService(ShortcutManager::class.java) ?: return false
+        if (!manager.isRequestPinShortcutSupported) return false
+        return try {
+            manager.requestPinShortcut(shortcut(id, label), null)
+        } catch (e: Exception) {
+            false
         }
     }
 
@@ -217,5 +280,6 @@ class MainActivity : FlutterActivity() {
 
     private companion object {
         const val PICK_PHONE_NUMBER = 4201
+        const val EXTRA_CODE_ID = "codeId"
     }
 }

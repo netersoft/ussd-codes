@@ -8,6 +8,7 @@ import '../catalog/models.dart';
 import '../helpers/logging/log_helper.dart';
 import '../library/library_store.dart';
 import '../services/di/locator.dart';
+import '../services/i18n/translations.g.dart';
 import '../services/review/service.dart';
 import '../services/shared_preferences/keys.dart';
 import '../services/shared_preferences/service.dart';
@@ -125,6 +126,16 @@ class DirectCall extends _$DirectCall {
     state = value;
     await _prefs.setBool(PrefKeys.directCall, value);
   }
+}
+
+/// Keeps the app icon's shortcuts (long press) on the latest favorites.
+@Riverpod(keepAlive: true)
+void favoriteShortcuts(Ref ref) {
+  final shortcuts = [
+    for (final id in ref.watch(favoritesProvider).reversed)
+      if (ref.watch(resolvedCodeProvider(id)) case final entry?) (id: id, label: entry.code.label.resolve(LocaleSettings.instance.currentLocale.languageCode)),
+  ].take(4).toList();
+  unawaited(ref.read(telephonyServiceProvider).setShortcuts(shortcuts));
 }
 
 @Riverpod(keepAlive: true)

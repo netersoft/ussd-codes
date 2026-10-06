@@ -141,6 +141,53 @@ class TelephonyService {
     }
   }
 
+  /// Whether codes can be pinned to the home screen here (Android).
+  bool get canPinShortcut => _isAndroid;
+
+  /// The code a home screen shortcut opened the app on, once.
+  Future<String?> takeLaunchCodeId() async {
+    if (!_isAndroid) return null;
+    try {
+      return await _channel.invokeMethod<String>('takeLaunchCodeId');
+    } on PlatformException catch (e) {
+      LogHelper.w('Unable to read the launch shortcut', error: e);
+      return null;
+    }
+  }
+
+  /// Calls [onOpen] with the code of a shortcut tapped while the app runs.
+  void onShortcutOpened(void Function(String codeId) onOpen) {
+    if (!_isAndroid) return;
+    _channel.setMethodCallHandler((call) async {
+      if (call.method == 'openCode') onOpen(call.arguments as String);
+    });
+  }
+
+  /// The shortcuts of the app icon (long press), most important first.
+  Future<void> setShortcuts(List<({String id, String label})> codes) async {
+    if (!_isAndroid) return;
+    try {
+      await _channel.invokeMethod<bool>('setShortcuts', {
+        'codes': [
+          for (final code in codes) {'id': code.id, 'label': code.label},
+        ],
+      });
+    } on PlatformException catch (e) {
+      LogHelper.w('Unable to set the shortcuts', error: e);
+    }
+  }
+
+  /// Asks the launcher to pin a shortcut to the code. False when it can't.
+  Future<bool> pinShortcut({required String id, required String label}) async {
+    if (!_isAndroid) return false;
+    try {
+      return (await _channel.invokeMethod<bool>('pinShortcut', {'id': id, 'label': label})) ?? false;
+    } on PlatformException catch (e) {
+      LogHelper.w('Unable to pin the shortcut', error: e);
+      return false;
+    }
+  }
+
   /// Opens the Play In-App Review flow (Android only). Returns whether it ran.
   Future<bool> requestReview() async {
     if (!_isAndroid) return false;

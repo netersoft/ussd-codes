@@ -70,6 +70,9 @@
   "emptyUssdResponse": "L'opérateur n'a renvoyé aucun texte.",
   "continueInDialer": "Continuer",
   "closeAction": "Fermer",
+  "addToHomeScreen": "Ajouter à l'écran d'accueil",
+  "shortcutsUnsupported": "Votre écran d'accueil n'accepte pas les raccourcis.",
+  "codeNotFound": "Ce code n'est plus disponible.",
   "digitsOnly": "Chiffres uniquement",
 
   "addCode": "Ajouter un code",
