@@ -51,14 +51,6 @@
       "category": "data"
     },
     {
-      "id": "sn-orange.facebook-ussd",
-      "label": {
-        "fr": "Facebook USSD"
-      },
-      "code": "#707#",
-      "category": "services"
-    },
-    {
       "id": "sn-orange.allo-s-cool",
       "label": {
         "fr": "Allo S cool"

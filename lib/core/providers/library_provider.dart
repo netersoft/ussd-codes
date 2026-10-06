@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:flutter/services.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../catalog/models.dart';
+import '../helpers/logging/log_helper.dart';
 import '../library/library_store.dart';
 import '../services/di/locator.dart';
 import '../services/review/service.dart';
@@ -29,6 +32,11 @@ class Favorites extends _$Favorites {
   Future<void> remove(String id) async {
     if (!state.contains(id)) return;
     await toggle(id);
+  }
+
+  /// Follows the catalog's redirects for favorites of removed codes.
+  Future<void> followRedirects(Catalog catalog) async {
+    if (await ref.read(libraryStoreProvider).redirectFavorites(catalog.redirects)) ref.invalidateSelf();
   }
 }
 
@@ -131,6 +139,10 @@ Future<Country?> appStartup(Ref ref) async {
   final catalog = await ref.read(currentCatalogProvider.future);
   unawaited(ref.read(reviewPromptProvider).onLaunch());
   await _importLegacy(ref, catalog);
+  await ref.read(favoritesProvider.notifier).followRedirects(catalog);
+  ref.listen(currentCatalogProvider, (_, next) {
+    if (next.value case final updated?) unawaited(ref.read(favoritesProvider.notifier).followRedirects(updated));
+  });
   return ref.read(selectedCountryProvider.notifier).followNetwork(catalog);
 }
 
@@ -139,11 +151,23 @@ Future<void> _importLegacy(Ref ref, Catalog catalog) async {
   if (store.legacyImported) return;
 
   final legacy = await ref.read(telephonyServiceProvider).readLegacyData();
-  final country = await store.importLegacy(legacy, catalog);
+  final country = await store.importLegacy(legacy, catalog, removedIds: legacy == null ? const {} : await _removedLegacyIds());
   ref
     ..invalidate(favoritesProvider)
     ..invalidate(customCodesProvider);
   if (country != null && ref.read(selectedCountryProvider) == null) {
     await ref.read(selectedCountryProvider.notifier).select(country);
+  }
+}
+
+/// Codes of the legacy app since removed from the catalog, to carry their
+/// favorites over to the codes replacing them.
+Future<Map<String, Map<String, String>>> _removedLegacyIds() async {
+  try {
+    final json = jsonDecode(await rootBundle.loadString('assets/catalog/legacy_codes.json')) as Map<String, dynamic>;
+    return {for (final MapEntry(:key, :value) in json.entries) key: (value as Map<String, dynamic>).cast<String, String>()};
+  } on Exception catch (e) {
+    LogHelper.w('Unable to read the removed legacy codes', error: e);
+    return const {};
   }
 }

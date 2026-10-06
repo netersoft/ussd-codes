@@ -9,7 +9,8 @@
     {
       "id": "bj-mtn.solde-mtn",
       "label": {
-        "fr": "Solde MTN"
+        "fr": "Mon compte (solde, infos personnelles)",
+        "en": "My account (balance, personal info)"
       },
       "code": "*124#",
       "category": "account"
@@ -17,7 +18,8 @@
     {
       "id": "bj-mtn.recharge-mtn-benin",
       "label": {
-        "fr": "Recharge MTN Bénin"
+        "fr": "Recharge",
+        "en": "Top up"
       },
       "code": "*125*{voucher}#",
       "category": "recharge",
@@ -35,7 +37,8 @@
     {
       "id": "bj-mtn.mtn-deblocage-de-compte-de-recharge",
       "label": {
-        "fr": "MTN Déblocage de compte de recharge"
+        "fr": "Déblocage du compte de recharge",
+        "en": "Unlock top-up account"
       },
       "code": "*189*{voucher}#",
       "category": "recharge",
@@ -51,270 +54,40 @@
       ]
     },
     {
-      "id": "bj-mtn.forfait-famille-illimite-30j-25000",
+      "id": "bj-mtn.emprunter-du-credit",
       "label": {
-        "fr": "Forfait Famille Illimité 30j/25000"
+        "fr": "Emprunter du crédit (XtraTime)",
+        "en": "Borrow airtime (XtraTime)"
       },
-      "code": "*130*0*1#",
-      "category": "data"
+      "code": "*785#",
+      "category": "recharge"
     },
     {
-      "id": "bj-mtn.forfait-net-illimite-30j-40000",
+      "id": "bj-mtn.facturation-detaillee",
       "label": {
-        "fr": "Forfait NET+ Illimité 30j/40000"
+        "fr": "Facturation détaillée",
+        "en": "Detailed billing"
       },
-      "code": "*130*0*2#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-5mo-1j-100f",
-      "label": {
-        "fr": "Forfait internet 5Mo/1j/100F"
-      },
-      "code": "*130*1*1*1#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-20mo-1j-200f",
-      "label": {
-        "fr": "Forfait internet 20Mo/1j/200F"
-      },
-      "code": "*130*1*1*2#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-30mo-1j-250f",
-      "label": {
-        "fr": "Forfait internet 30Mo/1j/250F"
-      },
-      "code": "*130*1*1*3#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-100mo-2j-600f",
-      "label": {
-        "fr": "Forfait internet 100Mo/2j/600F"
-      },
-      "code": "*130*1*1*4#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-90mo-7j-500f",
-      "label": {
-        "fr": "Forfait internet 90Mo/7j/500F"
-      },
-      "code": "*130*1*2*1#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-500mo-7j-2500f",
-      "label": {
-        "fr": "Forfait internet 500Mo/7j/2500F"
-      },
-      "code": "*130*1*2*2#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-120mo-30j-1000f",
-      "label": {
-        "fr": "Forfait internet 120Mo/30j/1000F"
-      },
-      "code": "*130*1*3*1#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-300mo-30j-2000f",
-      "label": {
-        "fr": "Forfait internet 300Mo/30j/2000F"
-      },
-      "code": "*130*1*3*2#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-1-5go-30j-7000f",
-      "label": {
-        "fr": "Forfait internet 1.5Go/30j/7000F"
-      },
-      "code": "*130*1*3*3#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-5go-30j-15000f",
-      "label": {
-        "fr": "Forfait internet 5Go/30j/15000F"
-      },
-      "code": "*130*1*3*4#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-7go-30j-20000f",
-      "label": {
-        "fr": "Forfait internet 7Go/30j/20000F"
-      },
-      "code": "*130*1*3*5#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-10go-30j-25000f",
-      "label": {
-        "fr": "Forfait internet 10Go/30j/25000F"
-      },
-      "code": "*130*1*3*6#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.forfait-internet-20go-60j-60000f",
-      "label": {
-        "fr": "Forfait internet 20Go/60j/60000F"
-      },
-      "code": "*130*1*3*7#",
-      "category": "data"
-    },
-    {
-      "id": "bj-mtn.statut-forfait-internet",
-      "label": {
-        "fr": "Statut forfait internet"
-      },
-      "code": "*130*2#",
-      "category": "data"
+      "code": "*126#",
+      "category": "account"
     },
     {
       "id": "bj-mtn.mtn-transfert-de-credit",
       "label": {
-        "fr": "MTN Transfert de crédit"
+        "fr": "Transfert de crédit (Me2U)",
+        "en": "Airtime transfer (Me2U)"
       },
-      "code": "*155*{amount}*{recipient}*{pin}#",
-      "category": "transfer",
-      "params": [
-        {
-          "key": "amount",
-          "type": "amount",
-          "label": {
-            "fr": "Montant",
-            "en": "Amount"
-          }
-        },
-        {
-          "key": "recipient",
-          "type": "phone",
-          "label": {
-            "fr": "Numéro du destinataire",
-            "en": "Recipient number"
-          }
-        },
-        {
-          "key": "pin",
-          "type": "pin",
-          "label": {
-            "fr": "Code secret",
-            "en": "PIN"
-          }
-        }
-      ]
-    },
-    {
-      "id": "bj-mtn.mtn-k-f-activation",
-      "label": {
-        "fr": "MTN K!F+ - Activation"
-      },
-      "code": "*137*1#",
-      "category": "services"
-    },
-    {
-      "id": "bj-mtn.mtn-k-f-desactivation",
-      "label": {
-        "fr": "MTN K!F+ - Désactivation"
-      },
-      "code": "*137*2#",
-      "category": "services"
-    },
-    {
-      "id": "bj-mtn.mtn-k-f-statut",
-      "label": {
-        "fr": "MTN K!F+ - Statut"
-      },
-      "code": "*137*3#",
-      "category": "account"
-    },
-    {
-      "id": "bj-mtn.mtn-k-f-info",
-      "label": {
-        "fr": "MTN K!F+ - Info"
-      },
-      "code": "*137*4#",
-      "category": "services"
-    },
-    {
-      "id": "bj-mtn.mtn-premium-activation",
-      "label": {
-        "fr": "MTN PREMIUM - Activation"
-      },
-      "code": "*138*1#",
-      "category": "services"
-    },
-    {
-      "id": "bj-mtn.mtn-premium-desactivation",
-      "label": {
-        "fr": "MTN PREMIUM - Désactivation"
-      },
-      "code": "*138*2#",
-      "category": "services"
-    },
-    {
-      "id": "bj-mtn.mtn-premium-statut",
-      "label": {
-        "fr": "MTN PREMIUM - Statut"
-      },
-      "code": "*138*3#",
-      "category": "account"
-    },
-    {
-      "id": "bj-mtn.mtn-premium-info",
-      "label": {
-        "fr": "MTN PREMIUM - Info"
-      },
-      "code": "*138*4#",
-      "category": "services"
-    },
-    {
-      "id": "bj-mtn.mtn-waba-activation",
-      "label": {
-        "fr": "MTN WABA - Activation"
-      },
-      "code": "*139*1#",
-      "category": "services"
-    },
-    {
-      "id": "bj-mtn.mtn-waba-desactivation",
-      "label": {
-        "fr": "MTN WABA - Désactivation"
-      },
-      "code": "*139*2#",
-      "category": "services"
-    },
-    {
-      "id": "bj-mtn.mtn-waba-statut",
-      "label": {
-        "fr": "MTN WABA - Statut"
-      },
-      "code": "*139*3#",
-      "category": "account"
-    },
-    {
-      "id": "bj-mtn.mtn-waba-info",
-      "label": {
-        "fr": "MTN WABA - Info"
-      },
-      "code": "*139*4#",
-      "category": "services"
+      "code": "*102#",
+      "category": "transfer"
     },
     {
       "id": "bj-mtn.mtn-bip-me",
       "label": {
-        "fr": "MTN Bip Me"
+        "fr": "Bip Me",
+        "en": "Bip Me"
       },
       "code": "*151*{recipient}#",
-      "category": "help",
+      "category": "services",
       "params": [
         {
           "key": "recipient",
@@ -329,7 +102,8 @@
     {
       "id": "bj-mtn.mtn-numero-favoris-ajout",
       "label": {
-        "fr": "MTN Numéro favoris [Ajout]"
+        "fr": "Numéro favori : ajouter",
+        "en": "Favorite number: add"
       },
       "code": "*180*1*{recipient}#",
       "category": "services",
@@ -343,6 +117,82 @@
           }
         }
       ]
+    },
+    {
+      "id": "bj-mtn.forfaits-internet",
+      "label": {
+        "fr": "Forfaits internet (Maxi)",
+        "en": "Data bundles (Maxi)"
+      },
+      "code": "*123#",
+      "category": "data"
+    },
+    {
+      "id": "bj-mtn.gopack",
+      "label": {
+        "fr": "Forfait GoPack du montant de son choix",
+        "en": "GoPack bundle of any amount"
+      },
+      "code": "*133*77*{amount}#",
+      "category": "data",
+      "params": [
+        {
+          "key": "amount",
+          "type": "amount",
+          "label": {
+            "fr": "Montant",
+            "en": "Amount"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj-mtn.mobile-money",
+      "label": {
+        "fr": "MTN MoMo",
+        "en": "MTN MoMo"
+      },
+      "code": "*880#",
+      "category": "money"
+    },
+    {
+      "id": "bj-mtn.produits-et-services",
+      "label": {
+        "fr": "Produits et services",
+        "en": "Products and services"
+      },
+      "code": "*199#",
+      "category": "services"
     }
-  ]
+  ],
+  "redirects": {
+    "bj-mtn.forfait-famille-illimite-30j-25000": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-1-5go-30j-7000f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-100mo-2j-600f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-10go-30j-25000f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-120mo-30j-1000f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-20go-60j-60000f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-20mo-1j-200f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-300mo-30j-2000f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-30mo-1j-250f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-500mo-7j-2500f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-5go-30j-15000f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-5mo-1j-100f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-7go-30j-20000f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-internet-90mo-7j-500f": "bj-mtn.forfaits-internet",
+    "bj-mtn.forfait-net-illimite-30j-40000": "bj-mtn.forfaits-internet",
+    "bj-mtn.mtn-k-f-activation": "bj-mtn.produits-et-services",
+    "bj-mtn.mtn-k-f-desactivation": "bj-mtn.produits-et-services",
+    "bj-mtn.mtn-k-f-info": "bj-mtn.produits-et-services",
+    "bj-mtn.mtn-k-f-statut": "bj-mtn.solde-mtn",
+    "bj-mtn.mtn-premium-activation": "bj-mtn.produits-et-services",
+    "bj-mtn.mtn-premium-desactivation": "bj-mtn.produits-et-services",
+    "bj-mtn.mtn-premium-info": "bj-mtn.produits-et-services",
+    "bj-mtn.mtn-premium-statut": "bj-mtn.solde-mtn",
+    "bj-mtn.mtn-waba-activation": "bj-mtn.produits-et-services",
+    "bj-mtn.mtn-waba-desactivation": "bj-mtn.produits-et-services",
+    "bj-mtn.mtn-waba-info": "bj-mtn.produits-et-services",
+    "bj-mtn.mtn-waba-statut": "bj-mtn.solde-mtn",
+    "bj-mtn.statut-forfait-internet": "bj-mtn.forfaits-internet"
+  }
 }

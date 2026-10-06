@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
+
 import '../catalog/models.dart';
 import '../services/shared_preferences/keys.dart';
 import '../services/shared_preferences/service.dart';
@@ -46,6 +48,18 @@ class LibraryStore {
 
   Future<void> writeFavorites(List<String> ids) => _prefs.setStringList(PrefKeys.favorites, ids);
 
+  /// Moves favorites of removed codes to the codes replacing them (once per
+  /// code, in place). Returns whether anything changed.
+  Future<bool> redirectFavorites(Map<String, String> redirects) async {
+    final favorites = readFavorites();
+    final redirected = [
+      ...{for (final id in favorites) redirects[id] ?? id},
+    ];
+    if (const ListEquality<String>().equals(favorites, redirected)) return false;
+    await writeFavorites(redirected);
+    return true;
+  }
+
   List<CustomCode> readCustomCodes() {
     final raw = _prefs.getString(PrefKeys.customCodes);
     if (raw == null) return const [];
@@ -58,8 +72,11 @@ class LibraryStore {
 
   /// Brings in what the legacy app saved, once: personal codes, favorites
   /// (matched to the catalog by label, then by code) and the default country.
+  /// Favorites of codes since removed from the catalog are found in
+  /// [removedIds] (`assets/catalog/legacy_codes.json`: per operator, legacy
+  /// code or "label:<label>" to the removed id) and follow its redirect.
   /// Returns the legacy default country, mapped to the new country ids.
-  Future<String?> importLegacy(LegacyData? data, Catalog catalog) async {
+  Future<String?> importLegacy(LegacyData? data, Catalog catalog, {Map<String, Map<String, String>> removedIds = const {}}) async {
     if (legacyImported) return null;
     await _prefs.setBool(PrefKeys.legacyImported, true);
     if (data == null) return null;
@@ -84,8 +101,8 @@ class LibraryStore {
       }
 
       final candidates = row.fragment == 'utilities' ? catalog.deviceCodes : catalog.operatorById(operatorId)?.codes ?? const <UssdCode>[];
-      final match = _matchLegacyCode(row, candidates);
-      if (match != null && !favorites.contains(match.id)) favorites.add(match.id);
+      final id = _matchLegacyCode(row, candidates)?.id ?? catalog.redirects[_removedId(row, removedIds[operatorId])];
+      if (id != null && !favorites.contains(id)) favorites.add(id);
     }
 
     await writeCustomCodes(customCodes);
@@ -93,13 +110,18 @@ class LibraryStore {
     return legacyCountries[data.country];
   }
 
-  static UssdCode? _matchLegacyCode(LegacyCode row, List<UssdCode> candidates) {
-    String normalize(String text) => text.replaceAll(RegExp('^(SAMSUNG|HTC) - '), '').replaceAll(RegExp(r'\s+'), ' ').trim().toLowerCase();
+  static String _normalize(String text) => text.replaceAll(RegExp('^(SAMSUNG|HTC) - '), '').replaceAll(RegExp(r'\s+'), ' ').trim().toLowerCase();
 
-    final label = normalize(row.description);
+  static String? _removedId(LegacyCode row, Map<String, String>? removed) {
+    if (removed == null) return null;
+    return removed['label:${_normalize(row.description)}'] ?? removed[row.code.replaceAll(RegExp(r'\s+'), '')];
+  }
+
+  static UssdCode? _matchLegacyCode(LegacyCode row, List<UssdCode> candidates) {
+    final label = _normalize(row.description);
     final code = row.code.replaceAll(RegExp(r'\s+'), '');
     for (final candidate in candidates) {
-      if (candidate.label.values.values.any((text) => normalize(text) == label)) return candidate;
+      if (candidate.label.values.values.any((text) => _normalize(text) == label)) return candidate;
     }
     for (final candidate in candidates) {
       if (candidate.code == code) return candidate;

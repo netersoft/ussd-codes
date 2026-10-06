@@ -7,108 +7,92 @@
   ],
   "codes": [
     {
-      "id": "ng-glo.glo-300hrs-12gb-300hrs-x-3months-n15000",
+      "id": "ng-glo.solde",
       "label": {
-        "en": "Glo 300hrs 12GB/300hrs x 3months/N15000"
+        "fr": "Solde",
+        "en": "Balance"
       },
-      "code": "*127*4#",
+      "code": "*310#",
+      "category": "account"
+    },
+    {
+      "id": "ng-glo.recharge",
+      "label": {
+        "fr": "Recharge",
+        "en": "Top up"
+      },
+      "code": "*311*{voucher}#",
+      "category": "recharge",
+      "params": [
+        {
+          "key": "voucher",
+          "type": "number",
+          "label": {
+            "fr": "Code de la carte de recharge",
+            "en": "Top-up voucher code"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng-glo.forfaits-internet",
+      "label": {
+        "fr": "Forfaits internet",
+        "en": "Data plans"
+      },
+      "code": "*312#",
       "category": "data"
     },
     {
-      "id": "ng-glo.glo-100hrs-4gb-100hrs-x-3days-n6000",
+      "id": "ng-glo.solde-internet",
       "label": {
-        "en": "Glo 100hrs 4GB/100hrs x 3days/N6000"
+        "fr": "Solde internet",
+        "en": "Data balance"
       },
-      "code": "*127*5#",
+      "code": "*323#",
       "category": "data"
     },
     {
-      "id": "ng-glo.glo-work-4gb-8am-9pm-x-30days-n6000",
+      "id": "ng-glo.emprunter",
       "label": {
-        "en": "Glo work 4GB/8am-9pm x 30days/N6000"
+        "fr": "Emprunter du crédit ou des données",
+        "en": "Borrow airtime or data"
       },
-      "code": "*127*6#",
-      "category": "data"
+      "code": "*303#",
+      "category": "recharge"
     },
     {
-      "id": "ng-glo.glo-leisure-8am-9pm-24-7-on-fri-mon-4gb-30d-n500",
+      "id": "ng-glo.partager",
       "label": {
-        "en": "Glo leisure 8am-9pm 24/7 on Fri-Mon 4GB/30D/N5000"
+        "fr": "Partager du crédit ou des données",
+        "en": "Share airtime or data"
       },
-      "code": "*127*6#",
-      "category": "data"
+      "code": "*321#",
+      "category": "transfer"
     },
     {
-      "id": "ng-glo.monthly-plans-4gb-30d-n5000",
+      "id": "ng-glo.nin",
       "label": {
-        "en": "Monthly Plans 4GB/30D/N5000"
+        "fr": "Vérification NIN et liaison NIN-SIM",
+        "en": "NIN verification and NIN-SIM linkage"
       },
-      "code": "*127*2#",
-      "category": "data"
-    },
-    {
-      "id": "ng-glo.monthly-plans-8gb-30d-n7500",
-      "label": {
-        "en": "Monthly Plans 8GB/30D/N7500"
-      },
-      "code": "*127*1#",
-      "category": "data"
-    },
-    {
-      "id": "ng-glo.monthly-plans-13gb-30d-n10000",
-      "label": {
-        "en": "Monthly Plans 13GB/30D/N10000"
-      },
-      "code": "*127*11#",
-      "category": "data"
-    },
-    {
-      "id": "ng-glo.monthly-plans-30gb-30d-n18000",
-      "label": {
-        "en": "Monthly Plans 30GB/30D/N18000"
-      },
-      "code": "*127*13#",
-      "category": "data"
-    },
-    {
-      "id": "ng-glo.daily-plans-13mb-24h-n100",
-      "label": {
-        "en": "Daily Plans 13MB/24H/N100"
-      },
-      "code": "*131#",
-      "category": "data"
-    },
-    {
-      "id": "ng-glo.daily-plans-195mb-24h-n500",
-      "label": {
-        "en": "Daily Plans 195MB/24H/N500"
-      },
-      "code": "*127*3#",
-      "category": "data"
-    },
-    {
-      "id": "ng-glo.weekly-plan-65mb-7d-n400",
-      "label": {
-        "en": "Weekly Plan 65MB/7D/N400"
-      },
-      "code": "*127*52#",
-      "category": "data"
-    },
-    {
-      "id": "ng-glo.monthly-plans-260mb-30d-n1000",
-      "label": {
-        "en": "Monthly Plans 260MB/30D/N1000"
-      },
-      "code": "*127*53#",
-      "category": "data"
-    },
-    {
-      "id": "ng-glo.monthly-plans-1-5gb-30d-n3000",
-      "label": {
-        "en": "Monthly Plans 1.5GB/30D/N3000"
-      },
-      "code": "*127*54#",
-      "category": "data"
+      "code": "*996#",
+      "category": "services"
     }
-  ]
+  ],
+  "redirects": {
+    "ng-glo.daily-plans-13mb-24h-n100": "ng-glo.forfaits-internet",
+    "ng-glo.daily-plans-195mb-24h-n500": "ng-glo.forfaits-internet",
+    "ng-glo.glo-100hrs-4gb-100hrs-x-3days-n6000": "ng-glo.forfaits-internet",
+    "ng-glo.glo-300hrs-12gb-300hrs-x-3months-n15000": "ng-glo.forfaits-internet",
+    "ng-glo.glo-leisure-8am-9pm-24-7-on-fri-mon-4gb-30d-n500": "ng-glo.forfaits-internet",
+    "ng-glo.glo-work-4gb-8am-9pm-x-30days-n6000": "ng-glo.forfaits-internet",
+    "ng-glo.monthly-plans-1-5gb-30d-n3000": "ng-glo.forfaits-internet",
+    "ng-glo.monthly-plans-13gb-30d-n10000": "ng-glo.forfaits-internet",
+    "ng-glo.monthly-plans-260mb-30d-n1000": "ng-glo.forfaits-internet",
+    "ng-glo.monthly-plans-30gb-30d-n18000": "ng-glo.forfaits-internet",
+    "ng-glo.monthly-plans-4gb-30d-n5000": "ng-glo.forfaits-internet",
+    "ng-glo.monthly-plans-8gb-30d-n7500": "ng-glo.forfaits-internet",
+    "ng-glo.weekly-plan-65mb-7d-n400": "ng-glo.forfaits-internet"
+  }
 }

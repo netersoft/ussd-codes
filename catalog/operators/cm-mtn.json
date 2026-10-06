@@ -1,0 +1,220 @@
+{
+  "id": "cm-mtn",
+  "country": "cm",
+  "name": "MTN",
+  "mccMnc": [
+    "62401"
+  ],
+  "codes": [
+    {
+      "id": "cm-mtn.solde",
+      "label": {
+        "fr": "Solde",
+        "en": "Balance"
+      },
+      "code": "*155#",
+      "category": "account"
+    },
+    {
+      "id": "cm-mtn.solde-bonus",
+      "label": {
+        "fr": "Solde bonus",
+        "en": "Bonus balance"
+      },
+      "code": "*159*2#",
+      "category": "account"
+    },
+    {
+      "id": "cm-mtn.mon-numero",
+      "label": {
+        "fr": "Connaître son numéro",
+        "en": "My number"
+      },
+      "code": "*135*8#",
+      "category": "account"
+    },
+    {
+      "id": "cm-mtn.recharge",
+      "label": {
+        "fr": "Recharge par carte",
+        "en": "Top up with a voucher"
+      },
+      "code": "*156*{voucher}#",
+      "category": "recharge",
+      "params": [
+        {
+          "key": "voucher",
+          "type": "number",
+          "label": {
+            "fr": "Code de la carte de recharge",
+            "en": "Top-up voucher code"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm-mtn.emprunter-du-credit",
+      "label": {
+        "fr": "Emprunter du crédit",
+        "en": "Borrow airtime"
+      },
+      "code": "*121*{amount}#",
+      "category": "recharge",
+      "params": [
+        {
+          "key": "amount",
+          "type": "amount",
+          "label": {
+            "fr": "Montant",
+            "en": "Amount"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm-mtn.credit-emprunte",
+      "label": {
+        "fr": "Solde du crédit emprunté",
+        "en": "Borrowed airtime balance"
+      },
+      "code": "*159*86#",
+      "category": "recharge"
+    },
+    {
+      "id": "cm-mtn.transfert-de-credit",
+      "label": {
+        "fr": "Transfert de crédit (Me2U)",
+        "en": "Airtime transfer (Me2U)"
+      },
+      "code": "*150*{amount}*{recipient}*{pin}#",
+      "category": "transfer",
+      "params": [
+        {
+          "key": "amount",
+          "type": "amount",
+          "label": {
+            "fr": "Montant",
+            "en": "Amount"
+          }
+        },
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro du bénéficiaire",
+            "en": "Recipient number"
+          }
+        },
+        {
+          "key": "pin",
+          "type": "pin",
+          "label": {
+            "fr": "Code secret",
+            "en": "PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm-mtn.bip-me",
+      "label": {
+        "fr": "Bip Me",
+        "en": "Bip Me"
+      },
+      "code": "*166*{recipient}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro du bénéficiaire",
+            "en": "Recipient number"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm-mtn.forfaits-internet",
+      "label": {
+        "fr": "Forfaits internet",
+        "en": "Data bundles"
+      },
+      "code": "*157#",
+      "category": "data"
+    },
+    {
+      "id": "cm-mtn.solde-internet",
+      "label": {
+        "fr": "Solde internet",
+        "en": "Data balance"
+      },
+      "code": "*157*99#",
+      "category": "data"
+    },
+    {
+      "id": "cm-mtn.forfait-whatsapp",
+      "label": {
+        "fr": "Forfait WhatsApp",
+        "en": "WhatsApp bundle"
+      },
+      "code": "*701#",
+      "category": "data"
+    },
+    {
+      "id": "cm-mtn.pack-sms",
+      "label": {
+        "fr": "Pack SMS",
+        "en": "SMS pack"
+      },
+      "code": "*148#",
+      "category": "services"
+    },
+    {
+      "id": "cm-mtn.bonus-sms",
+      "label": {
+        "fr": "Bonus SMS",
+        "en": "SMS bonus"
+      },
+      "code": "*159*3#",
+      "category": "services"
+    },
+    {
+      "id": "cm-mtn.numero-prefere",
+      "label": {
+        "fr": "Ajouter un numéro préféré",
+        "en": "Add a favorite number"
+      },
+      "code": "*165*1*{recipient}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro du bénéficiaire",
+            "en": "Recipient number"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm-mtn.portail",
+      "label": {
+        "fr": "Portail des services",
+        "en": "Services portal"
+      },
+      "code": "*123#",
+      "category": "services"
+    },
+    {
+      "id": "cm-mtn.mobile-money",
+      "label": {
+        "fr": "MTN MoMo",
+        "en": "MTN MoMo"
+      },
+      "code": "*126#",
+      "category": "money"
+    }
+  ]
+}

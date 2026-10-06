@@ -9,239 +9,62 @@
     {
       "id": "tg-moov.solde",
       "label": {
-        "fr": "Solde"
+        "fr": "Solde",
+        "en": "Balance"
       },
       "code": "*101#",
       "category": "account"
     },
     {
+      "id": "tg-moov.menu",
+      "label": {
+        "fr": "Menu (infos numéro, profil, offres)",
+        "en": "Menu (number, profile, offers)"
+      },
+      "code": "*100#",
+      "category": "account"
+    },
+    {
+      "id": "tg-moov.mon-numero",
+      "label": {
+        "fr": "Connaître son numéro",
+        "en": "My number"
+      },
+      "code": "*106#",
+      "category": "account"
+    },
+    {
+      "id": "tg-moov.statut-identification",
+      "label": {
+        "fr": "Statut d'identification",
+        "en": "ID registration status"
+      },
+      "code": "*202#",
+      "category": "account"
+    },
+    {
       "id": "tg-moov.recharger-un-tiers",
       "label": {
-        "fr": "Recharger un tiers"
+        "fr": "Rechargement",
+        "en": "Top up"
       },
-      "code": "*109*{voucher}*{recipient}#",
-      "category": "recharge",
-      "params": [
-        {
-          "key": "voucher",
-          "type": "number",
-          "label": {
-            "fr": "Code de la carte de recharge",
-            "en": "Top-up voucher code"
-          }
-        },
-        {
-          "key": "recipient",
-          "type": "phone",
-          "label": {
-            "fr": "Numéro du bénéficiaire",
-            "en": "Recipient number"
-          }
-        }
-      ]
-    },
-    {
-      "id": "tg-moov.solde-internet",
-      "label": {
-        "fr": "Solde Internet"
-      },
-      "code": "*400*4#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.configuration-automatique-de-terminal",
-      "label": {
-        "fr": "Configuration automatique de terminal"
-      },
-      "code": "*400*1#",
-      "category": "services"
-    },
-    {
-      "id": "tg-moov.forfait-izi-free-20mo-1j-100f",
-      "label": {
-        "fr": "Forfait iZi Free 20Mo/1j/100F"
-      },
-      "code": "*400*2*1*1#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-izi-cool-40mo-1j-200f",
-      "label": {
-        "fr": "Forfait iZi Cool 40Mo/1j/200F"
-      },
-      "code": "*400*2*1*2#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-izi-wik-500mo-7j-1300f",
-      "label": {
-        "fr": "Forfait iZi Wik 500Mo/7j/1300F"
-      },
-      "code": "*400*2*1*3#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-izi-relax-300mo-2j-500f",
-      "label": {
-        "fr": "Forfait iZi Relax 300Mo/2j/500F"
-      },
-      "code": "*400*2*1*4#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-izi-kif-100mo-1j-300f",
-      "label": {
-        "fr": "Forfait iZi Kif 100Mo/1j/300F"
-      },
-      "code": "*400*2*1*5#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-izi-small-1-5go-30j-4500f",
-      "label": {
-        "fr": "Forfait iZi Small 1.5Go/30j/4500F"
-      },
-      "code": "*400*2*2*1#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-izi-medium-3-5go-30j-10000f",
-      "label": {
-        "fr": "Forfait iZi Medium 3.5Go/30j/10000F"
-      },
-      "code": "*400*2*2*2#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-izi-large-6go-30j-15000f",
-      "label": {
-        "fr": "Forfait iZi Large 6Go/30j/15000F"
-      },
-      "code": "*400*2*2*3#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-izi-xl-12go-30j-30000f",
-      "label": {
-        "fr": "Forfait iZi XL 12Go/30j/30000F"
-      },
-      "code": "*400*2*2*4#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-izi-max",
-      "label": {
-        "fr": "Forfait iZi Max"
-      },
-      "code": "*400*2*3#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-facebook-whatsapp-illimite-50f-1j",
-      "label": {
-        "fr": "Forfait Facebook + Whatsapp illimité/50F/1j"
-      },
-      "code": "*400*2*4#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-izi-moon-600mo-500f",
-      "label": {
-        "fr": "Forfait iZi Moon 600Mo/500F"
-      },
-      "code": "*400*2*5*1#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-izi-star-1-5go-2000f",
-      "label": {
-        "fr": "Forfait iZi Star 1.5Go/2000F"
-      },
-      "code": "*400*2*5*2#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.solde-forfait-nuit",
-      "label": {
-        "fr": "Solde Forfait Nuit"
-      },
-      "code": "*400*2*5*3#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.forfait-izi-flash",
-      "label": {
-        "fr": "Forfait iZi Flash"
-      },
-      "code": "*400*2*6#",
-      "category": "data"
-    },
-    {
-      "id": "tg-moov.moovcomplices-enregistrement",
-      "label": {
-        "fr": "MoovComplices - Enregistrement"
-      },
-      "code": "*107*1*{recipient}#",
-      "category": "services",
-      "params": [
-        {
-          "key": "recipient",
-          "type": "phone",
-          "label": {
-            "fr": "Numéro",
-            "en": "Number"
-          }
-        }
-      ]
-    },
-    {
-      "id": "tg-moov.moovcomplices-suppression",
-      "label": {
-        "fr": "MoovComplices - Suppression"
-      },
-      "code": "*107*0*{recipient}#",
-      "category": "services",
-      "params": [
-        {
-          "key": "recipient",
-          "type": "phone",
-          "label": {
-            "fr": "Numéro",
-            "en": "Number"
-          }
-        }
-      ]
+      "code": "*109#",
+      "category": "recharge"
     },
     {
       "id": "tg-moov.credit-secours-au-sos-credit",
       "label": {
-        "fr": "Crédit secours au SOS crédit"
+        "fr": "Crédit secours",
+        "en": "Emergency credit"
       },
       "code": "*222#",
-      "category": "help"
-    },
-    {
-      "id": "tg-moov.paie-pour-moi",
-      "label": {
-        "fr": "Paie pour moi"
-      },
-      "code": "*112*{recipient}#",
-      "category": "help",
-      "params": [
-        {
-          "key": "recipient",
-          "type": "phone",
-          "label": {
-            "fr": "Numéro de la personne",
-            "en": "Person's number"
-          }
-        }
-      ]
+      "category": "recharge"
     },
     {
       "id": "tg-moov.transfert-de-credit",
       "label": {
-        "fr": "Transfert de crédit"
+        "fr": "Transfert de crédit",
+        "en": "Airtime transfer"
       },
       "code": "*102*{amount}*{recipient}*{pin}#",
       "category": "transfer",
@@ -273,17 +96,159 @@
       ]
     },
     {
-      "id": "tg-moov.moovkiosque-50f-jour",
+      "id": "tg-moov.code-secret",
       "label": {
-        "fr": "MoovKiosque - 50F/Jour"
+        "fr": "Transfert de crédit : changer de code secret",
+        "en": "Airtime transfer: change PIN"
       },
-      "code": "*143*303#",
+      "code": "*102*0000*{new_pin}#",
+      "category": "transfer",
+      "params": [
+        {
+          "key": "new_pin",
+          "type": "pin",
+          "label": {
+            "fr": "Nouveau code secret",
+            "en": "New PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg-moov.paie-pour-moi",
+      "label": {
+        "fr": "Paie pour moi",
+        "en": "Pay for me"
+      },
+      "code": "*112*{recipient}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro de la personne",
+            "en": "Person's number"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg-moov.moov-bip",
+      "label": {
+        "fr": "Moov Bip (rappelle-moi)",
+        "en": "Moov Bip (call me back)"
+      },
+      "code": "*108*{recipient}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro du bénéficiaire",
+            "en": "Recipient number"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg-moov.complices",
+      "label": {
+        "fr": "Numéros complices : liste",
+        "en": "Buddy numbers: list"
+      },
+      "code": "*107#",
       "category": "services"
+    },
+    {
+      "id": "tg-moov.moovcomplices-enregistrement",
+      "label": {
+        "fr": "Numéros complices : ajouter",
+        "en": "Buddy numbers: add"
+      },
+      "code": "*107*1*{recipient}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro",
+            "en": "Number"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg-moov.moovcomplices-suppression",
+      "label": {
+        "fr": "Numéros complices : supprimer",
+        "en": "Buddy numbers: remove"
+      },
+      "code": "*107*0*{recipient}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro",
+            "en": "Number"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg-moov.forfaits-internet",
+      "label": {
+        "fr": "Forfaits internet iZi",
+        "en": "iZi data bundles"
+      },
+      "code": "*400*2#",
+      "category": "data"
+    },
+    {
+      "id": "tg-moov.solde-internet",
+      "label": {
+        "fr": "Solde internet",
+        "en": "Data balance"
+      },
+      "code": "*400*4#",
+      "category": "data"
+    },
+    {
+      "id": "tg-moov.transfert-de-mega",
+      "label": {
+        "fr": "Transfert de méga",
+        "en": "Data transfer"
+      },
+      "code": "*400*3*2#",
+      "category": "data"
+    },
+    {
+      "id": "tg-moov.configuration-automatique-de-terminal",
+      "label": {
+        "fr": "Configuration internet du téléphone",
+        "en": "Phone internet settings"
+      },
+      "code": "*400*1#",
+      "category": "data"
+    },
+    {
+      "id": "tg-moov.moov-money",
+      "label": {
+        "fr": "Moov Money Flooz",
+        "en": "Moov Money Flooz"
+      },
+      "code": "*155#",
+      "category": "money"
     },
     {
       "id": "tg-moov.moov-money-transfert",
       "label": {
-        "fr": "Moov Money - Transfert"
+        "fr": "Flooz – Transfert",
+        "en": "Flooz – Transfer"
       },
       "code": "*155*1*1*{recipient}*{amount}*{pin}#",
       "category": "money",
@@ -317,7 +282,8 @@
     {
       "id": "tg-moov.moov-money-achat-de-credit",
       "label": {
-        "fr": "Moov Money - Achat de crédit"
+        "fr": "Flooz – Achat de crédit",
+        "en": "Flooz – Buy airtime"
       },
       "code": "*155*3*1*{amount}*{pin}#",
       "category": "money",
@@ -343,7 +309,8 @@
     {
       "id": "tg-moov.moov-money-recharger-une-autre-personne",
       "label": {
-        "fr": "Moov Money - Recharger une autre personne"
+        "fr": "Flooz – Recharger une autre personne",
+        "en": "Flooz – Top up someone else"
       },
       "code": "*155*3*2*{recipient}*{amount}*{pin}#",
       "category": "money",
@@ -377,15 +344,26 @@
     {
       "id": "tg-moov.moov-money-paiement-de-factures",
       "label": {
-        "fr": "Moov Money - Paiement de factures"
+        "fr": "Flooz – Paiement de factures",
+        "en": "Flooz – Pay bills"
       },
       "code": "*155*4#",
       "category": "money"
     },
     {
+      "id": "tg-moov.flooz-solde",
+      "label": {
+        "fr": "Flooz – Solde",
+        "en": "Flooz – Balance"
+      },
+      "code": "*155*6#",
+      "category": "money"
+    },
+    {
       "id": "tg-moov.moov-money-achat-chez-commercants",
       "label": {
-        "fr": "Moov Money - Achat chez commerçants"
+        "fr": "Flooz – Achat chez un commerçant",
+        "en": "Flooz – Pay a merchant"
       },
       "code": "*155*2*{merchant}*{amount}*{pin}#",
       "category": "money",
@@ -419,7 +397,8 @@
     {
       "id": "tg-moov.moov-money-retrait-flooz",
       "label": {
-        "fr": "Moov Money - Retrait Flooz"
+        "fr": "Flooz – Retrait",
+        "en": "Flooz – Cash out"
       },
       "code": "*155*5*{agent}*{amount}*{pin}#",
       "category": "money",
@@ -450,5 +429,22 @@
         }
       ]
     }
-  ]
+  ],
+  "redirects": {
+    "tg-moov.forfait-facebook-whatsapp-illimite-50f-1j": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-cool-40mo-1j-200f": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-flash": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-free-20mo-1j-100f": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-kif-100mo-1j-300f": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-large-6go-30j-15000f": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-max": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-medium-3-5go-30j-10000f": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-moon-600mo-500f": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-relax-300mo-2j-500f": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-small-1-5go-30j-4500f": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-star-1-5go-2000f": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-wik-500mo-7j-1300f": "tg-moov.forfaits-internet",
+    "tg-moov.forfait-izi-xl-12go-30j-30000f": "tg-moov.forfaits-internet",
+    "tg-moov.solde-forfait-nuit": "tg-moov.forfaits-internet"
+  }
 }

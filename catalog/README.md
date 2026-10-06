@@ -42,6 +42,7 @@ catalog/
 
 - `id`: `<country>-<operator>`, where the country is its ISO 3166-1 alpha-2 code.
 - `formerName` (optional): the name before a rebranding. Search finds the operator by both names.
+- `redirects` (optional): ids of removed codes to the id of the code replacing them (e.g. an expired bundle to the bundles menu). Favorites follow them, including those imported from the legacy app. Never reuse a redirected id.
 - `mccMnc`: the operator's SIM MCC+MNC codes. The app uses them to open on the user's operator.
 
 ### Code
@@ -89,9 +90,23 @@ A change to the format itself (a new field the app must understand) needs an app
 
 ## Data status
 
-The codes come from the legacy app (v1.3.3, last updated around 2020) and have **not been checked since**. Known points to verify:
+Checked in October 2026 (catalog v3) against the operators' own sites and the regulators' lists:
 
-- **Prices and bundles.** These change every few months, and most `data` codes are likely out of date.
-- **Etisalat Nigeria** has been renamed **9mobile** (`ng-9mobile`). Its codes are the old Etisalat ones.
-- **Togocel and Orange Niger.** These operators may also have been rebranded.
-- **MCC/MNC values.** These were filled in from public references and should be confirmed on real SIMs.
+| Operator | Sources |
+|---|---|
+| Moov Africa Bénin | moov-africa.bj/codes-utiles |
+| MTN Bénin | my.mtn.bj, mtn.bj (`*123#` bundles), ARCEP Bénin list of assigned codes |
+| Moov Africa Côte d'Ivoire | moov-africa.ci/codes-utiles, Moov Money codes |
+| MTN Côte d'Ivoire | mtn.ci/deal/codes-ussd |
+| Orange and MTN Cameroun | art.cm (regulator), orange.cm/codes-utiles |
+| Orange Mali | orangemali.com/codes-utiles |
+| Zamani Telecom (ex-Orange Niger) | zamanitelecom.com (Zamani Cash FAQ) |
+| Nigeria (all four) | NCC harmonised codes, in force since 2023 |
+| Orange Sénégal | orange.sn « Code USSD et numéros utiles » |
+| Moov Africa Togo | moov-africa.tg/codes-utiles and FAQ |
+| Yas Togo (ex-Togocel) | yas.tg FAQ and Mixx by Yas page |
+
+- **Bundles with a price** (« 100Mo/1j/350F ») were removed: their menus and prices had all changed. Each operator now has its bundles menu, which the old ids redirect to.
+- **Kept without a current source:** codes no source contradicts but none lists either, mostly voucher top-up syntaxes, Orange Mali Bip and SOS, Moov Niger's buddy numbers and credit transfer, the Zamani services other than Zamani Cash, and Orange Sénégal's Orange Money shortcuts. Check them first when a user reports a code.
+- **Missing operators:** Celtiis (Bénin), Orange Côte d'Ivoire, Moov Africa Malitel, Yas and Expresso (Sénégal), Airtel Niger.
+- **MCC/MNC values** match the public MCC/MNC tables; they are still to be confirmed on real SIMs.

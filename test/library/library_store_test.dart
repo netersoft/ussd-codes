@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -12,6 +13,10 @@ LegacyCode _row(String description, String code, String fragment, {bool isNative
 
 void main() {
   final catalog = assembleCatalog(Directory('catalog'));
+  final removedIds = {
+    for (final MapEntry(:key, :value) in (jsonDecode(File('assets/catalog/legacy_codes.json').readAsStringSync()) as Map<String, dynamic>).entries)
+      key: (value as Map<String, dynamic>).cast<String, String>(),
+  };
   late LibraryStore store;
 
   setUpAll(() => SharedPreferences.setMockInitialValues({}));
@@ -24,26 +29,42 @@ void main() {
     store = LibraryStore(prefs);
   });
 
+  test('redirectFavorites moves favorites of removed codes, once each', () async {
+    await store.writeFavorites(['a.old', 'a.kept', 'a.other-old']);
+
+    expect(await store.redirectFavorites({'a.old': 'a.new', 'a.other-old': 'a.new'}), isTrue);
+    expect(store.readFavorites(), ['a.new', 'a.kept']);
+    expect(await store.redirectFavorites({'a.old': 'a.new'}), isFalse);
+  });
+
   group('importLegacy', () {
     test('maps legacy favorites to catalog ids, by label then by code', () async {
-      await store.importLegacy((
-        codes: [
-          _row('Solde MTN', '*124#', 'bnMtn'),
-          // Label fixed in the catalog ("Consulttion" typo): matched by code.
-          _row('Consulttion de bonus data', '#145#', 'cmOrange'),
-          // Device code, listed with its brand prefix in the legacy app.
-          _row('SAMSUNG - Test du micro', '*#0283#', 'utilities'),
-          // Etisalat is now 9mobile.
-          _row('Daily Plan 10MB/24H/N100 ', '*229*3*1#', 'ngEtisalat'),
-        ],
-        country: null,
-      ), catalog);
+      await store.importLegacy(
+        (
+          codes: [
+            // Relabelled since: matched by code.
+            _row('Solde MTN', '*124#', 'bnMtn'),
+            _row('Rechargement de compte', '*188*{voucher}#', 'cmOrange'),
+            // Device code, listed with its brand prefix in the legacy app.
+            _row('SAMSUNG - Test du micro', '*#0283#', 'utilities'),
+            // Removed codes follow their redirect: an expired Etisalat (now
+            // 9mobile) bundle to the data plans, a bonus check to the data
+            // balance (code typo'd label, matched by code).
+            _row('Daily Plan 10MB/24H/N100 ', '*229*3*1#', 'ngEtisalat'),
+            _row('Consulttion de bonus data', '#145#', 'cmOrange'),
+          ],
+          country: null,
+        ),
+        catalog,
+        removedIds: removedIds,
+      );
 
       expect(store.readFavorites(), [
         'bj-mtn.solde-mtn',
-        'cm-orange.consultation-de-bonus-data',
+        'cm-orange.rechargement-de-compte',
         'device.samsung-test-du-micro',
-        'ng-9mobile.daily-plan-10mb-24h-n100',
+        'ng-9mobile.forfaits-internet',
+        'cm-orange.solde-internet',
       ]);
     });
 

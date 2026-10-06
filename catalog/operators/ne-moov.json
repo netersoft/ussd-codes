@@ -7,105 +7,47 @@
   ],
   "codes": [
     {
-      "id": "ne-moov.affichage-de-la-liste-des-cinq-numeros-complices",
+      "id": "ne-moov.solde",
       "label": {
-        "fr": "Affichage de la liste des cinq numéros complices"
+        "fr": "Solde",
+        "en": "Balance"
       },
-      "code": "*107#",
-      "category": "services"
+      "code": "*100#",
+      "category": "account"
+    },
+    {
+      "id": "ne-moov.recharge",
+      "label": {
+        "fr": "Recharge",
+        "en": "Top up"
+      },
+      "code": "*101*{voucher}#",
+      "category": "recharge",
+      "params": [
+        {
+          "key": "voucher",
+          "type": "number",
+          "label": {
+            "fr": "Code de la carte de recharge",
+            "en": "Top-up voucher code"
+          }
+        }
+      ]
     },
     {
       "id": "ne-moov.acces-au-service-de-transfert-de-credit",
       "label": {
-        "fr": "Accès au service de transfert de crédit"
+        "fr": "Transfert de crédit",
+        "en": "Airtime transfer"
       },
       "code": "*102#",
       "category": "transfer"
     },
     {
-      "id": "ne-moov.ajout-de-numero-amis-et-famille",
-      "label": {
-        "fr": "Ajout de numéro amis et famille"
-      },
-      "code": "*107*{recipient}#",
-      "category": "services",
-      "params": [
-        {
-          "key": "recipient",
-          "type": "phone",
-          "label": {
-            "fr": "Numéro",
-            "en": "Number"
-          }
-        }
-      ]
-    },
-    {
-      "id": "ne-moov.changement-de-numero-amis-et-famille",
-      "label": {
-        "fr": "Changement de numéro amis et famille"
-      },
-      "code": "*107*{recipient}*{position}#",
-      "category": "services",
-      "params": [
-        {
-          "key": "recipient",
-          "type": "phone",
-          "label": {
-            "fr": "Numéro",
-            "en": "Number"
-          }
-        },
-        {
-          "key": "position",
-          "type": "number",
-          "label": {
-            "fr": "Position (1 à 5)",
-            "en": "Position (1 to 5)"
-          }
-        }
-      ]
-    },
-    {
-      "id": "ne-moov.suppression-de-numero-amis-et-famille",
-      "label": {
-        "fr": "Suppression de numéro amis et famille"
-      },
-      "code": "*107*{position}#",
-      "category": "services",
-      "params": [
-        {
-          "key": "position",
-          "type": "number",
-          "label": {
-            "fr": "Position (1 à 5)",
-            "en": "Position (1 to 5)"
-          }
-        }
-      ]
-    },
-    {
-      "id": "ne-moov.creation-du-code-secret-de-transfert-de-credit",
-      "label": {
-        "fr": "Création du code secret de transfert de crédit"
-      },
-      "code": "*102*0000*{new_pin}#",
-      "category": "transfer",
-      "params": [
-        {
-          "key": "new_pin",
-          "type": "pin",
-          "label": {
-            "fr": "Nouveau code secret",
-            "en": "New PIN"
-          }
-        }
-      ]
-    },
-    {
       "id": "ne-moov.transfert-de-credit-a-un-autre-numero",
       "label": {
-        "fr": "Transfert de crédit à un autre numéro"
+        "fr": "Transfert de crédit à un numéro",
+        "en": "Airtime transfer to a number"
       },
       "code": "*102*{amount}*{recipient}*{pin}#",
       "category": "transfer",
@@ -132,6 +74,99 @@
           "label": {
             "fr": "Code secret",
             "en": "PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne-moov.creation-du-code-secret-de-transfert-de-credit",
+      "label": {
+        "fr": "Transfert de crédit : créer son code secret",
+        "en": "Airtime transfer: set your PIN"
+      },
+      "code": "*102*0000*{new_pin}#",
+      "category": "transfer",
+      "params": [
+        {
+          "key": "new_pin",
+          "type": "pin",
+          "label": {
+            "fr": "Nouveau code secret",
+            "en": "New PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne-moov.affichage-de-la-liste-des-cinq-numeros-complices",
+      "label": {
+        "fr": "Numéros complices : liste",
+        "en": "Buddy numbers: list"
+      },
+      "code": "*107#",
+      "category": "services"
+    },
+    {
+      "id": "ne-moov.ajout-de-numero-amis-et-famille",
+      "label": {
+        "fr": "Numéros complices : ajouter",
+        "en": "Buddy numbers: add"
+      },
+      "code": "*107*{recipient}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro",
+            "en": "Number"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne-moov.changement-de-numero-amis-et-famille",
+      "label": {
+        "fr": "Numéros complices : remplacer",
+        "en": "Buddy numbers: replace"
+      },
+      "code": "*107*{recipient}*{position}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro",
+            "en": "Number"
+          }
+        },
+        {
+          "key": "position",
+          "type": "number",
+          "label": {
+            "fr": "Position (1 à 5)",
+            "en": "Position (1 to 5)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne-moov.suppression-de-numero-amis-et-famille",
+      "label": {
+        "fr": "Numéros complices : supprimer",
+        "en": "Buddy numbers: remove"
+      },
+      "code": "*107*{position}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "position",
+          "type": "number",
+          "label": {
+            "fr": "Position (1 à 5)",
+            "en": "Position (1 to 5)"
           }
         }
       ]

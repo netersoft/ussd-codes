@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:ussd_codes/core/providers/catalog_provider.dart';
+import 'package:ussd_codes/core/providers/library_provider.dart';
 import 'package:ussd_codes/core/services/shared_preferences/keys.dart';
 import 'package:ussd_codes/core/services/shared_preferences/service.dart';
 import 'package:ussd_codes/view/screens/operators/operators_screen.dart';
@@ -20,7 +23,7 @@ void main() {
 
     expect(find.text('🇧🇯  Bénin'), findsOneWidget);
     expect(find.byIcon(Icons.sim_card_outlined), findsOneWidget);
-    expect(find.text('Solde MTN'), findsOneWidget);
+    expect(find.text('Mon compte (solde, infos personnelles)'), findsOneWidget);
   });
 
   testWidgets('the country picked by the user wins over the SIM', (tester) async {
@@ -28,13 +31,13 @@ void main() {
     await pumpApp(tester, const OperatorsScreen(), telephony: FakeTelephonyService(sims: ['61603']));
 
     expect(find.text('🇸🇳  Sénégal'), findsOneWidget);
-    expect(find.text('Solde MTN'), findsNothing);
+    expect(find.text('Mon compte (solde, infos personnelles)'), findsNothing);
   });
 
   testWidgets('a star adds the code to the favorites', (tester) async {
     await pumpApp(tester, const OperatorsScreen(), telephony: FakeTelephonyService(sims: ['61603']));
 
-    final tile = find.ancestor(of: find.text('Solde MTN'), matching: find.byType(ListTile));
+    final tile = find.ancestor(of: find.text('Mon compte (solde, infos personnelles)'), matching: find.byType(ListTile));
     await tester.tap(find.descendant(of: tile, matching: find.byIcon(Icons.star_border)));
     await tester.pump();
 
@@ -47,10 +50,23 @@ void main() {
     await pumpApp(tester, const OperatorsScreen(), telephony: FakeTelephonyService(sims: ['61603']));
 
     final favoritesHeader = tester.getTopLeft(find.text('FAVORIS'));
-    final favorite = tester.getTopLeft(find.text('MTN Bip Me'));
-    final balance = tester.getTopLeft(find.text('Solde MTN'));
+    final favorite = tester.getTopLeft(find.text('Bip Me'));
+    final balance = tester.getTopLeft(find.text('Mon compte (solde, infos personnelles)'));
     expect(favorite.dy, greaterThan(favoritesHeader.dy));
     expect(favorite.dy, lessThan(balance.dy));
-    expect(find.text('MTN Bip Me'), findsOneWidget);
+    expect(find.text('Bip Me'), findsOneWidget);
+  });
+
+  testWidgets('a favorite of a removed code moves to the code replacing it', (tester) async {
+    // An expired bundle of the 2020 catalog, now the bundles menu.
+    await prefs.setStringList(PrefKeys.favorites, ['bj-mtn.forfait-internet-5mo-1j-100f']);
+    await pumpApp(tester, const OperatorsScreen(), telephony: FakeTelephonyService(sims: ['61603']));
+    final container = ProviderScope.containerOf(tester.element(find.byType(OperatorsScreen)));
+    await tester.runAsync(() => container.read(favoritesProvider.notifier).followRedirects(container.read(currentCatalogProvider).requireValue));
+    await tester.pumpAndSettle();
+
+    expect(prefs.getListString(PrefKeys.favorites), ['bj-mtn.forfaits-internet']);
+    final tile = find.ancestor(of: find.text('Forfaits internet (Maxi)'), matching: find.byType(ListTile)).first;
+    expect(find.descendant(of: tile, matching: find.byIcon(Icons.star)), findsOneWidget);
   });
 }

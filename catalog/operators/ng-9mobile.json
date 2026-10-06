@@ -8,92 +8,90 @@
   ],
   "codes": [
     {
-      "id": "ng-9mobile.daily-plan-10mb-24h-n100",
+      "id": "ng-9mobile.solde",
       "label": {
-        "en": "Daily Plan 10MB/24H/N100"
+        "fr": "Solde",
+        "en": "Balance"
       },
-      "code": "*229*3*1#",
+      "code": "*310#",
+      "category": "account"
+    },
+    {
+      "id": "ng-9mobile.recharge",
+      "label": {
+        "fr": "Recharge",
+        "en": "Top up"
+      },
+      "code": "*311*{voucher}#",
+      "category": "recharge",
+      "params": [
+        {
+          "key": "voucher",
+          "type": "number",
+          "label": {
+            "fr": "Code de la carte de recharge",
+            "en": "Top-up voucher code"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng-9mobile.forfaits-internet",
+      "label": {
+        "fr": "Forfaits internet",
+        "en": "Data plans"
+      },
+      "code": "*312#",
       "category": "data"
     },
     {
-      "id": "ng-9mobile.weekly-plan-50mb-7d-n500",
+      "id": "ng-9mobile.solde-internet",
       "label": {
-        "en": "Weekly Plan 50MB/7D/N500"
+        "fr": "Solde internet",
+        "en": "Data balance"
       },
-      "code": "*229*3*4#",
+      "code": "*323#",
       "category": "data"
     },
     {
-      "id": "ng-9mobile.monthly-plans-200mb-30d-n1000",
+      "id": "ng-9mobile.emprunter",
       "label": {
-        "en": "Monthly Plans 200MB/30D/N1000"
+        "fr": "Emprunter du crédit ou des données",
+        "en": "Borrow airtime or data"
       },
-      "code": "*229*2*1#",
-      "category": "data"
+      "code": "*303#",
+      "category": "recharge"
     },
     {
-      "id": "ng-9mobile.monthly-plans-500mb-30d-n2000",
+      "id": "ng-9mobile.partager",
       "label": {
-        "en": "Monthly Plans 500MB/30D/N2000"
+        "fr": "Partager du crédit ou des données",
+        "en": "Share airtime or data"
       },
-      "code": "*229*2*2#",
-      "category": "data"
+      "code": "*321#",
+      "category": "transfer"
     },
     {
-      "id": "ng-9mobile.monthly-plans-1-5gb-30d-n4000",
+      "id": "ng-9mobile.nin",
       "label": {
-        "en": "Monthly Plans 1.5GB/30D/N4000"
+        "fr": "Vérification NIN et liaison NIN-SIM",
+        "en": "NIN verification and NIN-SIM linkage"
       },
-      "code": "*229*2*4#",
-      "category": "data"
-    },
-    {
-      "id": "ng-9mobile.monthly-plans-3gb-30d-n6500",
-      "label": {
-        "en": "Monthly Plans 3GB/30D/N6500"
-      },
-      "code": "*229*2*3#",
-      "category": "data"
-    },
-    {
-      "id": "ng-9mobile.monthly-plans-6gb-30d-n8000",
-      "label": {
-        "en": "Monthly Plans 6GB/30D/N8000"
-      },
-      "code": "*229*2*5#",
-      "category": "data"
-    },
-    {
-      "id": "ng-9mobile.monthly-plans-10gb-30d-n10000",
-      "label": {
-        "en": "Monthly Plans 10GB/30D/N10000"
-      },
-      "code": "*229*4*1#",
-      "category": "data"
-    },
-    {
-      "id": "ng-9mobile.monthly-plans-15gb-30d-n15000",
-      "label": {
-        "en": "Monthly Plans 15GB/30D/N15000"
-      },
-      "code": "*229*4*2#",
-      "category": "data"
-    },
-    {
-      "id": "ng-9mobile.monthly-plans-20gb-30d-n18000",
-      "label": {
-        "en": "Monthly Plans 20GB/30D/N18000"
-      },
-      "code": "*229*4*3#",
-      "category": "data"
-    },
-    {
-      "id": "ng-9mobile.night-weekends-9pm-6am-x-fri-mon-30d-n4000",
-      "label": {
-        "en": "Night & Weekends (9pm-6am x Fri-Mon) 30D/N4000"
-      },
-      "code": "*229*4*3#",
+      "code": "*996#",
       "category": "services"
     }
-  ]
+  ],
+  "redirects": {
+    "ng-9mobile.daily-plan-10mb-24h-n100": "ng-9mobile.forfaits-internet",
+    "ng-9mobile.monthly-plans-1-5gb-30d-n4000": "ng-9mobile.forfaits-internet",
+    "ng-9mobile.monthly-plans-10gb-30d-n10000": "ng-9mobile.forfaits-internet",
+    "ng-9mobile.monthly-plans-15gb-30d-n15000": "ng-9mobile.forfaits-internet",
+    "ng-9mobile.monthly-plans-200mb-30d-n1000": "ng-9mobile.forfaits-internet",
+    "ng-9mobile.monthly-plans-20gb-30d-n18000": "ng-9mobile.forfaits-internet",
+    "ng-9mobile.monthly-plans-3gb-30d-n6500": "ng-9mobile.forfaits-internet",
+    "ng-9mobile.monthly-plans-500mb-30d-n2000": "ng-9mobile.forfaits-internet",
+    "ng-9mobile.monthly-plans-6gb-30d-n8000": "ng-9mobile.forfaits-internet",
+    "ng-9mobile.night-weekends-9pm-6am-x-fri-mon-30d-n4000": "ng-9mobile.forfaits-internet",
+    "ng-9mobile.weekly-plan-50mb-7d-n500": "ng-9mobile.forfaits-internet"
+  }
 }
