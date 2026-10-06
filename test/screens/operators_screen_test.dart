@@ -41,4 +41,16 @@ void main() {
     expect(prefs.getListString(PrefKeys.favorites), ['bj-mtn.solde-mtn']);
     expect(find.descendant(of: tile, matching: find.byIcon(Icons.star)), findsOneWidget);
   });
+
+  testWidgets('favorites come first in the operator list, like in the legacy app', (tester) async {
+    await prefs.setStringList(PrefKeys.favorites, ['bj-mtn.mtn-bip-me']);
+    await pumpApp(tester, const OperatorsScreen(), telephony: FakeTelephonyService(sims: ['61603']));
+
+    final favoritesHeader = tester.getTopLeft(find.text('FAVORIS'));
+    final favorite = tester.getTopLeft(find.text('MTN Bip Me'));
+    final balance = tester.getTopLeft(find.text('Solde MTN'));
+    expect(favorite.dy, greaterThan(favoritesHeader.dy));
+    expect(favorite.dy, lessThan(balance.dy));
+    expect(find.text('MTN Bip Me'), findsOneWidget);
+  });
 }

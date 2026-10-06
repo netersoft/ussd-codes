@@ -76,6 +76,17 @@ class TelephonyService {
     return (await Permission.phone.request()).isGranted;
   }
 
+  /// Opens the Play In-App Review flow (Android only). Returns whether it ran.
+  Future<bool> requestReview() async {
+    if (!_isAndroid) return false;
+    try {
+      return (await _channel.invokeMethod<bool>('requestReview')) ?? false;
+    } on PlatformException catch (e) {
+      LogHelper.w('Unable to request a review', error: e);
+      return false;
+    }
+  }
+
   /// What the legacy app saved, if it was installed before this version.
   Future<LegacyData?> readLegacyData() async {
     if (!_isAndroid) return null;

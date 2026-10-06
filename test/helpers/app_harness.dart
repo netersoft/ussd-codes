@@ -16,6 +16,8 @@ import 'test_utils.dart';
 class FakeTelephonyService extends TelephonyService {
   final List<String> sims;
   final dialed = <({String code, bool direct})>[];
+  int reviewRequests = 0;
+  bool reviewAvailable = true;
 
   FakeTelephonyService({this.sims = const []});
 
@@ -30,6 +32,12 @@ class FakeTelephonyService extends TelephonyService {
 
   @override
   Future<LegacyData?> readLegacyData() async => null;
+
+  @override
+  Future<bool> requestReview() async {
+    reviewRequests++;
+    return reviewAvailable;
+  }
 }
 
 /// Real preferences (cleared), registered in the locator like at runtime.

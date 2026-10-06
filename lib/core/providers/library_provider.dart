@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../catalog/models.dart';
 import '../library/library_store.dart';
 import '../services/di/locator.dart';
+import '../services/review/service.dart';
 import '../services/shared_preferences/keys.dart';
 import '../services/shared_preferences/service.dart';
 import 'catalog_provider.dart';
@@ -99,11 +102,16 @@ class DirectCall extends _$DirectCall {
   }
 }
 
+@Riverpod(keepAlive: true)
+ReviewPrompt reviewPrompt(Ref ref) => ReviewPrompt(locator<SharedPreferencesService>(), ref.watch(telephonyServiceProvider));
+
 /// One-time work before the first screen: the catalog is loaded and what the
-/// legacy app saved (favorites, personal codes, country) is imported.
+/// legacy app saved (favorites, personal codes, country) is imported. Also
+/// counts the launch for the review prompt.
 @Riverpod(keepAlive: true)
 Future<void> appStartup(Ref ref) async {
   final catalog = await ref.read(currentCatalogProvider.future);
+  unawaited(ref.read(reviewPromptProvider).onLaunch());
   final store = ref.read(libraryStoreProvider);
   if (store.legacyImported) return;
 

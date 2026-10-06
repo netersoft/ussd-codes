@@ -130,4 +130,7 @@ flutter {
 
 dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
+    // Play In-App Review, called from MainActivity (the in_app_review plugin
+    // still applies kotlin-android, which breaks AGP 9 built-in Kotlin).
+    implementation 'com.google.android.play:review:2.0.2'
 }
