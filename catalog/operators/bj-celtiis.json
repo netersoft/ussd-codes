@@ -1,0 +1,73 @@
+{
+  "id": "bj-celtiis",
+  "country": "bj",
+  "name": "Celtiis",
+  "mccMnc": [
+    "61607"
+  ],
+  "codes": [
+    {
+      "id": "bj-celtiis.solde",
+      "label": {
+        "fr": "Solde et consommation",
+        "en": "Balance and usage"
+      },
+      "code": "*104#",
+      "category": "account"
+    },
+    {
+      "id": "bj-celtiis.forfaits-internet",
+      "label": {
+        "fr": "Forfaits internet",
+        "en": "Data bundles"
+      },
+      "code": "*199*2#",
+      "category": "data"
+    },
+    {
+      "id": "bj-celtiis.solde-internet",
+      "label": {
+        "fr": "Solde forfait internet",
+        "en": "Data balance"
+      },
+      "code": "*104*2*2*1#",
+      "category": "data"
+    },
+    {
+      "id": "bj-celtiis.illiminet",
+      "label": {
+        "fr": "Forfaits IllimiNet",
+        "en": "IllimiNet bundles"
+      },
+      "code": "*199*8#",
+      "category": "data"
+    },
+    {
+      "id": "bj-celtiis.solde-illiminet",
+      "label": {
+        "fr": "Solde IllimiNet",
+        "en": "IllimiNet balance"
+      },
+      "code": "*104*2*2*8#",
+      "category": "data"
+    },
+    {
+      "id": "bj-celtiis.fidelite",
+      "label": {
+        "fr": "Programme de fidélité",
+        "en": "Loyalty program"
+      },
+      "code": "*133#",
+      "category": "services"
+    },
+    {
+      "id": "bj-celtiis.celtiis-cash",
+      "label": {
+        "fr": "Celtiis Cash",
+        "en": "Celtiis Cash"
+      },
+      "code": "*889#",
+      "category": "money"
+    }
+  ]
+}

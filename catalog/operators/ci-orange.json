@@ -1,0 +1,280 @@
+{
+  "id": "ci-orange",
+  "country": "ci",
+  "name": "Orange",
+  "mccMnc": [
+    "61203"
+  ],
+  "codes": [
+    {
+      "id": "ci-orange.solde",
+      "label": {
+        "fr": "Solde",
+        "en": "Balance"
+      },
+      "code": "#122#",
+      "category": "account"
+    },
+    {
+      "id": "ci-orange.mon-numero",
+      "label": {
+        "fr": "Connaître son numéro",
+        "en": "My number"
+      },
+      "code": "#99#",
+      "category": "account"
+    },
+    {
+      "id": "ci-orange.changer-de-profil",
+      "label": {
+        "fr": "Changer de profil",
+        "en": "Change your plan"
+      },
+      "code": "#121#",
+      "category": "account"
+    },
+    {
+      "id": "ci-orange.code-puk",
+      "label": {
+        "fr": "Connaître son code PUK",
+        "en": "My PUK code"
+      },
+      "code": "#124*61#",
+      "category": "account"
+    },
+    {
+      "id": "ci-orange.credit-de-depannage",
+      "label": {
+        "fr": "Crédit de dépannage",
+        "en": "Emergency credit"
+      },
+      "code": "#170#",
+      "category": "recharge"
+    },
+    {
+      "id": "ci-orange.transfert-de-credit",
+      "label": {
+        "fr": "Transfert de crédit",
+        "en": "Airtime transfer"
+      },
+      "code": "#124*34#",
+      "category": "transfer"
+    },
+    {
+      "id": "ci-orange.transfert-de-data",
+      "label": {
+        "fr": "Transfert de data / Data famille",
+        "en": "Data transfer / family data"
+      },
+      "code": "#222#",
+      "category": "data"
+    },
+    {
+      "id": "ci-orange.pass-internet",
+      "label": {
+        "fr": "Acheter un pass internet",
+        "en": "Buy a data pass"
+      },
+      "code": "#149*31#",
+      "category": "data"
+    },
+    {
+      "id": "ci-orange.solde-internet",
+      "label": {
+        "fr": "Solde internet",
+        "en": "Data balance"
+      },
+      "code": "#149*32#",
+      "category": "data"
+    },
+    {
+      "id": "ci-orange.pass-internet-tiers",
+      "label": {
+        "fr": "Pass internet pour un tiers",
+        "en": "Data pass for someone"
+      },
+      "code": "#149*33#",
+      "category": "data"
+    },
+    {
+      "id": "ci-orange.pass-mix",
+      "label": {
+        "fr": "Pass Mix",
+        "en": "Mix pass"
+      },
+      "code": "#111*11#",
+      "category": "data"
+    },
+    {
+      "id": "ci-orange.parametres-internet",
+      "label": {
+        "fr": "Paramètres internet",
+        "en": "Internet settings"
+      },
+      "code": "#124*64#",
+      "category": "data"
+    },
+    {
+      "id": "ci-orange.portail",
+      "label": {
+        "fr": "Portail Orange",
+        "en": "Orange portal"
+      },
+      "code": "#124#",
+      "category": "services"
+    },
+    {
+      "id": "ci-orange.numeros-favoris",
+      "label": {
+        "fr": "Numéros favoris",
+        "en": "Favorite numbers"
+      },
+      "code": "#221#",
+      "category": "services"
+    },
+    {
+      "id": "ci-orange.pass-international",
+      "label": {
+        "fr": "Pass international",
+        "en": "International pass"
+      },
+      "code": "#124*51#",
+      "category": "services"
+    },
+    {
+      "id": "ci-orange.orange-tv",
+      "label": {
+        "fr": "TV d'Orange",
+        "en": "Orange TV"
+      },
+      "code": "#101#",
+      "category": "services"
+    },
+    {
+      "id": "ci-orange.pharmacies-de-garde",
+      "label": {
+        "fr": "Pharmacies de garde",
+        "en": "On-duty pharmacies"
+      },
+      "code": "#127#",
+      "category": "help"
+    },
+    {
+      "id": "ci-orange.orange-money",
+      "label": {
+        "fr": "Orange Money",
+        "en": "Orange Money"
+      },
+      "code": "#144#",
+      "category": "money"
+    },
+    {
+      "id": "ci-orange.om-transfert-national",
+      "label": {
+        "fr": "Orange Money – Transfert national",
+        "en": "Orange Money – National transfer"
+      },
+      "code": "#144*11#",
+      "category": "money"
+    },
+    {
+      "id": "ci-orange.om-transfert-tous-reseaux",
+      "label": {
+        "fr": "Orange Money – Transfert tous réseaux",
+        "en": "Orange Money – Transfer to any network"
+      },
+      "code": "#144*12#",
+      "category": "money"
+    },
+    {
+      "id": "ci-orange.om-transfert-international",
+      "label": {
+        "fr": "Orange Money – Transfert international",
+        "en": "Orange Money – International transfer"
+      },
+      "code": "#144*13#",
+      "category": "money"
+    },
+    {
+      "id": "ci-orange.om-recharge",
+      "label": {
+        "fr": "Orange Money – Recharger son numéro",
+        "en": "Orange Money – Top up your number"
+      },
+      "code": "#144*21#",
+      "category": "money"
+    },
+    {
+      "id": "ci-orange.om-recharge-tiers",
+      "label": {
+        "fr": "Orange Money – Recharger un tiers",
+        "en": "Orange Money – Top up someone"
+      },
+      "code": "#144*22#",
+      "category": "money"
+    },
+    {
+      "id": "ci-orange.om-pass-internet",
+      "label": {
+        "fr": "Orange Money – Pass internet",
+        "en": "Orange Money – Data pass"
+      },
+      "code": "#144*25#",
+      "category": "money"
+    },
+    {
+      "id": "ci-orange.om-facture-cie",
+      "label": {
+        "fr": "Orange Money – Facture CIE",
+        "en": "Orange Money – CIE bill"
+      },
+      "code": "#144*411#",
+      "category": "money"
+    },
+    {
+      "id": "ci-orange.om-facture-sodeci",
+      "label": {
+        "fr": "Orange Money – Facture SODECI",
+        "en": "Orange Money – SODECI bill"
+      },
+      "code": "#144*412#",
+      "category": "money"
+    },
+    {
+      "id": "ci-orange.om-solde",
+      "label": {
+        "fr": "Orange Money – Solde",
+        "en": "Orange Money – Balance"
+      },
+      "code": "#144*81#",
+      "category": "money"
+    },
+    {
+      "id": "ci-orange.om-code-secret",
+      "label": {
+        "fr": "Orange Money – Changer de code secret",
+        "en": "Orange Money – Change PIN"
+      },
+      "code": "#144*83#",
+      "category": "money"
+    },
+    {
+      "id": "ci-orange.om-transactions",
+      "label": {
+        "fr": "Orange Money – 5 dernières transactions",
+        "en": "Orange Money – Last 5 transactions"
+      },
+      "code": "#144*84#",
+      "category": "money"
+    },
+    {
+      "id": "ci-orange.om-service-client",
+      "label": {
+        "fr": "Orange Money – Service client",
+        "en": "Orange Money – Customer service"
+      },
+      "code": "#144*96#",
+      "category": "help"
+    }
+  ]
+}

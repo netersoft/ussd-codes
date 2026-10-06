@@ -90,23 +90,29 @@ A change to the format itself (a new field the app must understand) needs an app
 
 ## Data status
 
-Checked in October 2026 (catalog v3) against the operators' own sites and the regulators' lists:
+Checked in October 2026 (catalogs v3 and v4) against the operators' own sites and the regulators' lists:
 
 | Operator | Sources |
 |---|---|
 | Moov Africa Bénin | moov-africa.bj/codes-utiles |
+| Celtiis (Bénin) | Celtiis' official X account and celtiis.bj (Celtiis Cash) |
 | MTN Bénin | my.mtn.bj, mtn.bj (`*123#` bundles), ARCEP Bénin list of assigned codes |
 | Moov Africa Côte d'Ivoire | moov-africa.ci/codes-utiles, Moov Money codes |
 | MTN Côte d'Ivoire | mtn.ci/deal/codes-ussd |
+| Orange Côte d'Ivoire | business.orange.ci/codes-pratiques, orange.ci Orange Money codes |
 | Orange and MTN Cameroun | art.cm (regulator), orange.cm/codes-utiles |
 | Orange Mali | orangemali.com/codes-utiles |
+| Moov Africa Malitel | Moov Africa Malitel's Facebook page (Moov Money only) |
+| Airtel Niger | Airtel Niger's X account, 2018 (balance only) |
 | Zamani Telecom (ex-Orange Niger) | zamanitelecom.com (Zamani Cash FAQ) |
 | Nigeria (all four) | NCC harmonised codes, in force since 2023 |
 | Orange Sénégal | orange.sn « Code USSD et numéros utiles » |
+| Yas Sénégal (ex-Free) | yas.sn, list of USSD codes (2026) |
 | Moov Africa Togo | moov-africa.tg/codes-utiles and FAQ |
 | Yas Togo (ex-Togocel) | yas.tg FAQ and Mixx by Yas page |
 
 - **Bundles with a price** (« 100Mo/1j/350F ») were removed: their menus and prices had all changed. Each operator now has its bundles menu, which the old ids redirect to.
 - **Kept without a current source:** codes no source contradicts but none lists either, mostly voucher top-up syntaxes, Orange Mali Bip and SOS, Moov Niger's buddy numbers and credit transfer, the Zamani services other than Zamani Cash, and Orange Sénégal's Orange Money shortcuts. Check them first when a user reports a code.
-- **Missing operators:** Celtiis (Bénin), Orange Côte d'Ivoire, Moov Africa Malitel, Yas and Expresso (Sénégal), Airtel Niger.
+- **Thin operators:** Moov Africa Malitel and Airtel Niger have only the codes an official source lists; add codes as users report them.
+- **Missing operator:** Expresso (Sénégal), for lack of an official list (third-party sites give `*222#` for the balance).
 - **MCC/MNC values** match the public MCC/MNC tables; they are still to be confirmed on real SIMs.
