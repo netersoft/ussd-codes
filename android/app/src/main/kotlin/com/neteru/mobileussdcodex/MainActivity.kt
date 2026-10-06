@@ -23,6 +23,7 @@ class MainActivity : FlutterActivity() {
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "ussd_codes/telephony").setMethodCallHandler { call, result ->
             when (call.method) {
                 "getSimOperators" -> result.success(simOperators())
+                "getNetworkCountries" -> result.success(networkCountries())
                 "dial" -> result.success(dial(call.argument<String>("code")!!, call.argument<Boolean>("direct") ?: false))
                 "readLegacyData" -> result.success(readLegacyData())
                 "requestReview" -> requestReview { shown -> result.success(shown) }
@@ -100,6 +101,22 @@ class MainActivity : FlutterActivity() {
 
         val operators = subscriptionIds.map { telephony.createForSubscriptionId(it).simOperator } + telephony.simOperator
         return operators.filter { !it.isNullOrEmpty() && it.length >= 5 }.distinct()
+    }
+
+    /**
+     * ISO codes (lowercase) of the countries of the networks the phone is
+     * registered on, voice SIM first: where the user is, even when roaming.
+     * Needs no permission; empty without signal or in airplane mode.
+     */
+    private fun networkCountries(): List<String> {
+        val telephony = getSystemService(TelephonyManager::class.java) ?: return emptyList()
+        val subscriptionIds = listOf(
+            SubscriptionManager.getDefaultVoiceSubscriptionId(),
+            SubscriptionManager.getDefaultDataSubscriptionId(),
+        ).filter { it != SubscriptionManager.INVALID_SUBSCRIPTION_ID }.distinct()
+
+        val countries = subscriptionIds.map { telephony.createForSubscriptionId(it).networkCountryIso } + telephony.networkCountryIso
+        return countries.filter { !it.isNullOrEmpty() }.map { it.lowercase() }.distinct()
     }
 
     /**

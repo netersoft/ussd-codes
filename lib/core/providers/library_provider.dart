@@ -73,7 +73,8 @@ ResolvedCode? resolvedCode(Ref ref, String id) {
   return (code: entry.code, operator: entry.operator, isCustom: false);
 }
 
-/// Country picked by the user (null until they pick one).
+/// Country whose codes are shown: the one the phone is in, or the one the
+/// user picked (null until either is known).
 @Riverpod(keepAlive: true)
 class SelectedCountry extends _$SelectedCountry {
   SharedPreferencesService get _prefs => locator<SharedPreferencesService>();
@@ -84,6 +85,22 @@ class SelectedCountry extends _$SelectedCountry {
   Future<void> select(String countryId) async {
     state = countryId;
     await _prefs.setString(PrefKeys.selectedCountry, countryId);
+  }
+
+  /// Switches to the country of the network the phone is on, when the
+  /// catalog has it and it changed since the last detection: a country
+  /// picked by hand stays until the user moves. Returns the new country when
+  /// it replaced another one, for the UI to say so.
+  Future<Country?> followNetwork(Catalog catalog) async {
+    final networks = await ref.read(telephonyServiceProvider).networkCountries();
+    final detected = networks.map(catalog.countryById).nonNulls.firstOrNull;
+    if (detected == null || detected.id == _prefs.getString(PrefKeys.detectedCountry)) return null;
+
+    await _prefs.setString(PrefKeys.detectedCountry, detected.id);
+    final previous = state;
+    if (previous == detected.id) return null;
+    await select(detected.id);
+    return previous == null ? null : detected;
   }
 }
 
@@ -105,13 +122,19 @@ class DirectCall extends _$DirectCall {
 @Riverpod(keepAlive: true)
 ReviewPrompt reviewPrompt(Ref ref) => ReviewPrompt(locator<SharedPreferencesService>(), ref.watch(telephonyServiceProvider));
 
-/// One-time work before the first screen: the catalog is loaded and what the
-/// legacy app saved (favorites, personal codes, country) is imported. Also
-/// counts the launch for the review prompt.
+/// One-time work before the first screen: the catalog is loaded, what the
+/// legacy app saved (favorites, personal codes, country) is imported and the
+/// country the phone is in is selected. Also counts the launch for the
+/// review prompt. Returns the country selected in place of another one.
 @Riverpod(keepAlive: true)
-Future<void> appStartup(Ref ref) async {
+Future<Country?> appStartup(Ref ref) async {
   final catalog = await ref.read(currentCatalogProvider.future);
   unawaited(ref.read(reviewPromptProvider).onLaunch());
+  await _importLegacy(ref, catalog);
+  return ref.read(selectedCountryProvider.notifier).followNetwork(catalog);
+}
+
+Future<void> _importLegacy(Ref ref, Catalog catalog) async {
   final store = ref.read(libraryStoreProvider);
   if (store.legacyImported) return;
 

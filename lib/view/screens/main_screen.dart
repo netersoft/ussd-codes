@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/catalog/models.dart';
+import '../../core/providers/catalog_provider.dart';
 import '../../core/providers/library_provider.dart';
 import '../../core/routes/app_route.dart';
 import '../../core/services/i18n/translations.g.dart';
+import '../components/codes/code_texts.dart';
 import '../components/misc/status.dart';
 import '../themes/app_theme.dart';
 import 'device/device_codes_screen.dart';
@@ -22,15 +25,45 @@ class MainScreen extends ConsumerStatefulWidget {
 class _MainScreenState extends ConsumerState<MainScreen> {
   int _index = 0;
 
+  late final AppLifecycleListener _lifecycle;
+
   @override
   void initState() {
     super.initState();
     AppTheme.setStatusBarColor();
+    // The user may have travelled while the app was in the background.
+    _lifecycle = AppLifecycleListener(onResume: _followNetwork);
 
     // The native splash stays up until the catalog is ready.
     ref.listenManual(appStartupProvider, (_, startup) {
       if (!startup.isLoading) FlutterNativeSplash.remove();
+      if (startup.value case final country?) _showCountryDetected(country);
     }, fireImmediately: true);
+  }
+
+  @override
+  void dispose() {
+    _lifecycle.dispose();
+    super.dispose();
+  }
+
+  Future<void> _followNetwork() async {
+    final catalog = ref.read(currentCatalogProvider).value;
+    if (catalog == null || !ref.read(appStartupProvider).hasValue) return;
+    final country = await ref.read(selectedCountryProvider.notifier).followNetwork(catalog);
+    if (country != null && mounted) _showCountryDetected(country);
+  }
+
+  void _showCountryDetected(Country country) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(context.t.countryDetected(country: country.displayName)),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    });
   }
 
   @override

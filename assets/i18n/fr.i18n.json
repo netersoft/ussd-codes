@@ -64,6 +64,7 @@
   "secretNotice": "Votre code secret n'est jamais enregistré.",
   "requiredField": "Champ obligatoire",
   "pickContact": "Choisir un contact",
+  "countryDetected": "Pays détecté : ${country}",
   "digitsOnly": "Chiffres uniquement",
 
   "addCode": "Ajouter un code",

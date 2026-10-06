@@ -41,6 +41,18 @@ class TelephonyService {
     }
   }
 
+  /// ISO codes (lowercase) of the countries whose network the phone is on,
+  /// even when roaming (Android only). Empty without signal.
+  Future<List<String>> networkCountries() async {
+    if (!_isAndroid) return const [];
+    try {
+      return (await _channel.invokeListMethod<String>('getNetworkCountries')) ?? const [];
+    } on PlatformException catch (e) {
+      LogHelper.w('Unable to read the network country', error: e);
+      return const [];
+    }
+  }
+
   /// Runs [code]. With [direct], asks for the phone permission once and
   /// calls straight away; otherwise (or if refused) opens the dialer with the
   /// code. Device codes are also copied, since some dialers only run them
