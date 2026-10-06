@@ -16,7 +16,7 @@
 
 <h2>Running codes and the Phone permission</h2>
 <p>On Android, when "Run codes directly" is on, the app asks for the Phone permission the first time you run a code, then dials codes directly. If you decline or turn the option off, the code shows in the dialer and you place the call yourself. On iOS, the code is copied to the clipboard for you to paste in the dialer.</p>
-<p>A USSD code is handled by your operator, just as if you typed it yourself. The operator's reply is shown by the system: the app does not read or store it.</p>
+<p>A USSD code is handled by your operator, just as if you typed it yourself. On Android 8 and later, in direct mode, the app shows the operator's reply. That reply stays on the device: it is neither stored nor transmitted. Otherwise, the system shows the reply and the app does not read it.</p>
 
 <h2>Contacts</h2>
 <p>On Android, to fill in a phone number in a code, you can pick a contact in the system contact picker. The app only receives the number you picked: it does not ask for the Contacts permission and has no access to the rest of your contacts. That number is only used to compose the code and is not kept.</p>

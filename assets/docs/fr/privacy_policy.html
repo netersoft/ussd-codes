@@ -16,7 +16,7 @@
 
 <h2>Exécution des codes et autorisation Téléphone</h2>
 <p>Sur Android, quand l'option « Lancer l'appel directement » est activée, l'application demande l'autorisation Téléphone au premier code exécuté, puis compose le code directement. Si vous refusez ou désactivez l'option, le code s'affiche dans le composeur et c'est vous qui lancez l'appel. Sur iOS, le code est copié dans le presse-papiers pour que vous le colliez dans le composeur.</p>
-<p>Un code USSD est traité par votre opérateur, comme si vous le tapiez vous-même. La réponse de l'opérateur est affichée par le système : l'application ne la lit pas et ne l'enregistre pas.</p>
+<p>Un code USSD est traité par votre opérateur, comme si vous le tapiez vous-même. Sur Android 8 et plus, en mode direct, l'application affiche la réponse de l'opérateur. Cette réponse reste sur l'appareil : elle n'est ni enregistrée ni transmise. Dans les autres cas, la réponse est affichée par le système et l'application ne la lit pas.</p>
 
 <h2>Contacts</h2>
 <p>Sur Android, pour remplir un numéro dans un code, vous pouvez choisir un contact dans le sélecteur de contacts du système. L'application reçoit seulement le numéro choisi : elle ne demande pas l'autorisation Contacts et n'accède pas au reste de vos contacts. Ce numéro sert uniquement à composer le code et n'est pas conservé.</p>
