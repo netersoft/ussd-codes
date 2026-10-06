@@ -23,6 +23,8 @@ Catalog assembleCatalog(Directory dir) {
         operators: [
           for (final opId in country['operators'] as List<dynamic>) _readOperator(read('operators/$opId.json'), opId as String, country['id'] as String),
         ],
+        dialCode: country['dialCode'] as String?,
+        trunkPrefix: country['trunkPrefix'] as String? ?? '',
       ),
   ];
 

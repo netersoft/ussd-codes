@@ -83,6 +83,21 @@ class _RunCodeSheetState extends ConsumerState<RunCodeSheet> {
     }
   }
 
+  /// Fills [param] with a number from the contacts, in the local format of
+  /// the operator's country (or the selected one, for personal codes).
+  Future<void> _pickContact(UssdParam param) async {
+    final number = await ref.read(telephonyServiceProvider).pickPhoneNumber();
+    if (number == null || !mounted) return;
+
+    final catalog = ref.read(currentCatalogProvider).value;
+    final country = catalog?.countryById(widget.operator?.countryId ?? ref.read(selectedCountryProvider));
+    final local = country?.localNumber(number) ?? number.replaceAll(RegExp(r'\D'), '');
+    _controllers[param.key]!.value = TextEditingValue(
+      text: local,
+      selection: TextSelection.collapsed(offset: local.length),
+    );
+  }
+
   Future<void> _copy() async {
     final messenger = ScaffoldMessenger.of(context);
     final t = context.t;
@@ -97,6 +112,7 @@ class _RunCodeSheetState extends ConsumerState<RunCodeSheet> {
     final params = widget.code.params;
     final hasSecret = params.any((param) => param.isSecret);
     final preview = widget.code.preview(_values, placeholder: (param) => '‹${param.type.placeholder(t)}›');
+    final canPickContact = ref.read(telephonyServiceProvider).canPickContact;
     final notice = _isIOS ? t.iosNotice : (widget.code.isDeviceCode ? t.deviceCodeNotice : null);
 
     return Padding(
@@ -149,6 +165,13 @@ class _RunCodeSheetState extends ConsumerState<RunCodeSheet> {
                       ParamType.pin => Icons.lock_outline,
                       ParamType.number => Icons.pin_outlined,
                     }),
+                    suffixIcon: param.type == ParamType.phone && canPickContact
+                        ? IconButton(
+                            onPressed: () => _pickContact(param),
+                            icon: const Icon(Icons.contacts_outlined),
+                            tooltip: t.pickContact,
+                          )
+                        : null,
                   ),
                   validator: (value) => (value == null || value.trim().isEmpty) ? t.requiredField : null,
                 ),

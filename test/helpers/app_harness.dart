@@ -19,7 +19,16 @@ class FakeTelephonyService extends TelephonyService {
   int reviewRequests = 0;
   bool reviewAvailable = true;
 
+  /// What the contact picker answers (null: cancelled).
+  String? pickedNumber;
+
   FakeTelephonyService({this.sims = const []});
+
+  @override
+  bool get canPickContact => true;
+
+  @override
+  Future<String?> pickPhoneNumber() async => pickedNumber;
 
   @override
   Future<List<String>> simOperators() async => sims;

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ussd_codes/core/catalog/models.dart';
+import 'package:ussd_codes/core/services/shared_preferences/keys.dart';
+import 'package:ussd_codes/core/services/shared_preferences/service.dart';
 import 'package:ussd_codes/view/modals/run_code_sheet.dart';
 
 import '../helpers/app_harness.dart';
@@ -20,9 +22,10 @@ const _transfer = UssdCode(
 
 void main() {
   late FakeTelephonyService telephony;
+  late SharedPreferencesService prefs;
 
   setUp(() async {
-    await setupTestPreferences();
+    prefs = await setupTestPreferences();
     telephony = FakeTelephonyService();
   });
 
@@ -81,5 +84,26 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(telephony.dialed.single.code, '*124#');
+  });
+
+  testWidgets('fills a phone param from the contacts, in the local format', (tester) async {
+    await prefs.setString(PrefKeys.selectedCountry, 'bj');
+    telephony.pickedNumber = '+229 01 97 00 00 00';
+    await pumpSheet(tester, _transfer);
+
+    await tester.tap(find.byTooltip('Choisir un contact'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('*155*‹montant›*0197000000*‹code›#'), findsOneWidget);
+  });
+
+  testWidgets('a cancelled contact pick leaves the param as it was', (tester) async {
+    await pumpSheet(tester, _transfer);
+
+    await tester.enterText(find.widgetWithText(TextFormField, 'Numéro du destinataire'), '97');
+    await tester.tap(find.byTooltip('Choisir un contact'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('*155*‹montant›*97*‹code›#'), findsOneWidget);
   });
 }

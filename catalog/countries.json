@@ -6,6 +6,7 @@
         "fr": "Bénin",
         "en": "Benin"
       },
+      "dialCode": "229",
       "operators": [
         "bj-moov",
         "bj-mtn"
@@ -17,6 +18,7 @@
         "fr": "Cameroun",
         "en": "Cameroon"
       },
+      "dialCode": "237",
       "operators": [
         "cm-orange"
       ]
@@ -27,6 +29,7 @@
         "fr": "Côte d'Ivoire",
         "en": "Côte d'Ivoire"
       },
+      "dialCode": "225",
       "operators": [
         "ci-moov",
         "ci-mtn"
@@ -38,6 +41,7 @@
         "fr": "Mali",
         "en": "Mali"
       },
+      "dialCode": "223",
       "operators": [
         "ml-orange"
       ]
@@ -48,6 +52,7 @@
         "fr": "Niger",
         "en": "Niger"
       },
+      "dialCode": "227",
       "operators": [
         "ne-moov",
         "ne-orange"
@@ -59,6 +64,8 @@
         "fr": "Nigeria",
         "en": "Nigeria"
       },
+      "dialCode": "234",
+      "trunkPrefix": "0",
       "operators": [
         "ng-airtel",
         "ng-9mobile",
@@ -72,6 +79,7 @@
         "fr": "Sénégal",
         "en": "Senegal"
       },
+      "dialCode": "221",
       "operators": [
         "sn-orange"
       ]
@@ -82,6 +90,7 @@
         "fr": "Togo",
         "en": "Togo"
       },
+      "dialCode": "228",
       "operators": [
         "tg-moov",
         "tg-togocel"
