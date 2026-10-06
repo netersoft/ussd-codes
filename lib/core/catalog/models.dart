@@ -181,7 +181,14 @@ class Country {
   final LocalizedText name;
   final List<Operator> operators;
 
-  const Country({required this.id, required this.name, required this.operators});
+  /// International calling code, without "+" (e.g. "229").
+  final String? dialCode;
+
+  /// Digit dialed before a local number inside the country, dropped from
+  /// the international format (e.g. "0" in Nigeria), empty when there is none.
+  final String trunkPrefix;
+
+  const Country({required this.id, required this.name, required this.operators, this.dialCode, this.trunkPrefix = ''});
 
   factory Country.fromJson(Map<String, dynamic> json) {
     final id = json['id'] as String;
@@ -189,15 +196,33 @@ class Country {
       id: id,
       name: LocalizedText.fromJson(json['name']),
       operators: [for (final op in json['operators'] as List<dynamic>) Operator.fromJson(op as Map<String, dynamic>, countryId: id)],
+      dialCode: json['dialCode'] as String?,
+      trunkPrefix: json['trunkPrefix'] as String? ?? '',
     );
   }
 
   /// The country's flag emoji, built from its ISO code.
   String get flag => String.fromCharCodes(id.toUpperCase().codeUnits.map((c) => 0x1F1E6 + c - 0x41));
 
+  /// [number] (as saved in a contact: spaces, dashes, "+229…") in the form
+  /// USSD menus expect: digits only, local format for numbers of this
+  /// country, "00…" for foreign ones.
+  String localNumber(String number) {
+    var digits = number.replaceAll(RegExp(r'\D'), '');
+    final international = number.trim().startsWith('+') || digits.startsWith('00');
+    if (!international) return digits;
+
+    if (digits.startsWith('00')) digits = digits.substring(2);
+    final code = dialCode;
+    if (code != null && digits.startsWith(code)) return '$trunkPrefix${digits.substring(code.length)}';
+    return '00$digits';
+  }
+
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name.toJson(),
+    if (dialCode != null) 'dialCode': dialCode,
+    if (trunkPrefix.isNotEmpty) 'trunkPrefix': trunkPrefix,
     'operators': [for (final op in operators) op.toJson()],
   };
 }
@@ -283,6 +308,10 @@ class Catalog {
     for (final country in countries) {
       checkId(country.id, 'country');
       if (!RegExp(r'^[a-z]{2}$').hasMatch(country.id)) errors.add('${country.id}: country id must be an ISO 3166 alpha-2 code');
+      if (country.dialCode case final code? when !RegExp(r'^[1-9][0-9]{0,2}$').hasMatch(code)) {
+        errors.add('${country.id}: dialCode "$code" must be a calling code without "+"');
+      }
+      if (!RegExp(r'^[0-9]?$').hasMatch(country.trunkPrefix)) errors.add('${country.id}: trunkPrefix must be a single digit');
       for (final op in country.operators) {
         checkId(op.id, 'operator');
         if (!op.id.startsWith('${country.id}-')) errors.add('${op.id}: id must start with "${country.id}-"');

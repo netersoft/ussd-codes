@@ -12,6 +12,21 @@ catalog/
 └── device.json           # codes handled by the phone (IMEI, test menus...)
 ```
 
+### Country
+
+```json
+{
+  "id": "ng",
+  "name": { "fr": "Nigeria", "en": "Nigeria" },
+  "dialCode": "234",
+  "trunkPrefix": "0",
+  "operators": ["ng-airtel", "ng-mtn"]
+}
+```
+
+- `dialCode`: the international calling code, without "+". A number picked from the contacts in the international format (`+234 803…`) is turned into the local format the USSD menus expect.
+- `trunkPrefix` (optional): the digit dialed before local numbers that the international format drops (`0` in Nigeria: `+234 803…` → `0803…`).
+
 ### Operator
 
 ```json

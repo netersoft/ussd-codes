@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
+import android.provider.ContactsContract
 import android.telephony.SubscriptionManager
 import android.telephony.TelephonyManager
 import com.google.android.play.core.review.ReviewManagerFactory
@@ -14,6 +15,8 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
+    private var pendingContactPick: MethodChannel.Result? = null
+
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
 
@@ -23,9 +26,48 @@ class MainActivity : FlutterActivity() {
                 "dial" -> result.success(dial(call.argument<String>("code")!!, call.argument<Boolean>("direct") ?: false))
                 "readLegacyData" -> result.success(readLegacyData())
                 "requestReview" -> requestReview { shown -> result.success(shown) }
+                "pickPhoneNumber" -> pickPhoneNumber(result)
                 else -> result.notImplemented()
             }
         }
+    }
+
+    /**
+     * Opens the system contact picker, restricted to phone numbers. The picker
+     * grants read access to the chosen entry only, so the app needs no
+     * READ_CONTACTS permission. Answers the number, or null when cancelled.
+     */
+    private fun pickPhoneNumber(result: MethodChannel.Result) {
+        pendingContactPick?.success(null)
+        pendingContactPick = result
+        try {
+            startActivityForResult(Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI), PICK_PHONE_NUMBER)
+        } catch (e: ActivityNotFoundException) {
+            pendingContactPick = null
+            result.success(null)
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode != PICK_PHONE_NUMBER) return
+        val result = pendingContactPick ?: return
+        pendingContactPick = null
+
+        val uri = data?.data
+        if (resultCode != RESULT_OK || uri == null) {
+            result.success(null)
+            return
+        }
+        val number = try {
+            contentResolver.query(uri, arrayOf(ContactsContract.CommonDataKinds.Phone.NUMBER), null, null, null)?.use { cursor ->
+                if (cursor.moveToFirst()) cursor.getString(0) else null
+            }
+        } catch (e: Exception) {
+            null
+        }
+        result.success(number)
     }
 
     /**
@@ -120,4 +162,8 @@ class MainActivity : FlutterActivity() {
 
     // ORMLite stores booleans as 0/1 on Android; accept "true" too, just in case.
     private fun String?.isTrue() = this == "1" || this.equals("true", ignoreCase = true)
+
+    private companion object {
+        const val PICK_PHONE_NUMBER = 4201
+    }
 }

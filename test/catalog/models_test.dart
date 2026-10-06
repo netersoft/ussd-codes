@@ -108,4 +108,26 @@ void main() {
       expect(Catalog.fromJson(catalog.toJson()).toJson(), catalog.toJson());
     });
   });
+
+  group('Country.localNumber', () {
+    const benin = Country(id: 'bj', name: LocalizedText({'fr': 'Bénin'}), operators: [], dialCode: '229');
+    const nigeria = Country(id: 'ng', name: LocalizedText({'fr': 'Nigeria'}), operators: [], dialCode: '234', trunkPrefix: '0');
+
+    test('keeps only the digits of a local number', () {
+      expect(benin.localNumber('01 97-00.00 00'), '0197000000');
+    });
+
+    test('drops the calling code of the country', () {
+      expect(benin.localNumber('+229 01 97 00 00 00'), '0197000000');
+      expect(benin.localNumber('00229 0197000000'), '0197000000');
+    });
+
+    test('puts the trunk prefix back where the country has one', () {
+      expect(nigeria.localNumber('+234 803 123 4567'), '08031234567');
+    });
+
+    test('dials foreign numbers in the international format', () {
+      expect(benin.localNumber('+228 90 00 00 00'), '0022890000000');
+    });
+  });
 }

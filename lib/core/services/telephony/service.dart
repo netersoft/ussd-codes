@@ -76,6 +76,21 @@ class TelephonyService {
     return (await Permission.phone.request()).isGranted;
   }
 
+  /// Whether [pickPhoneNumber] can open a contact picker here.
+  bool get canPickContact => _isAndroid;
+
+  /// A phone number chosen in the system contact picker, as saved in the
+  /// contact (Android only). Null when cancelled.
+  Future<String?> pickPhoneNumber() async {
+    if (!_isAndroid) return null;
+    try {
+      return await _channel.invokeMethod<String>('pickPhoneNumber');
+    } on PlatformException catch (e) {
+      LogHelper.w('Unable to pick a contact', error: e);
+      return null;
+    }
+  }
+
   /// Opens the Play In-App Review flow (Android only). Returns whether it ran.
   Future<bool> requestReview() async {
     if (!_isAndroid) return false;

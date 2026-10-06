@@ -63,6 +63,7 @@
   "deviceCodeNotice": "This code is handled by your phone. It will also be copied: if the dialer doesn't run it, paste it.",
   "secretNotice": "Your PIN is never stored.",
   "requiredField": "Required",
+  "pickContact": "Choose a contact",
   "digitsOnly": "Digits only",
 
   "addCode": "Add a code",

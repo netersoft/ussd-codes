@@ -63,6 +63,7 @@
   "deviceCodeNotice": "Ce code est interprété par votre téléphone. Il sera aussi copié : si le composeur ne le lance pas, collez-le.",
   "secretNotice": "Votre code secret n'est jamais enregistré.",
   "requiredField": "Champ obligatoire",
+  "pickContact": "Choisir un contact",
   "digitsOnly": "Chiffres uniquement",
 
   "addCode": "Ajouter un code",
