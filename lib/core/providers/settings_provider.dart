@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -42,14 +41,6 @@ class Settings extends _$Settings {
   Future<void> share(ShareOptions options) async {
     try {
       switch (options) {
-        case ShareOptions.whatsapp:
-          unawaited(
-            launchUrl(
-              Uri.parse(
-                "whatsapp:${Platform.isIOS ? '//wa.me/' : '//send?'}text=${Uri.encodeComponent(_shareMessage)}",
-              ),
-            ),
-          );
         case ShareOptions.email:
           unawaited(launchUrl(Uri(scheme: 'mailto', query: _encodeQuery({'subject': t.appName, 'body': _shareMessage}))));
         case ShareOptions.sms:
@@ -131,4 +122,4 @@ class SettingsState {
   SettingsState copyWith({bool? isLoading}) => SettingsState(isLoading: isLoading ?? this.isLoading);
 }
 
-enum ShareOptions { whatsapp, email, free, sms }
+enum ShareOptions { email, free, sms }
