@@ -50,6 +50,7 @@ dependencies:
   firebase_core: ^4.12.1
   firebase_crashlytics: ^5.2.6
   firebase_analytics: ^12.4.5
+  flutter_widget_from_html_core: ^0.17.4
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -129,6 +130,8 @@ flutter:
     - assets/images/
     # I18N
     - assets/i18n/
+    - assets/docs/fr/
+    - assets/docs/en/
     # USSD CATALOG (built from catalog/ by tool/build_catalog.dart)
     - assets/catalog/
 

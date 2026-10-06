@@ -98,6 +98,7 @@
   "catalogUpdateFailed": "Mise à jour impossible. Vérifiez votre connexion.",
   "catalogRemoteDisabled": "Les mises à jour en ligne ne sont pas encore disponibles.",
   "rateApp": "Noter l'application",
+  "privacyPolicy": "Politique de confidentialité",
   "contactUs": "Nous contacter",
   "contactUsDescription": "Proposez les codes de votre pays ou signalez une erreur",
   "suggestCodesSubject": "Codes USSD : proposition de codes"

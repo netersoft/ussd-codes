@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../view/screens/main_screen.dart';
 import '../../view/screens/search/search_screen.dart';
+import '../../view/screens/settings/privacy_policy_screen.dart';
 import '../../view/screens/settings/settings_screen.dart';
 import 'swipeable_page_route.dart';
 
@@ -13,6 +14,7 @@ part 'app_route.g.dart';
   routes: [
     TypedGoRoute<SearchRoute>(path: 'search'),
     TypedGoRoute<SettingsRoute>(path: 'settings'),
+    TypedGoRoute<PrivacyPolicyRoute>(path: 'privacy'),
   ],
 )
 class MainRoute extends GoRouteData with $MainRoute {
@@ -38,4 +40,11 @@ class SettingsRoute extends GoRouteData with $SettingsRoute {
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) => SwipeablePage<void>(builder: (context) => const SettingsScreen());
+}
+
+class PrivacyPolicyRoute extends GoRouteData with $PrivacyPolicyRoute {
+  const PrivacyPolicyRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) => SwipeablePage<void>(builder: (context) => const PrivacyPolicyScreen());
 }
