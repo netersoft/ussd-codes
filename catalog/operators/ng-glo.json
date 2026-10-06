@@ -1,0 +1,114 @@
+{
+  "id": "ng-glo",
+  "country": "ng",
+  "name": "Glo",
+  "mccMnc": [
+    "62150"
+  ],
+  "codes": [
+    {
+      "id": "ng-glo.glo-300hrs-12gb-300hrs-x-3months-n15000",
+      "label": {
+        "en": "Glo 300hrs 12GB/300hrs x 3months/N15000"
+      },
+      "code": "*127*4#",
+      "category": "data"
+    },
+    {
+      "id": "ng-glo.glo-100hrs-4gb-100hrs-x-3days-n6000",
+      "label": {
+        "en": "Glo 100hrs 4GB/100hrs x 3days/N6000"
+      },
+      "code": "*127*5#",
+      "category": "data"
+    },
+    {
+      "id": "ng-glo.glo-work-4gb-8am-9pm-x-30days-n6000",
+      "label": {
+        "en": "Glo work 4GB/8am-9pm x 30days/N6000"
+      },
+      "code": "*127*6#",
+      "category": "data"
+    },
+    {
+      "id": "ng-glo.glo-leisure-8am-9pm-24-7-on-fri-mon-4gb-30d-n500",
+      "label": {
+        "en": "Glo leisure 8am-9pm 24/7 on Fri-Mon 4GB/30D/N5000"
+      },
+      "code": "*127*6#",
+      "category": "data"
+    },
+    {
+      "id": "ng-glo.monthly-plans-4gb-30d-n5000",
+      "label": {
+        "en": "Monthly Plans 4GB/30D/N5000"
+      },
+      "code": "*127*2#",
+      "category": "data"
+    },
+    {
+      "id": "ng-glo.monthly-plans-8gb-30d-n7500",
+      "label": {
+        "en": "Monthly Plans 8GB/30D/N7500"
+      },
+      "code": "*127*1#",
+      "category": "data"
+    },
+    {
+      "id": "ng-glo.monthly-plans-13gb-30d-n10000",
+      "label": {
+        "en": "Monthly Plans 13GB/30D/N10000"
+      },
+      "code": "*127*11#",
+      "category": "data"
+    },
+    {
+      "id": "ng-glo.monthly-plans-30gb-30d-n18000",
+      "label": {
+        "en": "Monthly Plans 30GB/30D/N18000"
+      },
+      "code": "*127*13#",
+      "category": "data"
+    },
+    {
+      "id": "ng-glo.daily-plans-13mb-24h-n100",
+      "label": {
+        "en": "Daily Plans 13MB/24H/N100"
+      },
+      "code": "*131#",
+      "category": "data"
+    },
+    {
+      "id": "ng-glo.daily-plans-195mb-24h-n500",
+      "label": {
+        "en": "Daily Plans 195MB/24H/N500"
+      },
+      "code": "*127*3#",
+      "category": "data"
+    },
+    {
+      "id": "ng-glo.weekly-plan-65mb-7d-n400",
+      "label": {
+        "en": "Weekly Plan 65MB/7D/N400"
+      },
+      "code": "*127*52#",
+      "category": "data"
+    },
+    {
+      "id": "ng-glo.monthly-plans-260mb-30d-n1000",
+      "label": {
+        "en": "Monthly Plans 260MB/30D/N1000"
+      },
+      "code": "*127*53#",
+      "category": "data"
+    },
+    {
+      "id": "ng-glo.monthly-plans-1-5gb-30d-n3000",
+      "label": {
+        "en": "Monthly Plans 1.5GB/30D/N3000"
+      },
+      "code": "*127*54#",
+      "category": "data"
+    }
+  ]
+}

@@ -1,0 +1,516 @@
+{
+  "id": "ci-mtn",
+  "country": "ci",
+  "name": "MTN",
+  "mccMnc": [
+    "61205"
+  ],
+  "codes": [
+    {
+      "id": "ci-mtn.connaitre-son-profil",
+      "label": {
+        "fr": "Connaitre son profil"
+      },
+      "code": "*120#",
+      "category": "account"
+    },
+    {
+      "id": "ci-mtn.solde-du-compte",
+      "label": {
+        "fr": "Solde du compte"
+      },
+      "code": "*100#",
+      "category": "account"
+    },
+    {
+      "id": "ci-mtn.recharge-de-credit",
+      "label": {
+        "fr": "Recharge de crédit"
+      },
+      "code": "*100*{voucher}#",
+      "category": "recharge",
+      "params": [
+        {
+          "key": "voucher",
+          "type": "number",
+          "label": {
+            "fr": "Les 14 chiffres de la carte",
+            "en": "The 14 digits of the card"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci-mtn.mtn-bip-me-envoi-moi-le-credit",
+      "label": {
+        "fr": "MTN bip me (Envoi moi le crédit)"
+      },
+      "code": "*102*{recipient}*1#",
+      "category": "help",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro du destinataire",
+            "en": "Recipient number"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci-mtn.transfert-de-credit",
+      "label": {
+        "fr": "Transfert de crédit"
+      },
+      "code": "*111*{recipient}*{amount}*{pin}#",
+      "category": "transfer",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro du destinataire",
+            "en": "Recipient number"
+          }
+        },
+        {
+          "key": "amount",
+          "type": "amount",
+          "label": {
+            "fr": "Montant à transférer",
+            "en": "Amount to transfer"
+          }
+        },
+        {
+          "key": "pin",
+          "type": "pin",
+          "label": {
+            "fr": "Code secret",
+            "en": "PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci-mtn.la-4g-de-mtn",
+      "label": {
+        "fr": "La 4G de MTN"
+      },
+      "code": "*105*15#",
+      "category": "data"
+    },
+    {
+      "id": "ci-mtn.la-3-5g-de-mtn",
+      "label": {
+        "fr": "La 3,5G de MTN"
+      },
+      "code": "*300#",
+      "category": "data"
+    },
+    {
+      "id": "ci-mtn.activez-le-profil-mtn-vibz",
+      "label": {
+        "fr": "Activez le profil MTN Vibz"
+      },
+      "code": "*501*1#",
+      "category": "account"
+    },
+    {
+      "id": "ci-mtn.mtn-smart",
+      "label": {
+        "fr": "MTN Smart"
+      },
+      "code": "*123*10#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.forfait-mtn-by-night",
+      "label": {
+        "fr": "Forfait MTN by Night"
+      },
+      "code": "*105*6#",
+      "category": "data"
+    },
+    {
+      "id": "ci-mtn.souscrire-aux-packs-mtn-free",
+      "label": {
+        "fr": "Souscrire aux Packs MTN Free"
+      },
+      "code": "*105*1#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.pack-internet",
+      "label": {
+        "fr": "Pack Internet"
+      },
+      "code": "*105*2#",
+      "category": "data"
+    },
+    {
+      "id": "ci-mtn.pack-sms",
+      "label": {
+        "fr": "Pack SMS"
+      },
+      "code": "*105*3#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.profils-prepayes-mtn",
+      "label": {
+        "fr": "Profils prépayés MTN"
+      },
+      "code": "*105*4#",
+      "category": "account"
+    },
+    {
+      "id": "ci-mtn.numeros-complices",
+      "label": {
+        "fr": "Numéros complices"
+      },
+      "code": "*105*5#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.offres-promotionelles",
+      "label": {
+        "fr": "Offres Promotionelles"
+      },
+      "code": "*105*7#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.forfaits-mtn-go",
+      "label": {
+        "fr": "Forfaits MTN Go"
+      },
+      "code": "*105*8#",
+      "category": "data"
+    },
+    {
+      "id": "ci-mtn.service-plus",
+      "label": {
+        "fr": "Service Plus"
+      },
+      "code": "*105*9#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.mtn-play",
+      "label": {
+        "fr": "MTN Play"
+      },
+      "code": "*109*9*2#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.activation-de-mtn-zone",
+      "label": {
+        "fr": "Activation de MTN Zone"
+      },
+      "code": "*105#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.mtn-vibz-15-minutes-de-communications-a-150f-de",
+      "label": {
+        "fr": "MTN Vibz (15 minutes de communications à 150F de 6h à 18h pour 5 numéros)"
+      },
+      "code": "*501*3#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.mtn-vibz-500-sms-a-100f-chaque-jour",
+      "label": {
+        "fr": "MTN Vibz (500 SMS à 100F chaque jour)"
+      },
+      "code": "*420#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.mobile-money",
+      "label": {
+        "fr": "Mobile money"
+      },
+      "code": "*133#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mobile-money-transfert-burkina-faso",
+      "label": {
+        "fr": "Mobile money (Transfert BURKINA FASO)"
+      },
+      "code": "*133**7#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mobile-money-transfert-dargent",
+      "label": {
+        "fr": "Mobile money (Transfert d’argent)"
+      },
+      "code": "*133*1*1#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mobile-money-achat-de-credit-dappel-et-pour-comp",
+      "label": {
+        "fr": "Mobile money (Achat de credit d’appel et pour compte wimax)"
+      },
+      "code": "*133*1*3#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mobile-money-retrait-dargent",
+      "label": {
+        "fr": "Mobile money (Retrait d’argent)"
+      },
+      "code": "*133*1*4#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mobile-money-retrait-au-guichet-de-lagence-mtn-f",
+      "label": {
+        "fr": "Mobile Money (Retrait au guichet de l’agence MTN Flagship)"
+      },
+      "code": "*104*1#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mobile-money-consultation-de-son-solde",
+      "label": {
+        "fr": "Mobile Money (Consultation de son solde)"
+      },
+      "code": "*133*1*5#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mobile-money-payer-sa-facture-canal-canalsat",
+      "label": {
+        "fr": "Mobile money (Payer sa facture Canal+/Canalsat)"
+      },
+      "code": "*133*6#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mobile-money-consulter-les-tarifs",
+      "label": {
+        "fr": "Mobile money (Consulter les tarifs)"
+      },
+      "code": "*133*3#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mobile-money-commander-acheter-ses-produits-fore",
+      "label": {
+        "fr": "Mobile Money (Commander/acheter ses produits Forever Living)"
+      },
+      "code": "*133*3#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mobile-money-trouver-le-point-de-vente-le-plus-p",
+      "label": {
+        "fr": "Mobile Money (Trouver le point de vente le plus proche)"
+      },
+      "code": "*133*2#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mobile-money-payer-son-inscription-en-ligne",
+      "label": {
+        "fr": "Mobile Money (Payer son inscription en ligne)"
+      },
+      "code": "*133*5#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mobile-money-services-dassurances",
+      "label": {
+        "fr": "Mobile Money (Services d’assurances)"
+      },
+      "code": "*128*6#",
+      "category": "money"
+    },
+    {
+      "id": "ci-mtn.mtn-bip-me-appelle-moi",
+      "label": {
+        "fr": "MTN bip me (Appelle moi)"
+      },
+      "code": "*102*{recipient}*0#",
+      "category": "help",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro à biper",
+            "en": "Number to beep"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci-mtn.double-appel-reactiver-le-service",
+      "label": {
+        "fr": "Double appel (Réactiver le service)"
+      },
+      "code": "*43#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.double-appel-consulter-si-le-service-est-active",
+      "label": {
+        "fr": "Double appel (Consulter si le service est activé)"
+      },
+      "code": "*#43#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.renvoi-dappel-activer",
+      "label": {
+        "fr": "Renvoi d’appel (Activer)"
+      },
+      "code": "**62*{recipient}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro de renvoi",
+            "en": "Forwarding number"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci-mtn.renvoi-dappel-desactiver",
+      "label": {
+        "fr": "Renvoi d’appel (Désactiver)"
+      },
+      "code": "##62#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.numeros-complices-enregistrement",
+      "label": {
+        "fr": "Numéros complices (Enrégistrement)"
+      },
+      "code": "*105*5*4#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.numeros-complices-remplacement",
+      "label": {
+        "fr": "Numéros complices (Remplacement)"
+      },
+      "code": "*105*5*5#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.numeros-complices-liste",
+      "label": {
+        "fr": "Numéros complices (Liste)"
+      },
+      "code": "*105*5*3#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.numeros-complices-consommation-du-mois",
+      "label": {
+        "fr": "Numéros complices (Consommation du mois)"
+      },
+      "code": "*105*5*2#",
+      "category": "account"
+    },
+    {
+      "id": "ci-mtn.trouver-une-agence-mtn-a-proximite",
+      "label": {
+        "fr": "Trouver une agence MTN à proximité"
+      },
+      "code": "*225*3#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.mtn-recompense",
+      "label": {
+        "fr": "MTN Récompense"
+      },
+      "code": "*150#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.au-feminin",
+      "label": {
+        "fr": "Au féminin"
+      },
+      "code": "*109#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.bien-etre-sante",
+      "label": {
+        "fr": "Bien être/ Santé"
+      },
+      "code": "*421#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.detente-radio-box",
+      "label": {
+        "fr": "Détente (Radio box)"
+      },
+      "code": "*424#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.education",
+      "label": {
+        "fr": "Education"
+      },
+      "code": "*112#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.gaming",
+      "label": {
+        "fr": "Gaming"
+      },
+      "code": "*420#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.infos",
+      "label": {
+        "fr": "Infos"
+      },
+      "code": "*108#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.religion",
+      "label": {
+        "fr": "Religion"
+      },
+      "code": "*422#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.sport",
+      "label": {
+        "fr": "Sport"
+      },
+      "code": "*423#",
+      "category": "services"
+    },
+    {
+      "id": "ci-mtn.utiles-conseils-juridiques-mtn-job-infos",
+      "label": {
+        "fr": "Utiles (Conseils juridiques, MTN Job infos)"
+      },
+      "code": "*423#",
+      "category": "services"
+    }
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "id": "ml-orange",
+  "country": "ml",
+  "name": "Orange",
+  "mccMnc": [
+    "61002"
+  ],
+  "codes": [
+    {
+      "id": "ml-orange.consultation-de-credit",
+      "label": {
+        "fr": "Consultation de crédit"
+      },
+      "code": "#123#",
+      "category": "account"
+    },
+    {
+      "id": "ml-orange.transfert-de-credit",
+      "label": {
+        "fr": "Transfert de crédit"
+      },
+      "code": "*116*{recipient}*{amount}*{pin}#",
+      "category": "transfer",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro du destinataire",
+            "en": "Recipient number"
+          }
+        },
+        {
+          "key": "amount",
+          "type": "amount",
+          "label": {
+            "fr": "Montant",
+            "en": "Amount"
+          }
+        },
+        {
+          "key": "pin",
+          "type": "pin",
+          "label": {
+            "fr": "Code secret",
+            "en": "PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml-orange.transfert-de-credit-changer-de-code-secret",
+      "label": {
+        "fr": "Transfert de crédit : changer de code secret"
+      },
+      "code": "*117*{old_pin}*{new_pin}*{new_pin_confirm}#",
+      "category": "transfer",
+      "params": [
+        {
+          "key": "old_pin",
+          "type": "pin",
+          "label": {
+            "fr": "Ancien code secret",
+            "en": "Old PIN"
+          }
+        },
+        {
+          "key": "new_pin",
+          "type": "pin",
+          "label": {
+            "fr": "Nouveau code secret (5 chiffres)",
+            "en": "New PIN (5 digits)"
+          }
+        },
+        {
+          "key": "new_pin_confirm",
+          "type": "pin",
+          "label": {
+            "fr": "Confirmation du nouveau code",
+            "en": "Confirm new PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml-orange.sos-credit-djiguiya",
+      "label": {
+        "fr": "SOS Crédit - Djiguiya"
+      },
+      "code": "#170#",
+      "category": "help"
+    },
+    {
+      "id": "ml-orange.bip-appelle-moi",
+      "label": {
+        "fr": "Bip : Appelle-moi"
+      },
+      "code": "#101#141#",
+      "category": "help"
+    },
+    {
+      "id": "ml-orange.bip-envoie-moi-du-credit",
+      "label": {
+        "fr": "Bip : Envoie moi du crédit"
+      },
+      "code": "#101#142#",
+      "category": "help"
+    },
+    {
+      "id": "ml-orange.internet-everywhere",
+      "label": {
+        "fr": "Internet everywhere"
+      },
+      "code": "#101#212#",
+      "category": "data"
+    },
+    {
+      "id": "ml-orange.forfaits-internet-mobile-acheter-un-forfait-inte",
+      "label": {
+        "fr": "Forfaits internet mobile - Acheter un forfait internet"
+      },
+      "code": "#101#21#",
+      "category": "data"
+    },
+    {
+      "id": "ml-orange.forfaits-internet-mobile-offrir-un-forfait-a-un",
+      "label": {
+        "fr": "Forfaits internet mobile - Offrir un forfait à un tiers"
+      },
+      "code": "#101#23#",
+      "category": "data"
+    },
+    {
+      "id": "ml-orange.forfaits-internet-mobile-consulter-le-solde-de-v",
+      "label": {
+        "fr": "Forfaits internet mobile - Consulter le solde de votre forfait"
+      },
+      "code": "#101#22#",
+      "category": "data"
+    },
+    {
+      "id": "ml-orange.forfaits-appels-orange",
+      "label": {
+        "fr": "Forfaits appels Orange"
+      },
+      "code": "#101#65#",
+      "category": "data"
+    },
+    {
+      "id": "ml-orange.sewa",
+      "label": {
+        "fr": "Séwa"
+      },
+      "code": "#101#63#",
+      "category": "services"
+    },
+    {
+      "id": "ml-orange.programme-de-fidelisation-inscription",
+      "label": {
+        "fr": "Programme de fidélisation - Inscription"
+      },
+      "code": "#101#53#",
+      "category": "services"
+    },
+    {
+      "id": "ml-orange.a-sara-nye",
+      "label": {
+        "fr": "A Sara Nyé"
+      },
+      "code": "#355#",
+      "category": "services"
+    },
+    {
+      "id": "ml-orange.pass-voyage-orange",
+      "label": {
+        "fr": "Pass Voyage Orange"
+      },
+      "code": "#100#",
+      "category": "data"
+    },
+    {
+      "id": "ml-orange.le-portail-101",
+      "label": {
+        "fr": "Le portail #101#"
+      },
+      "code": "#101#",
+      "category": "services"
+    },
+    {
+      "id": "ml-orange.cmoi-activer-le-service",
+      "label": {
+        "fr": "Cmoi - Activer le service"
+      },
+      "code": "#101#9#1",
+      "category": "services"
+    },
+    {
+      "id": "ml-orange.cmoi-desactiver-le-service",
+      "label": {
+        "fr": "Cmoi - Désactiver le service"
+      },
+      "code": "#101#9#2",
+      "category": "services"
+    },
+    {
+      "id": "ml-orange.cmoi-verifier-le-statut-du-service",
+      "label": {
+        "fr": "Cmoi - Vérifier le statut du service"
+      },
+      "code": "#101#9#3",
+      "category": "account"
+    },
+    {
+      "id": "ml-orange.wele-tones",
+      "label": {
+        "fr": "Wélé tones"
+      },
+      "code": "#101#32#",
+      "category": "services"
+    },
+    {
+      "id": "ml-orange.illimites-de-orange",
+      "label": {
+        "fr": "Illimités de Orange"
+      },
+      "code": "#101#62#",
+      "category": "data"
+    },
+    {
+      "id": "ml-orange.orange-money",
+      "label": {
+        "fr": "Orange Money"
+      },
+      "code": "#144#",
+      "category": "money"
+    },
+    {
+      "id": "ml-orange.orange-money-transfert-intra-regional",
+      "label": {
+        "fr": "Orange Money - Transfert intra régional"
+      },
+      "code": "#144#1*2#",
+      "category": "money"
+    },
+    {
+      "id": "ml-orange.orange-money-recharger-un-autre-numero",
+      "label": {
+        "fr": "Orange Money - Recharger un autre numéro"
+      },
+      "code": "#144#8*{merchant}*{amount}*{pin}#",
+      "category": "money",
+      "params": [
+        {
+          "key": "merchant",
+          "type": "number",
+          "label": {
+            "fr": "Code marchand",
+            "en": "Merchant code"
+          }
+        },
+        {
+          "key": "amount",
+          "type": "amount",
+          "label": {
+            "fr": "Montant",
+            "en": "Amount"
+          }
+        },
+        {
+          "key": "pin",
+          "type": "pin",
+          "label": {
+            "fr": "Code secret",
+            "en": "PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml-orange.orange-money-frais-de-scolarite",
+      "label": {
+        "fr": "Orange Money - Frais de scolarité"
+      },
+      "code": "#144#3*5#",
+      "category": "money"
+    },
+    {
+      "id": "ml-orange.orange-money-sani-web",
+      "label": {
+        "fr": "Orange Money - Sani Web"
+      },
+      "code": "#144#3*6#",
+      "category": "money"
+    }
+  ]
+}

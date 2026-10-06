@@ -1,0 +1,99 @@
+{
+  "id": "ng-9mobile",
+  "country": "ng",
+  "name": "9mobile",
+  "formerName": "Etisalat",
+  "mccMnc": [
+    "62160"
+  ],
+  "codes": [
+    {
+      "id": "ng-9mobile.daily-plan-10mb-24h-n100",
+      "label": {
+        "en": "Daily Plan 10MB/24H/N100"
+      },
+      "code": "*229*3*1#",
+      "category": "data"
+    },
+    {
+      "id": "ng-9mobile.weekly-plan-50mb-7d-n500",
+      "label": {
+        "en": "Weekly Plan 50MB/7D/N500"
+      },
+      "code": "*229*3*4#",
+      "category": "data"
+    },
+    {
+      "id": "ng-9mobile.monthly-plans-200mb-30d-n1000",
+      "label": {
+        "en": "Monthly Plans 200MB/30D/N1000"
+      },
+      "code": "*229*2*1#",
+      "category": "data"
+    },
+    {
+      "id": "ng-9mobile.monthly-plans-500mb-30d-n2000",
+      "label": {
+        "en": "Monthly Plans 500MB/30D/N2000"
+      },
+      "code": "*229*2*2#",
+      "category": "data"
+    },
+    {
+      "id": "ng-9mobile.monthly-plans-1-5gb-30d-n4000",
+      "label": {
+        "en": "Monthly Plans 1.5GB/30D/N4000"
+      },
+      "code": "*229*2*4#",
+      "category": "data"
+    },
+    {
+      "id": "ng-9mobile.monthly-plans-3gb-30d-n6500",
+      "label": {
+        "en": "Monthly Plans 3GB/30D/N6500"
+      },
+      "code": "*229*2*3#",
+      "category": "data"
+    },
+    {
+      "id": "ng-9mobile.monthly-plans-6gb-30d-n8000",
+      "label": {
+        "en": "Monthly Plans 6GB/30D/N8000"
+      },
+      "code": "*229*2*5#",
+      "category": "data"
+    },
+    {
+      "id": "ng-9mobile.monthly-plans-10gb-30d-n10000",
+      "label": {
+        "en": "Monthly Plans 10GB/30D/N10000"
+      },
+      "code": "*229*4*1#",
+      "category": "data"
+    },
+    {
+      "id": "ng-9mobile.monthly-plans-15gb-30d-n15000",
+      "label": {
+        "en": "Monthly Plans 15GB/30D/N15000"
+      },
+      "code": "*229*4*2#",
+      "category": "data"
+    },
+    {
+      "id": "ng-9mobile.monthly-plans-20gb-30d-n18000",
+      "label": {
+        "en": "Monthly Plans 20GB/30D/N18000"
+      },
+      "code": "*229*4*3#",
+      "category": "data"
+    },
+    {
+      "id": "ng-9mobile.night-weekends-9pm-6am-x-fri-mon-30d-n4000",
+      "label": {
+        "en": "Night & Weekends (9pm-6am x Fri-Mon) 30D/N4000"
+      },
+      "code": "*229*4*3#",
+      "category": "services"
+    }
+  ]
+}

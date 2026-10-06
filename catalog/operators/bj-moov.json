@@ -1,0 +1,356 @@
+{
+  "id": "bj-moov",
+  "country": "bj",
+  "name": "Moov Africa",
+  "mccMnc": [
+    "61602"
+  ],
+  "codes": [
+    {
+      "id": "bj-moov.solde",
+      "label": {
+        "fr": "Solde"
+      },
+      "code": "*100#",
+      "category": "account"
+    },
+    {
+      "id": "bj-moov.recharge",
+      "label": {
+        "fr": "Recharge"
+      },
+      "code": "*101*{voucher}#",
+      "category": "recharge",
+      "params": [
+        {
+          "key": "voucher",
+          "type": "number",
+          "label": {
+            "fr": "Code de recharge",
+            "en": "Top-up voucher code"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj-moov.forfait-internet-5mo-1j-100f",
+      "label": {
+        "fr": "Forfait internet 5Mo/1j/100F"
+      },
+      "code": "*375*1*1*1#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-internet-20mo-1j-200f",
+      "label": {
+        "fr": "Forfait internet 20Mo/1j/200F"
+      },
+      "code": "*375*1*1*2#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-internet-40mo-2j-250f",
+      "label": {
+        "fr": "Forfait internet 40Mo/2j/250F"
+      },
+      "code": "*375*1*1*3#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-internet-80mo-2j-400f",
+      "label": {
+        "fr": "Forfait internet 80Mo/2j/400F"
+      },
+      "code": "*375*1*1*4#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-internet-100mo-7j-500f",
+      "label": {
+        "fr": "Forfait internet 100Mo/7j/500F"
+      },
+      "code": "*375*1*2*1#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-internet-500mo-15j-2500f",
+      "label": {
+        "fr": "Forfait internet 500Mo/15j/2500F"
+      },
+      "code": "*375*1*2*2#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-internet-300mo-30j-1500f",
+      "label": {
+        "fr": "Forfait internet 300Mo/30j/1500F"
+      },
+      "code": "*375*1*3*1#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-internet-1-5go-30j-5000f",
+      "label": {
+        "fr": "Forfait internet 1.5Go/30j/5000F"
+      },
+      "code": "*375*1*3*2#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-internet-3go-30j-9000f",
+      "label": {
+        "fr": "Forfait internet 3Go/30j/9000F"
+      },
+      "code": "*375*1*3*3#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.statut-forfait-internet",
+      "label": {
+        "fr": "Statut forfait internet"
+      },
+      "code": "*375*6#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-tchat-whatsapp-jour-1mo-25f",
+      "label": {
+        "fr": "Forfait Tchat Whatsapp Jour 1Mo/25F"
+      },
+      "code": "*375*2*1*1#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-tchat-whatsapp-jour-3mo-50f",
+      "label": {
+        "fr": "Forfait Tchat Whatsapp Jour 3Mo/50F"
+      },
+      "code": "*375*2*1*2#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-tchat-whatsapp-hebdo-7mo-200f",
+      "label": {
+        "fr": "Forfait Tchat Whatsapp Hebdo 7Mo/200F"
+      },
+      "code": "*375*2*1*3#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-tchat-whatsapp-mois-15mo-500f",
+      "label": {
+        "fr": "Forfait Tchat Whatsapp Mois 15Mo/500F"
+      },
+      "code": "*375*2*1*4#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-tchat-facebook-jour-5mo-100f",
+      "label": {
+        "fr": "Forfait Tchat Facebook Jour 5Mo/100F"
+      },
+      "code": "*375*2*2*1#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-tchat-facebook-hebdo-15mo-500f",
+      "label": {
+        "fr": "Forfait Tchat Facebook Hebdo 15Mo/500F"
+      },
+      "code": "*375*2*2*2#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-tchat-facebook-mois-25mo-1000f",
+      "label": {
+        "fr": "Forfait Tchat Facebook Mois 25Mo/1000F"
+      },
+      "code": "*375*2*2*3#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-illimite-mois-30j-30000f",
+      "label": {
+        "fr": "Forfait Illimité Mois 30j/30000F"
+      },
+      "code": "*375*5*1#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-illimite-hebdo-7j-10000f",
+      "label": {
+        "fr": "Forfait Illimité Hebdo 7j/10000F"
+      },
+      "code": "*375*5*2#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-nuit-1go-1000f",
+      "label": {
+        "fr": "Forfait Nuit 1Go/1000F"
+      },
+      "code": "*375*8*1#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-secours-5mo-24h-110f",
+      "label": {
+        "fr": "Forfait Secours 5Mo/24h/110F"
+      },
+      "code": "*375*9*1#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-secours-20mo-48h-220f",
+      "label": {
+        "fr": "Forfait Secours 20Mo/48h/220F"
+      },
+      "code": "*375*9*2#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-secours-90mo-7j-550f",
+      "label": {
+        "fr": "Forfait Secours 90Mo/7j/550F"
+      },
+      "code": "*375*5*3#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-secours-150mo-30j-1100f",
+      "label": {
+        "fr": "Forfait Secours 150Mo/30j/1100F"
+      },
+      "code": "*375*5*4#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-5mo-100f",
+      "label": {
+        "fr": "Forfait Bonus 5Mo/100F"
+      },
+      "code": "*375*11*1#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-20mo-200f",
+      "label": {
+        "fr": "Forfait Bonus 20Mo/200F"
+      },
+      "code": "*375*11*2#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-2-5go-2000f",
+      "label": {
+        "fr": "Forfait Bonus 2.5Go/2000F"
+      },
+      "code": "*375*11*3#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-30mo-250f",
+      "label": {
+        "fr": "Forfait Bonus 30Mo/250F"
+      },
+      "code": "*375*11*4#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-80mo-400f",
+      "label": {
+        "fr": "Forfait Bonus 80Mo/400F"
+      },
+      "code": "*375*11*5#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-90mo-500f",
+      "label": {
+        "fr": "Forfait Bonus 90Mo/500F"
+      },
+      "code": "*375*11*6#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-150mo-1000f",
+      "label": {
+        "fr": "Forfait Bonus 150Mo/1000F"
+      },
+      "code": "*375*11*7#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-250mo-1500f",
+      "label": {
+        "fr": "Forfait Bonus 250Mo/1500F"
+      },
+      "code": "*375*11*8#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-350mo-2000f",
+      "label": {
+        "fr": "Forfait Bonus 350Mo/2000F"
+      },
+      "code": "*375*11*9#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-500mo-3000f",
+      "label": {
+        "fr": "Forfait Bonus 500Mo/3000F"
+      },
+      "code": "*375*11*10#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-1go-6000f",
+      "label": {
+        "fr": "Forfait Bonus 1Go/6000F"
+      },
+      "code": "*375*11*11#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-2go-10000f",
+      "label": {
+        "fr": "Forfait Bonus 2Go/10000F"
+      },
+      "code": "*375*11*12#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-5go-15000f",
+      "label": {
+        "fr": "Forfait Bonus 5Go/15000F"
+      },
+      "code": "*375*11*13#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-bonus-10go-25000f",
+      "label": {
+        "fr": "Forfait Bonus 10Go/25000F"
+      },
+      "code": "*375*11*14#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-internet-6go-30j-15000f",
+      "label": {
+        "fr": "Forfait Internet 6Go/30j/15000F"
+      },
+      "code": "*375*1*3*4#",
+      "category": "data"
+    },
+    {
+      "id": "bj-moov.forfait-internet-10go-30j-25000f",
+      "label": {
+        "fr": "Forfait Internet 10Go/30j/25000F"
+      },
+      "code": "*375*1*3*5#",
+      "category": "data"
+    }
+  ]
+}

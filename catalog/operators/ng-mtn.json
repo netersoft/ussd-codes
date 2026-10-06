@@ -1,0 +1,114 @@
+{
+  "id": "ng-mtn",
+  "country": "ng",
+  "name": "MTN",
+  "mccMnc": [
+    "62130"
+  ],
+  "codes": [
+    {
+      "id": "ng-mtn.daily-plans-10mb-24h-n100",
+      "label": {
+        "en": "Daily Plans 10MB/24H/N100"
+      },
+      "code": "*104#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.daily-plans-25mb-24h-n150",
+      "label": {
+        "en": "Daily Plans 25MB/24H/N150"
+      },
+      "code": "*112#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.daily-plans-50mb-24h-n200",
+      "label": {
+        "en": "Daily Plans 50MB/24H/N200"
+      },
+      "code": "*113#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.weekly-plans-25mb-7d-n400",
+      "label": {
+        "en": "Weekly Plans 25MB/7D/N400"
+      },
+      "code": "*105#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.monthly-plans-260mb-30d-n1000",
+      "label": {
+        "en": "Monthly Plans 260MB/30D/N1000"
+      },
+      "code": "*106#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.monthly-plans-350mb-30d-n1300",
+      "label": {
+        "en": "Monthly Plans 350MB/30D/N1300"
+      },
+      "code": "*109#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.monthly-plans-750mb-30d-n2000",
+      "label": {
+        "en": "Monthly Plans 750MB/30D/N2000"
+      },
+      "code": "*110#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.monthly-plans-1gb-30d-n3500",
+      "label": {
+        "en": "Monthly Plans 1GB/30D/N3500"
+      },
+      "code": "*111#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.monthly-plans-4-5gb-30d-n6500",
+      "label": {
+        "en": "Monthly Plans 4.5GB/30D/N6500"
+      },
+      "code": "*129#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.monthly-plans-7-5gb-30d-n8000",
+      "label": {
+        "en": "Monthly Plans 7.5GB/30D/N8000"
+      },
+      "code": "*101#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.night-plan-9pm-6am-4-5gb-30d-n2500",
+      "label": {
+        "en": "Night Plan (9pm-6am) 4.5GB/30D/N2500"
+      },
+      "code": "*102#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.weekend-plan-4-5gb-30d-n3000",
+      "label": {
+        "en": "Weekend Plan 4.5GB/30D/N3000"
+      },
+      "code": "*108#",
+      "category": "data"
+    },
+    {
+      "id": "ng-mtn.data-plans",
+      "label": {
+        "en": "Data plans"
+      },
+      "code": "*131#",
+      "category": "data"
+    }
+  ]
+}

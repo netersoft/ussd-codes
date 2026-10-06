@@ -1,0 +1,232 @@
+{
+  "codes": [
+    {
+      "id": "device.code-imei",
+      "label": {
+        "fr": "Code IMEI",
+        "en": "IMEI number"
+      },
+      "code": "*#06#",
+      "category": "device"
+    },
+    {
+      "id": "device.adresse-mac",
+      "label": {
+        "fr": "Adresse MAC",
+        "en": "MAC address"
+      },
+      "code": "*#232337#",
+      "category": "device"
+    },
+    {
+      "id": "device.adresse-mac-wlan",
+      "label": {
+        "fr": "Adresse MAC WLAN",
+        "en": "WLAN MAC address"
+      },
+      "code": "*#232338#",
+      "category": "device"
+    },
+    {
+      "id": "device.service-gtalk",
+      "label": {
+        "fr": "Service GTalk",
+        "en": "GTalk service"
+      },
+      "code": "*#*#8255#*#*",
+      "category": "device"
+    },
+    {
+      "id": "device.verification-simlock",
+      "label": {
+        "fr": "Vérification SIMLOCK",
+        "en": "SIM lock check"
+      },
+      "code": "*#7465625#",
+      "category": "device"
+    },
+    {
+      "id": "device.informations-generales-de-l-appareil",
+      "label": {
+        "fr": "Informations Générales de l'appareil",
+        "en": "General device information"
+      },
+      "code": "*#*#4636#*#*",
+      "category": "device"
+    },
+    {
+      "id": "device.informations-appareil-photo",
+      "label": {
+        "fr": "Informations Appareil Photo",
+        "en": "Camera information"
+      },
+      "code": "*#34971539#",
+      "category": "device"
+    },
+    {
+      "id": "device.informations-ecran",
+      "label": {
+        "fr": "Informations Ecran",
+        "en": "Display information"
+      },
+      "code": "*#2663#",
+      "category": "device"
+    },
+    {
+      "id": "device.version-du-firmware",
+      "label": {
+        "fr": "Version du Firmware",
+        "en": "Firmware version"
+      },
+      "code": "*#1234#",
+      "category": "device"
+    },
+    {
+      "id": "device.menu-d-informations",
+      "label": {
+        "fr": "Menu d'Informations",
+        "en": "Information menu"
+      },
+      "code": "*#0*#",
+      "category": "device"
+    },
+    {
+      "id": "device.informations-logiciel-hardware",
+      "label": {
+        "fr": "Informations Logiciel & Hardware",
+        "en": "Software & hardware information"
+      },
+      "code": "*#12580*369#",
+      "category": "device"
+    },
+    {
+      "id": "device.date-du-firmware",
+      "label": {
+        "fr": "Date du Firmware",
+        "en": "Firmware date"
+      },
+      "code": "*#*#44336#*#*",
+      "category": "device"
+    },
+    {
+      "id": "device.samsung-affiche-les-statistiques-de-la-batterie",
+      "label": {
+        "fr": "Affiche les statistiques de la batterie",
+        "en": "Battery statistics"
+      },
+      "code": "*#0228#",
+      "category": "device",
+      "brand": "samsung"
+    },
+    {
+      "id": "device.samsung-fait-une-musique-de-test",
+      "label": {
+        "fr": "Fait une musique de test",
+        "en": "Play a test tune"
+      },
+      "code": "*#0289#",
+      "category": "device",
+      "brand": "samsung"
+    },
+    {
+      "id": "device.samsung-regler-la-date-et-l-heure",
+      "label": {
+        "fr": "Régler la date et l'heure",
+        "en": "Set date and time"
+      },
+      "code": "*#0782#",
+      "category": "device",
+      "brand": "samsung"
+    },
+    {
+      "id": "device.samsung-test-du-vibreur",
+      "label": {
+        "fr": "Test du vibreur",
+        "en": "Vibration test"
+      },
+      "code": "*#0842#",
+      "category": "device",
+      "brand": "samsung"
+    },
+    {
+      "id": "device.samsung-test-des-sons-en-mp3",
+      "label": {
+        "fr": "Test des sons en mp3",
+        "en": "MP3 sound test"
+      },
+      "code": "*#0673#",
+      "category": "device",
+      "brand": "samsung"
+    },
+    {
+      "id": "device.samsung-test-des-hauts-parleurs-ou-de-l-ecran-lcd",
+      "label": {
+        "fr": "Test des hauts parleurs ou de l'écran LCD",
+        "en": "Speaker or LCD test"
+      },
+      "code": "*#0*#",
+      "category": "device",
+      "brand": "samsung"
+    },
+    {
+      "id": "device.samsung-test-du-tactile-de-l-appareil",
+      "label": {
+        "fr": "Test du tactile de l'appareil",
+        "en": "Touchscreen test"
+      },
+      "code": "*#*#2664#*#*",
+      "category": "device",
+      "brand": "samsung"
+    },
+    {
+      "id": "device.samsung-test-du-micro",
+      "label": {
+        "fr": "Test du micro",
+        "en": "Microphone test"
+      },
+      "code": "*#0283#",
+      "category": "device",
+      "brand": "samsung"
+    },
+    {
+      "id": "device.samsung-test-du-capteur-de-proximite",
+      "label": {
+        "fr": "Test du capteur de proximité",
+        "en": "Proximity sensor test"
+      },
+      "code": "*#0588#",
+      "category": "device",
+      "brand": "samsung"
+    },
+    {
+      "id": "device.htc-affichage-de-programme-de-test",
+      "label": {
+        "fr": "Affichage de programme de test",
+        "en": "Test program"
+      },
+      "code": "*#*#3424#*#*",
+      "category": "device",
+      "brand": "htc"
+    },
+    {
+      "id": "device.htc-affichage-de-vocoder",
+      "label": {
+        "fr": "Affichage de VOCODER",
+        "en": "VOCODER display"
+      },
+      "code": "##8626337#",
+      "category": "device",
+      "brand": "htc"
+    },
+    {
+      "id": "device.htc-affichage-du-menu-d-informations",
+      "label": {
+        "fr": "Affichage du menu d'informations",
+        "en": "Information menu"
+      },
+      "code": "*#*#4636#*#*",
+      "category": "device",
+      "brand": "htc"
+    }
+  ]
+}

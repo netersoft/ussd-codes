@@ -71,10 +71,9 @@ abstract class AppTheme {
   static ThemeData setup(BuildContext context, {bool lightTheme = true}) => isLight() ? _buildLightTheme(context) : _buildDarkTheme(context);
 
   static ThemeData _buildLightTheme(BuildContext context) {
-    final ColorScheme colorScheme = const ColorScheme.light().copyWith(
-      primary: primaryColor,
-      secondary: secondaryColor,
-    );
+    // Every Material 3 role (FAB, navigation indicator...) derived from the
+    // brand color, rather than the default purple.
+    final ColorScheme colorScheme = ColorScheme.fromSeed(seedColor: primaryColor, primary: primaryColor);
     final ThemeData base = ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
@@ -89,10 +88,7 @@ abstract class AppTheme {
         ).colorScheme.copyWith(secondary: Colors.white),
       ),
       fontFamily: _fontFamily,
-      colorScheme: colorScheme.copyWith(
-        secondary: secondaryColor,
-        surface: Colors.white,
-      ),
+      colorScheme: colorScheme.copyWith(surface: Colors.white),
       tabBarTheme: const TabBarThemeData(indicatorColor: Colors.white),
     );
     return base.copyWith(
@@ -137,10 +133,7 @@ abstract class AppTheme {
   }
 
   static ThemeData _buildDarkTheme(BuildContext context) {
-    final ColorScheme colorScheme = const ColorScheme.dark().copyWith(
-      primary: primaryColor,
-      secondary: secondaryColor,
-    );
+    final ColorScheme colorScheme = ColorScheme.fromSeed(seedColor: primaryColor, brightness: Brightness.dark);
     final ThemeData base = ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -154,10 +147,7 @@ abstract class AppTheme {
         textTheme: ButtonTextTheme.primary,
       ),
       fontFamily: _fontFamily,
-      colorScheme: colorScheme.copyWith(
-        secondary: secondaryColor,
-        surface: AppColors.blackRussian,
-      ),
+      colorScheme: colorScheme.copyWith(surface: AppColors.blackRussian),
       tabBarTheme: const TabBarThemeData(indicatorColor: Colors.white),
     );
     return base.copyWith(

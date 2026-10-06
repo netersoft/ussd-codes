@@ -1,8 +1,8 @@
-import 'package:flutter_starter/core/services/i18n/locale_preference.dart';
-import 'package:flutter_starter/core/services/i18n/translations.g.dart';
-import 'package:flutter_starter/core/services/shared_preferences/keys.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:ussd_codes/core/services/i18n/locale_preference.dart';
+import 'package:ussd_codes/core/services/i18n/translations.g.dart';
+import 'package:ussd_codes/core/services/shared_preferences/keys.dart';
 
 import '../../helpers/test_utils.dart';
 

@@ -1,0 +1,91 @@
+{
+  "countries": [
+    {
+      "id": "bj",
+      "name": {
+        "fr": "Bénin",
+        "en": "Benin"
+      },
+      "operators": [
+        "bj-moov",
+        "bj-mtn"
+      ]
+    },
+    {
+      "id": "cm",
+      "name": {
+        "fr": "Cameroun",
+        "en": "Cameroon"
+      },
+      "operators": [
+        "cm-orange"
+      ]
+    },
+    {
+      "id": "ci",
+      "name": {
+        "fr": "Côte d'Ivoire",
+        "en": "Côte d'Ivoire"
+      },
+      "operators": [
+        "ci-moov",
+        "ci-mtn"
+      ]
+    },
+    {
+      "id": "ml",
+      "name": {
+        "fr": "Mali",
+        "en": "Mali"
+      },
+      "operators": [
+        "ml-orange"
+      ]
+    },
+    {
+      "id": "ne",
+      "name": {
+        "fr": "Niger",
+        "en": "Niger"
+      },
+      "operators": [
+        "ne-moov",
+        "ne-orange"
+      ]
+    },
+    {
+      "id": "ng",
+      "name": {
+        "fr": "Nigeria",
+        "en": "Nigeria"
+      },
+      "operators": [
+        "ng-airtel",
+        "ng-9mobile",
+        "ng-glo",
+        "ng-mtn"
+      ]
+    },
+    {
+      "id": "sn",
+      "name": {
+        "fr": "Sénégal",
+        "en": "Senegal"
+      },
+      "operators": [
+        "sn-orange"
+      ]
+    },
+    {
+      "id": "tg",
+      "name": {
+        "fr": "Togo",
+        "en": "Togo"
+      },
+      "operators": [
+        "tg-moov",
+        "tg-togocel"
+      ]
+    }
+  ]
+}

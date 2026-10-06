@@ -1,0 +1,140 @@
+{
+  "id": "ne-moov",
+  "country": "ne",
+  "name": "Moov Africa",
+  "mccMnc": [
+    "61403"
+  ],
+  "codes": [
+    {
+      "id": "ne-moov.affichage-de-la-liste-des-cinq-numeros-complices",
+      "label": {
+        "fr": "Affichage de la liste des cinq numéros complices"
+      },
+      "code": "*107#",
+      "category": "services"
+    },
+    {
+      "id": "ne-moov.acces-au-service-de-transfert-de-credit",
+      "label": {
+        "fr": "Accès au service de transfert de crédit"
+      },
+      "code": "*102#",
+      "category": "transfer"
+    },
+    {
+      "id": "ne-moov.ajout-de-numero-amis-et-famille",
+      "label": {
+        "fr": "Ajout de numéro amis et famille"
+      },
+      "code": "*107*{recipient}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro",
+            "en": "Number"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne-moov.changement-de-numero-amis-et-famille",
+      "label": {
+        "fr": "Changement de numéro amis et famille"
+      },
+      "code": "*107*{recipient}*{position}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro",
+            "en": "Number"
+          }
+        },
+        {
+          "key": "position",
+          "type": "number",
+          "label": {
+            "fr": "Position (1 à 5)",
+            "en": "Position (1 to 5)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne-moov.suppression-de-numero-amis-et-famille",
+      "label": {
+        "fr": "Suppression de numéro amis et famille"
+      },
+      "code": "*107*{position}#",
+      "category": "services",
+      "params": [
+        {
+          "key": "position",
+          "type": "number",
+          "label": {
+            "fr": "Position (1 à 5)",
+            "en": "Position (1 to 5)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne-moov.creation-du-code-secret-de-transfert-de-credit",
+      "label": {
+        "fr": "Création du code secret de transfert de crédit"
+      },
+      "code": "*102*0000*{new_pin}#",
+      "category": "transfer",
+      "params": [
+        {
+          "key": "new_pin",
+          "type": "pin",
+          "label": {
+            "fr": "Nouveau code secret",
+            "en": "New PIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne-moov.transfert-de-credit-a-un-autre-numero",
+      "label": {
+        "fr": "Transfert de crédit à un autre numéro"
+      },
+      "code": "*102*{amount}*{recipient}*{pin}#",
+      "category": "transfer",
+      "params": [
+        {
+          "key": "amount",
+          "type": "amount",
+          "label": {
+            "fr": "Montant",
+            "en": "Amount"
+          }
+        },
+        {
+          "key": "recipient",
+          "type": "phone",
+          "label": {
+            "fr": "Numéro",
+            "en": "Number"
+          }
+        },
+        {
+          "key": "pin",
+          "type": "pin",
+          "label": {
+            "fr": "Code secret",
+            "en": "PIN"
+          }
+        }
+      ]
+    }
+  ]
+}
