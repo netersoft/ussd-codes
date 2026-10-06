@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:ussd_codes/core/catalog/models.dart';
 import 'package:ussd_codes/core/services/shared_preferences/keys.dart';
 import 'package:ussd_codes/core/services/shared_preferences/service.dart';
+import 'package:ussd_codes/core/services/telephony/service.dart';
 import 'package:ussd_codes/view/modals/run_code_sheet.dart';
 
 import '../helpers/app_harness.dart';
@@ -105,5 +106,56 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('*155*‹montant›*97*‹code›#'), findsOneWidget);
+  });
+
+  group('response in the app', () {
+    const balance = UssdCode(id: 'bj-mtn.solde-mtn', label: LocalizedText({'fr': 'Solde MTN'}), code: '*124#', category: CodeCategory.account);
+
+    testWidgets("shows the network's answer instead of leaving the app", (tester) async {
+      telephony.ussdResult = const UssdAnswered('Votre solde est de 500 F.');
+      await pumpSheet(tester, balance);
+
+      await tester.tap(find.text('Composer'));
+      await tester.pumpAndSettle();
+
+      expect(telephony.sentUssd, ['*124#']);
+      expect(telephony.dialed, isEmpty);
+      expect(find.text("Réponse de l'opérateur"), findsOneWidget);
+      expect(find.text('Votre solde est de 500 F.'), findsOneWidget);
+    });
+
+    testWidgets('a menu continues in the dialer', (tester) async {
+      telephony.ussdResult = const UssdAnswered('1. Solde\n2. Forfaits');
+      await pumpSheet(tester, balance);
+      await tester.tap(find.text('Composer'));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Continuer'));
+      await tester.pumpAndSettle();
+
+      expect(telephony.dialed, [(code: '*124#', direct: true)]);
+    });
+
+    testWidgets('falls back to the dialer when the network gives no answer', (tester) async {
+      await pumpSheet(tester, balance);
+
+      await tester.tap(find.text('Composer'));
+      await tester.pumpAndSettle();
+
+      expect(telephony.sentUssd, ['*124#']);
+      expect(telephony.dialed, [(code: '*124#', direct: true)]);
+    });
+
+    testWidgets('stays out of the way when direct calls are off', (tester) async {
+      await prefs.setBool(PrefKeys.directCall, false);
+      telephony.ussdResult = const UssdAnswered('Votre solde est de 500 F.');
+      await pumpSheet(tester, balance);
+
+      await tester.tap(find.text('Composer'));
+      await tester.pumpAndSettle();
+
+      expect(telephony.sentUssd, isEmpty);
+      expect(telephony.dialed, [(code: '*124#', direct: false)]);
+    });
   });
 }

@@ -6,6 +6,9 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
+import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.provider.ContactsContract
 import android.telephony.SubscriptionManager
 import android.telephony.TelephonyManager
@@ -28,6 +31,7 @@ class MainActivity : FlutterActivity() {
                 "readLegacyData" -> result.success(readLegacyData())
                 "requestReview" -> requestReview { shown -> result.success(shown) }
                 "pickPhoneNumber" -> pickPhoneNumber(result)
+                "sendUssd" -> sendUssd(call.argument<String>("code")!!) { response -> result.success(response) }
                 else -> result.notImplemented()
             }
         }
@@ -117,6 +121,37 @@ class MainActivity : FlutterActivity() {
 
         val countries = subscriptionIds.map { telephony.createForSubscriptionId(it).networkCountryIso } + telephony.networkCountryIso
         return countries.filter { !it.isNullOrEmpty() }.map { it.lowercase() }.distinct()
+    }
+
+    /**
+     * Runs [code] in the background and answers the network's response, so
+     * the app can show it (Android 8+, CALL_PHONE granted). Answers
+     * {"response": text} or {"failure": "unsupported" | "denied" | "failed"}.
+     * The response can't be answered: a code opening a menu has to be
+     * continued in the dialer.
+     */
+    private fun sendUssd(code: String, done: (Map<String, Any?>) -> Unit) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return done(mapOf("failure" to "unsupported"))
+        if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            return done(mapOf("failure" to "denied"))
+        }
+        val telephony = getSystemService(TelephonyManager::class.java) ?: return done(mapOf("failure" to "unsupported"))
+        val callback = object : TelephonyManager.UssdResponseCallback() {
+            override fun onReceiveUssdResponse(telephonyManager: TelephonyManager, request: String, response: CharSequence) {
+                done(mapOf("response" to response.toString()))
+            }
+
+            override fun onReceiveUssdResponseFailed(telephonyManager: TelephonyManager, request: String, failureCode: Int) {
+                done(mapOf("failure" to "failed"))
+            }
+        }
+        try {
+            telephony.sendUssdRequest(code, callback, Handler(Looper.getMainLooper()))
+        } catch (e: SecurityException) {
+            done(mapOf("failure" to "denied"))
+        } catch (e: Exception) {
+            done(mapOf("failure" to "failed"))
+        }
     }
 
     /**

@@ -25,6 +25,17 @@ class FakeTelephonyService extends TelephonyService {
   /// What the contact picker answers (null: cancelled).
   String? pickedNumber;
 
+  /// What the network answers to codes run in the background (unavailable:
+  /// the code then runs through [dial]).
+  UssdResult ussdResult = const UssdUnavailable();
+  final sentUssd = <String>[];
+
+  @override
+  Future<UssdResult> sendUssd(String code, {Duration timeout = const Duration(seconds: 30)}) async {
+    sentUssd.add(code);
+    return ussdResult;
+  }
+
   FakeTelephonyService({this.sims = const [], this.networkCountryIds = const []});
 
   @override

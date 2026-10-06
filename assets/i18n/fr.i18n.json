@@ -65,6 +65,11 @@
   "requiredField": "Champ obligatoire",
   "pickContact": "Choisir un contact",
   "countryDetected": "Pays détecté : ${country}",
+  "sendingUssd": "Envoi…",
+  "operatorResponse": "Réponse de l'opérateur",
+  "emptyUssdResponse": "L'opérateur n'a renvoyé aucun texte.",
+  "continueInDialer": "Continuer",
+  "closeAction": "Fermer",
   "digitsOnly": "Chiffres uniquement",
 
   "addCode": "Ajouter un code",
