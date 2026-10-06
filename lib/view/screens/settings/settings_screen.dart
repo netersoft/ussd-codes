@@ -345,15 +345,6 @@ class SettingsListWrapper extends ConsumerWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           ListTile(
-                            title: Text(context.t.byWhatsapp),
-                            trailing: SvgPicture.asset(
-                              'assets/images/whatsapp.svg',
-                              width: 21.0,
-                              height: 21.0,
-                            ),
-                            onTap: () => settings.share(ShareOptions.whatsapp),
-                          ),
-                          ListTile(
                             title: Text(context.t.byEmail),
                             trailing: const Icon(
                               Icons.email,
