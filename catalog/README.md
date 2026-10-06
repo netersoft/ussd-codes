@@ -71,6 +71,28 @@ catalog/
   - `pin` is masked on screen and never stored.
 - `brand` (device codes only): the manufacturer the code works on, lowercase (`samsung`).
 
+### Internet bundles
+
+Operators that publish their price list also carry `plans`, for the comparator in the app and the `<country>/forfaits/` pages of the site, and `plansSource`, the page they were checked on:
+
+```json
+{
+  "id": "tg-togocel.forfait-599",
+  "price": 599,
+  "volumeMb": 5120,
+  "validityHours": 24,
+  "note": { "fr": "Net599", "en": "Net599" },
+  "code": "*909*241#",
+  "checkedAt": "2026-10-06"
+}
+```
+
+- `price` is in the country's currency (FCFA). `volumeMb` counts 1 GB as 1024 MB, as the operators do.
+- `night: true` marks bundles valid at night only (their hours go in `note`). They are compared separately.
+- `code` buys the bundle, or opens the operator's bundles menu when there is no direct code.
+- `checkedAt` is the day the price was checked. After 90 days the app and the site show « prix à confirmer »; after 180 days they hide the bundle. `tool/build_catalog.dart` warns about bundles older than 90 days: **check the prices every month** on `plansSource`, update them and their `checkedAt`, then publish.
+- Leave out bundles limited to some apps (social media passes): they don't compare per GB.
+
 ## Changing the catalog
 
 1. Edit the files above.
@@ -113,6 +135,7 @@ Checked in October 2026 (catalogs v3 and v4) against the operators' own sites an
 
 - **Bundles with a price** (« 100Mo/1j/350F ») were removed: their menus and prices had all changed. Each operator now has its bundles menu, which the old ids redirect to.
 - **Kept without a current source:** codes no source contradicts but none lists either, mostly voucher top-up syntaxes, Orange Mali Bip and SOS, Moov Niger's buddy numbers and credit transfer, the Zamani services other than Zamani Cash, and Orange Sénégal's Orange Money shortcuts. Check them first when a user reports a code.
+- **Bundles** (checked 2026-10-06): Moov, MTN and Celtiis (Bénin), Moov and Yas (Togo), Orange (Côte d'Ivoire). Moov and MTN Côte d'Ivoire publish no price list for phones (MTN's bundles are personalised), so they have none. Celtiis only lists its monthly passes.
 - **Thin operators:** Moov Africa Malitel and Airtel Niger have only the codes an official source lists; add codes as users report them.
 - **Missing operator:** Expresso (Sénégal), for lack of an official list (third-party sites give `*222#` for the balance).
 - **MCC/MNC values** match the public MCC/MNC tables; they are still to be confirmed on real SIMs.

@@ -113,8 +113,9 @@ Future<SharedPreferencesService> setupTestPreferences() async {
 }
 
 /// Pumps [child] with the app's providers, translations (French) and the
-/// bundled catalog, the telephony layer replaced by [telephony].
-Future<void> pumpApp(WidgetTester tester, Widget child, {required FakeTelephonyService telephony}) async {
+/// bundled catalog, the telephony layer replaced by [telephony] and, with
+/// [now], the clock fixed.
+Future<void> pumpApp(WidgetTester tester, Widget child, {required FakeTelephonyService telephony, DateTime? now}) async {
   final cacheDir = Directory.systemTemp.createTempSync('catalog_cache');
   addTearDown(() => cacheDir.deleteSync(recursive: true));
 
@@ -122,6 +123,7 @@ Future<void> pumpApp(WidgetTester tester, Widget child, {required FakeTelephonyS
     overrides: [
       telephonyServiceProvider.overrideWithValue(telephony),
       catalogRepositoryProvider.overrideWithValue(CatalogRepository(remoteUrl: '', cacheDir: () async => cacheDir)),
+      if (now != null) clockProvider.overrideWithValue(() => now),
     ],
   );
   addTearDown(container.dispose);

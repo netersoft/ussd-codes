@@ -113,5 +113,28 @@
   "privacyPolicy": "Politique de confidentialité",
   "contactUs": "Nous contacter",
   "contactUsDescription": "Proposez les codes de votre pays ou signalez une erreur",
-  "suggestCodesSubject": "Codes USSD : proposition de codes"
+  "suggestCodesSubject": "Codes USSD : proposition de codes",
+
+  "plansTab": "Forfaits",
+  "plans": {
+    "title": "Comparateur de forfaits internet",
+    "notCovered": "Le comparateur couvre pour l'instant le Bénin, le Togo et la Côte d'Ivoire.",
+    "noMatch": "Aucun forfait ne correspond à ces filtres.",
+    "anyDuration": "Toutes durées",
+    "day": "1 jour",
+    "week": "≤ 7 jours",
+    "month": "30 jours",
+    "anyBudget": "Tous prix",
+    "upTo": "≤ ${price}",
+    "night": "Nuit",
+    "sortPerGb": "Prix au Go",
+    "sortPrice": "Prix",
+    "sortVolume": "Volume",
+    "perGb": "${price}/Go",
+    "hours": "${n} h",
+    "days": "${n} jours",
+    "toConfirm": "Prix à confirmer",
+    "buyLabel": "Forfait ${volume} – ${validity}",
+    "footer": "Prix relevés le ${date} sur les sites des opérateurs. Les offres changent souvent : vérifiez le prix avant de valider l'achat."
+  }
 }

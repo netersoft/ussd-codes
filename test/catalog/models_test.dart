@@ -160,4 +160,45 @@ void main() {
       expect(catalogWith({'bj-moov.old': 'bj-mtn.forfaits'}).validate(), [contains('must start with')]);
     });
   });
+
+  group('DataPlan', () {
+    const plan = DataPlan(id: 'bj-mtn.forfait-500', price: 500, volumeMb: 1024, validityHours: 24, code: '*123#', checkedAt: '2026-10-06');
+
+    test('costs its price per GB', () {
+      expect(plan.pricePerGb, 500);
+      expect(const DataPlan(id: 'x.y', price: 100, volumeMb: 256, validityHours: 24, code: '*1#', checkedAt: '2026-10-06').pricePerGb, 400);
+    });
+
+    test('is to confirm after 90 days and hidden after 180', () {
+      expect(plan.freshness(DateTime(2026, 12)), PlanFreshness.fresh);
+      expect(plan.freshness(DateTime(2027, 1, 10)), PlanFreshness.stale);
+      expect(plan.freshness(DateTime(2027, 4, 10)), PlanFreshness.expired);
+    });
+
+    test('the catalog rejects unusable plans', () {
+      Catalog withPlans(List<DataPlan> plans, {String? source = 'https://example.com'}) => Catalog(
+        version: 1,
+        updatedAt: '2026-10-06',
+        countries: [
+          Country(
+            id: 'bj',
+            name: const LocalizedText({'fr': 'Bénin'}),
+            operators: [Operator(id: 'bj-mtn', countryId: 'bj', name: 'MTN', codes: const [], plans: plans, plansSource: source)],
+          ),
+        ],
+        deviceCodes: const [],
+      );
+
+      expect(withPlans([plan]).validate(), isEmpty);
+      expect(withPlans([plan], source: null).validate(), [contains('plansSource')]);
+      expect(
+        withPlans([const DataPlan(id: 'bj-mtn.free', price: 0, volumeMb: 10, validityHours: 24, code: '*1#', checkedAt: '2026-10-06')]).validate(),
+        [contains('positive')],
+      );
+      expect(
+        withPlans([const DataPlan(id: 'bj-mtn.x', price: 5, volumeMb: 10, validityHours: 24, code: '*1#', checkedAt: '6/10/2026')]).validate(),
+        [contains('checkedAt')],
+      );
+    });
+  });
 }

@@ -107,6 +107,81 @@
       "category": "services"
     }
   ],
+  "plans": [
+    {
+      "id": "bj-moov.forfait-100",
+      "price": 100,
+      "volumeMb": 166,
+      "validityHours": 24,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-moov.forfait-150",
+      "price": 150,
+      "volumeMb": 250,
+      "validityHours": 24,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-moov.forfait-200",
+      "price": 200,
+      "volumeMb": 333,
+      "validityHours": 24,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-moov.forfait-300",
+      "price": 300,
+      "volumeMb": 500,
+      "validityHours": 48,
+      "note": {
+        "fr": "WhatsApp illimité",
+        "en": "Unlimited WhatsApp"
+      },
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-moov.forfait-500",
+      "price": 500,
+      "volumeMb": 1024,
+      "validityHours": 24,
+      "note": {
+        "fr": "Réseaux sociaux illimités",
+        "en": "Unlimited social media"
+      },
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-moov.forfait-550",
+      "price": 550,
+      "volumeMb": 917,
+      "validityHours": 72,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-moov.forfait-1000",
+      "price": 1000,
+      "volumeMb": 1659,
+      "validityHours": 168,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-moov.forfait-2500",
+      "price": 2500,
+      "volumeMb": 4096,
+      "validityHours": 360,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    }
+  ],
+  "plansSource": "https://www.moov-africa.bj/forfait-internet/",
   "redirects": {
     "bj-moov.forfait-bonus-10go-25000f": "bj-moov.forfaits-internet",
     "bj-moov.forfait-bonus-150mo-1000f": "bj-moov.forfaits-internet",

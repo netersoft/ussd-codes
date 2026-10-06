@@ -267,6 +267,227 @@
       "category": "money"
     }
   ],
+  "plans": [
+    {
+      "id": "tg-togocel.forfait-100",
+      "price": 100,
+      "volumeMb": 45,
+      "validityHours": 24,
+      "note": {
+        "fr": "Net100",
+        "en": "Net100"
+      },
+      "code": "*909*212#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-199-nuit",
+      "price": 199,
+      "volumeMb": 1024,
+      "validityHours": 24,
+      "night": true,
+      "note": {
+        "fr": "Net199, de 22 h à 6 h",
+        "en": "Net199, from 10 pm to 6 am"
+      },
+      "code": "*909*217#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-200",
+      "price": 200,
+      "volumeMb": 100,
+      "validityHours": 24,
+      "note": {
+        "fr": "Net200",
+        "en": "Net200"
+      },
+      "code": "*909*213#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-250",
+      "price": 250,
+      "volumeMb": 250,
+      "validityHours": 24,
+      "note": {
+        "fr": "NET250 Alèz",
+        "en": "NET250 Alèz"
+      },
+      "code": "*909*250#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-350",
+      "price": 350,
+      "volumeMb": 280,
+      "validityHours": 48,
+      "note": {
+        "fr": "Net350",
+        "en": "Net350"
+      },
+      "code": "*909*214#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-500-nuit",
+      "price": 500,
+      "volumeMb": 3072,
+      "validityHours": 24,
+      "night": true,
+      "note": {
+        "fr": "Net500, de 22 h à 6 h",
+        "en": "Net500, from 10 pm to 6 am"
+      },
+      "code": "*909*215#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-599",
+      "price": 599,
+      "volumeMb": 5120,
+      "validityHours": 24,
+      "note": {
+        "fr": "Net599",
+        "en": "Net599"
+      },
+      "code": "*909*241#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-600",
+      "price": 600,
+      "volumeMb": 700,
+      "validityHours": 48,
+      "note": {
+        "fr": "Net600",
+        "en": "Net600"
+      },
+      "code": "*909*216#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-1000",
+      "price": 1000,
+      "volumeMb": 1536,
+      "validityHours": 168,
+      "note": {
+        "fr": "Net1000",
+        "en": "Net1000"
+      },
+      "code": "*909*221#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-1499",
+      "price": 1499,
+      "volumeMb": 5120,
+      "validityHours": 72,
+      "note": {
+        "fr": "Net1499",
+        "en": "Net1499"
+      },
+      "code": "*909*218#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-1500",
+      "price": 1500,
+      "volumeMb": 2560,
+      "validityHours": 168,
+      "note": {
+        "fr": "Net1500",
+        "en": "Net1500"
+      },
+      "code": "*909*222#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-2500",
+      "price": 2500,
+      "volumeMb": 2048,
+      "validityHours": 720,
+      "note": {
+        "fr": "Net2500",
+        "en": "Net2500"
+      },
+      "code": "*909*236#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-3000",
+      "price": 3000,
+      "volumeMb": 3072,
+      "validityHours": 720,
+      "note": {
+        "fr": "Net3000",
+        "en": "Net3000"
+      },
+      "code": "*909*231#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-3999",
+      "price": 3999,
+      "volumeMb": 15360,
+      "validityHours": 168,
+      "note": {
+        "fr": "Net3999",
+        "en": "Net3999"
+      },
+      "code": "*909*223#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-5000",
+      "price": 5000,
+      "volumeMb": 8192,
+      "validityHours": 720,
+      "note": {
+        "fr": "Net5000",
+        "en": "Net5000"
+      },
+      "code": "*909*232#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-10000",
+      "price": 10000,
+      "volumeMb": 20480,
+      "validityHours": 720,
+      "note": {
+        "fr": "Net10000",
+        "en": "Net10000"
+      },
+      "code": "*909*233#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-15000",
+      "price": 15000,
+      "volumeMb": 61440,
+      "validityHours": 720,
+      "note": {
+        "fr": "Air Fiber",
+        "en": "Air Fiber"
+      },
+      "code": "*909*234#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "tg-togocel.forfait-25000",
+      "price": 25000,
+      "volumeMb": 112640,
+      "validityHours": 720,
+      "note": {
+        "fr": "Air Fiber+",
+        "en": "Air Fiber+"
+      },
+      "code": "*909*235#",
+      "checkedAt": "2026-10-06"
+    }
+  ],
+  "plansSource": "https://yas.tg/particulier/forfaits-mobile/internet/",
   "redirects": {
     "tg-togocel.consultation-de-solde-tmoney": "tg-togocel.activation-tmoney",
     "tg-togocel.forfait-internet-1-7go-30j-5000f": "tg-togocel.forfaits-internet",

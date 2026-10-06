@@ -165,6 +165,101 @@
       "category": "services"
     }
   ],
+  "plans": [
+    {
+      "id": "bj-mtn.forfait-100",
+      "price": 100,
+      "volumeMb": 166,
+      "validityHours": 24,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-mtn.forfait-200",
+      "price": 200,
+      "volumeMb": 333,
+      "validityHours": 24,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-mtn.forfait-300",
+      "price": 300,
+      "volumeMb": 500,
+      "validityHours": 24,
+      "note": {
+        "fr": "WhatsApp gratuit",
+        "en": "Free WhatsApp"
+      },
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-mtn.forfait-500",
+      "price": 500,
+      "volumeMb": 1024,
+      "validityHours": 24,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-mtn.forfait-750",
+      "price": 750,
+      "volumeMb": 1024,
+      "validityHours": 48,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-mtn.forfait-1000",
+      "price": 1000,
+      "volumeMb": 850,
+      "validityHours": 168,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-mtn.forfait-2500",
+      "price": 2500,
+      "volumeMb": 4168,
+      "validityHours": 360,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-mtn.forfait-5000",
+      "price": 5000,
+      "volumeMb": 8335,
+      "validityHours": 720,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-mtn.forfait-15000",
+      "price": 15000,
+      "volumeMb": 24986,
+      "validityHours": 720,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-mtn.forfait-20000",
+      "price": 20000,
+      "volumeMb": 33280,
+      "validityHours": 720,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-mtn.forfait-25000",
+      "price": 25000,
+      "volumeMb": 41677,
+      "validityHours": 720,
+      "code": "*123#",
+      "checkedAt": "2026-10-06"
+    }
+  ],
+  "plansSource": "https://www.mtn.bj/brands/forfait-internet/",
   "redirects": {
     "bj-mtn.forfait-famille-illimite-30j-25000": "bj-mtn.forfaits-internet",
     "bj-mtn.forfait-internet-1-5go-30j-7000f": "bj-mtn.forfaits-internet",

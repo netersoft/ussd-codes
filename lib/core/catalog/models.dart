@@ -133,6 +133,83 @@ class UssdCode {
   };
 }
 
+/// How current a plan's price is, from the date it was last checked.
+enum PlanFreshness {
+  fresh,
+
+  /// Older than [DataPlan.staleAfter]: shown, with a "price to confirm" note.
+  stale,
+
+  /// Older than [DataPlan.hiddenAfter]: hidden, a wrong price being worse
+  /// than none.
+  expired,
+}
+
+/// An internet bundle, for the comparator: what it costs and gives, and the
+/// code that buys it (a menu when the operator has no direct code).
+class DataPlan {
+  static const staleAfter = Duration(days: 90);
+  static const hiddenAfter = Duration(days: 180);
+
+  final String id;
+
+  /// In the country's currency (FCFA for the countries covered so far).
+  final int price;
+  final int volumeMb;
+  final int validityHours;
+
+  /// Valid at night only (the hours are in [note]).
+  final bool night;
+  final LocalizedText? note;
+  final String code;
+
+  /// Date (YYYY-MM-DD) the price was last checked on the operator's site.
+  final String checkedAt;
+
+  const DataPlan({
+    required this.id,
+    required this.price,
+    required this.volumeMb,
+    required this.validityHours,
+    required this.code,
+    required this.checkedAt,
+    this.night = false,
+    this.note,
+  });
+
+  factory DataPlan.fromJson(Map<String, dynamic> json) => DataPlan(
+    id: json['id'] as String,
+    price: json['price'] as int,
+    volumeMb: json['volumeMb'] as int,
+    validityHours: json['validityHours'] as int,
+    night: json['night'] as bool? ?? false,
+    note: json['note'] == null ? null : LocalizedText.fromJson(json['note']),
+    code: json['code'] as String,
+    checkedAt: json['checkedAt'] as String,
+  );
+
+  /// Price of 1 GB (1024 MB) with this plan.
+  double get pricePerGb => price * 1024 / volumeMb;
+
+  PlanFreshness freshness(DateTime now) {
+    final age = now.difference(DateTime.parse(checkedAt));
+    if (age > hiddenAfter) return PlanFreshness.expired;
+    if (age > staleAfter) return PlanFreshness.stale;
+    return PlanFreshness.fresh;
+  }
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'price': price,
+    'volumeMb': volumeMb,
+    'validityHours': validityHours,
+    if (night) 'night': night,
+    if (note != null) 'note': note!.toJson(),
+    'code': code,
+    'checkedAt': checkedAt,
+  };
+}
+
 class Operator {
   final String id;
   final String countryId;
@@ -146,6 +223,13 @@ class Operator {
   final List<String> mccMnc;
   final List<UssdCode> codes;
 
+  /// Internet bundles, for the comparator (empty where the operator
+  /// publishes no price list).
+  final List<DataPlan> plans;
+
+  /// The operator's page the [plans] were checked on.
+  final String? plansSource;
+
   /// Ids of removed codes to the code that replaces them, so favorites
   /// follow (e.g. an expired bundle to the bundles menu).
   final Map<String, String> redirects;
@@ -158,6 +242,8 @@ class Operator {
     this.formerName,
     this.mccMnc = const [],
     this.redirects = const {},
+    this.plans = const [],
+    this.plansSource,
   });
 
   factory Operator.fromJson(Map<String, dynamic> json, {String? countryId}) => Operator(
@@ -168,6 +254,8 @@ class Operator {
     mccMnc: [for (final value in (json['mccMnc'] as List<dynamic>? ?? const [])) value as String],
     codes: [for (final code in json['codes'] as List<dynamic>) UssdCode.fromJson(code as Map<String, dynamic>)],
     redirects: (json['redirects'] as Map<String, dynamic>? ?? const {}).cast<String, String>(),
+    plans: [for (final plan in json['plans'] as List<dynamic>? ?? const []) DataPlan.fromJson(plan as Map<String, dynamic>)],
+    plansSource: json['plansSource'] as String?,
   );
 
   String get displayName => formerName == null ? name : '$name (ex-$formerName)';
@@ -179,6 +267,8 @@ class Operator {
     'mccMnc': mccMnc,
     'codes': [for (final code in codes) code.toJson()],
     if (redirects.isNotEmpty) 'redirects': redirects,
+    if (plans.isNotEmpty) 'plans': [for (final plan in plans) plan.toJson()],
+    if (plansSource != null) 'plansSource': plansSource,
   };
 }
 
@@ -338,6 +428,16 @@ class Catalog {
       checkCode(code, 'device');
     }
     for (final op in operators) {
+      if (op.plans.isNotEmpty && op.plansSource == null) errors.add('${op.id}: plans need a plansSource');
+      for (final plan in op.plans) {
+        checkId(plan.id, 'plan');
+        if (!plan.id.startsWith('${op.id}.')) errors.add('${plan.id}: id must start with "${op.id}."');
+        if (plan.price <= 0 || plan.volumeMb <= 0 || plan.validityHours <= 0) errors.add('${plan.id}: price, volume and validity must be positive');
+        if (!UssdCode.dialablePattern.hasMatch(plan.code)) errors.add('${plan.id}: "${plan.code}" cannot be dialed');
+        if (!RegExp(r'^\d{4}-\d{2}-\d{2}$').hasMatch(plan.checkedAt) || DateTime.tryParse(plan.checkedAt) == null) {
+          errors.add('${plan.id}: checkedAt must be a YYYY-MM-DD date');
+        }
+      }
       for (final MapEntry(key: from, value: to) in op.redirects.entries) {
         if (!from.startsWith('${op.id}.')) errors.add('${op.id}: redirect $from must start with "${op.id}."');
         if (_codesById.containsKey(from)) errors.add('${op.id}: redirect $from is still a code id');

@@ -8,9 +8,9 @@ import '../../../core/providers/library_provider.dart';
 import '../../../core/services/i18n/translations.g.dart';
 import '../../components/codes/code_texts.dart';
 import '../../components/codes/code_tile.dart';
+import '../../components/codes/country_title.dart';
 import '../../components/misc/status.dart';
 import '../../modals/add_code_sheet.dart';
-import '../../modals/country_picker_sheet.dart';
 import '../main_screen.dart';
 
 /// The codes of the selected country (the one the phone is in, or the one the
@@ -38,20 +38,7 @@ class OperatorsScreen extends ConsumerWidget {
       initialIndex: initialIndex < 0 ? 0 : initialIndex,
       child: Scaffold(
         appBar: mainAppBar(
-          title: InkWell(
-            borderRadius: BorderRadius.circular(8),
-            onTap: () => showCountryPickerSheet(context, currentCountryId: country.id),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Flexible(child: Text(country.displayName, overflow: TextOverflow.ellipsis)),
-                  const Icon(Icons.arrow_drop_down),
-                ],
-              ),
-            ),
-          ),
+          title: CountryTitle(country: country),
           bottom: TabBar(
             isScrollable: operators.length > 3,
             tabAlignment: operators.length > 3 ? TabAlignment.start : TabAlignment.fill,

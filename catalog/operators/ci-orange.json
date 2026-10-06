@@ -276,5 +276,93 @@
       "code": "#144*96#",
       "category": "help"
     }
-  ]
+  ],
+  "plans": [
+    {
+      "id": "ci-orange.forfait-200",
+      "price": 200,
+      "volumeMb": 220,
+      "validityHours": 48,
+      "code": "#149*31#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "ci-orange.forfait-300",
+      "price": 300,
+      "volumeMb": 340,
+      "validityHours": 72,
+      "code": "#149*31#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "ci-orange.forfait-500",
+      "price": 500,
+      "volumeMb": 750,
+      "validityHours": 72,
+      "code": "#149*31#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "ci-orange.forfait-1000",
+      "price": 1000,
+      "volumeMb": 1536,
+      "validityHours": 168,
+      "code": "#149*31#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "ci-orange.forfait-1500",
+      "price": 1500,
+      "volumeMb": 2560,
+      "validityHours": 168,
+      "code": "#149*31#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "ci-orange.forfait-2500",
+      "price": 2500,
+      "volumeMb": 3584,
+      "validityHours": 720,
+      "code": "#149*31#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "ci-orange.forfait-5000",
+      "price": 5000,
+      "volumeMb": 7373,
+      "validityHours": 720,
+      "code": "#149*31#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "ci-orange.forfait-10000",
+      "price": 10000,
+      "volumeMb": 15360,
+      "validityHours": 720,
+      "code": "#149*31#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "ci-orange.forfait-20000",
+      "price": 20000,
+      "volumeMb": 36864,
+      "validityHours": 720,
+      "code": "#149*31#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "ci-orange.forfait-250-nuit",
+      "price": 250,
+      "volumeMb": 2048,
+      "validityHours": 24,
+      "night": true,
+      "note": {
+        "fr": "De 22 h à 7 h",
+        "en": "From 10 pm to 7 am"
+      },
+      "code": "#149*31#",
+      "checkedAt": "2026-10-06"
+    }
+  ],
+  "plansSource": "https://www.orange.ci/fr/catalogue-offres-mobiles.html"
 }

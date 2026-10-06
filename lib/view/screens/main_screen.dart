@@ -14,6 +14,7 @@ import '../themes/app_theme.dart';
 import 'device/device_codes_screen.dart';
 import 'favorites/favorites_screen.dart';
 import 'operators/operators_screen.dart';
+import 'plans/plans_screen.dart';
 
 /// The app shell: operators' codes, favorites and device codes tabs.
 class MainScreen extends ConsumerStatefulWidget {
@@ -118,13 +119,14 @@ class _MainScreenState extends ConsumerState<MainScreen> {
     return Scaffold(
       body: IndexedStack(
         index: _index,
-        children: const [OperatorsScreen(), FavoritesScreen(), DeviceCodesScreen()],
+        children: const [OperatorsScreen(), PlansScreen(), FavoritesScreen(), DeviceCodesScreen()],
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _index,
         onDestinationSelected: (index) => setState(() => _index = index),
         destinations: [
           NavigationDestination(icon: const Icon(Icons.cell_tower), label: context.t.operators),
+          NavigationDestination(icon: const Icon(Icons.data_usage), label: context.t.plansTab),
           NavigationDestination(icon: const Icon(Icons.star_border), selectedIcon: const Icon(Icons.star), label: context.t.favorites),
           NavigationDestination(icon: const Icon(Icons.smartphone), label: context.t.phoneCodes),
         ],

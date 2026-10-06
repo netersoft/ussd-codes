@@ -6,6 +6,7 @@
 
 import 'dart:io';
 
+import 'package:ussd_codes/core/catalog/models.dart';
 import 'package:ussd_codes/core/catalog/sources.dart';
 
 void main(List<String> args) {
@@ -15,6 +16,17 @@ void main(List<String> args) {
   if (errors.isNotEmpty) {
     stderr.writeln('Invalid catalog:\n${errors.map((e) => '  - $e').join('\n')}');
     exit(1);
+  }
+
+  // Prices go stale: a reminder to check them again (the app shows them as
+  // "to confirm", then hides them).
+  final now = DateTime.now();
+  final stale = [
+    for (final op in catalog.operators)
+      if (op.plans.where((plan) => plan.freshness(now) != PlanFreshness.fresh).length case final count when count > 0) '${op.id} ($count)',
+  ];
+  if (stale.isNotEmpty) {
+    stderr.writeln('Warning: plans checked more than ${DataPlan.staleAfter.inDays} days ago: ${stale.join(', ')}. Check them on plansSource.');
   }
 
   final output = File(builtCatalogPath);
@@ -36,6 +48,7 @@ void main(List<String> args) {
   final codes = catalog.operators.fold(0, (sum, op) => sum + op.codes.length);
   stdout.writeln(
     'Built $builtCatalogPath: catalog v${catalog.version}, ${catalog.countries.length} countries, '
-    '${catalog.operators.length} operators, $codes operator codes, ${catalog.deviceCodes.length} device codes.',
+    '${catalog.operators.length} operators, $codes operator codes, ${catalog.deviceCodes.length} device codes, '
+    '${catalog.operators.fold(0, (sum, op) => sum + op.plans.length)} plans.',
   );
 }

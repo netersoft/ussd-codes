@@ -69,5 +69,56 @@
       "code": "*889#",
       "category": "money"
     }
-  ]
+  ],
+  "plans": [
+    {
+      "id": "bj-celtiis.forfait-15000",
+      "price": 15000,
+      "volumeMb": 24986,
+      "validityHours": 720,
+      "note": {
+        "fr": "Débit réduit à 2 Mbit/s une fois le volume épuisé",
+        "en": "Speed cut to 2 Mbit/s once the volume is used"
+      },
+      "code": "*199*4#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-celtiis.forfait-19000",
+      "price": 19000,
+      "volumeMb": 31744,
+      "validityHours": 720,
+      "note": {
+        "fr": "Débit réduit à 2 Mbit/s une fois le volume épuisé",
+        "en": "Speed cut to 2 Mbit/s once the volume is used"
+      },
+      "code": "*199*4#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-celtiis.forfait-25000",
+      "price": 25000,
+      "volumeMb": 41984,
+      "validityHours": 720,
+      "note": {
+        "fr": "Débit réduit à 2 Mbit/s une fois le volume épuisé",
+        "en": "Speed cut to 2 Mbit/s once the volume is used"
+      },
+      "code": "*199*4#",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "bj-celtiis.forfait-29000",
+      "price": 29000,
+      "volumeMb": 48333,
+      "validityHours": 720,
+      "note": {
+        "fr": "Débit réduit à 2 Mbit/s une fois le volume épuisé",
+        "en": "Speed cut to 2 Mbit/s once the volume is used"
+      },
+      "code": "*199*4#",
+      "checkedAt": "2026-10-06"
+    }
+  ],
+  "plansSource": "https://celtiis.bj/celtiis/offres"
 }
