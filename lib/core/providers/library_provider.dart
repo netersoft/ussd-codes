@@ -70,14 +70,16 @@ typedef ResolvedCode = ({UssdCode code, Operator? operator, bool isCustom});
 
 /// Finds a code by id among the catalog and the personal codes.
 @riverpod
-ResolvedCode? resolvedCode(Ref ref, String id) {
+ResolvedCode? resolvedCode(Ref ref, String id) =>
+    _resolveCode(id, catalog: ref.watch(currentCatalogProvider).value, customCodes: ref.watch(customCodesProvider));
+
+ResolvedCode? _resolveCode(String id, {required Catalog? catalog, required List<CustomCode> customCodes}) {
   if (CustomCode.isCustomId(id)) {
-    final custom = ref.watch(customCodesProvider).where((custom) => custom.id == id).firstOrNull;
+    final custom = customCodes.where((custom) => custom.id == id).firstOrNull;
     if (custom == null) return null;
-    final operator = ref.watch(currentCatalogProvider).value?.operatorById(custom.operatorId);
-    return (code: custom.toUssdCode(), operator: operator, isCustom: true);
+    return (code: custom.toUssdCode(), operator: catalog?.operatorById(custom.operatorId), isCustom: true);
   }
-  final entry = ref.watch(currentCatalogProvider).value?.entryById(id);
+  final entry = catalog?.entryById(id);
   if (entry == null) return null;
   return (code: entry.code, operator: entry.operator, isCustom: false);
 }
@@ -131,9 +133,12 @@ class DirectCall extends _$DirectCall {
 /// Keeps the app icon's shortcuts (long press) on the latest favorites.
 @Riverpod(keepAlive: true)
 void favoriteShortcuts(Ref ref) {
+  final catalog = ref.watch(currentCatalogProvider).value;
+  final customCodes = ref.watch(customCodesProvider);
   final shortcuts = [
     for (final id in ref.watch(favoritesProvider).reversed)
-      if (ref.watch(resolvedCodeProvider(id)) case final entry?) (id: id, label: entry.code.label.resolve(LocaleSettings.instance.currentLocale.languageCode)),
+      if (_resolveCode(id, catalog: catalog, customCodes: customCodes) case final entry?)
+        (id: id, label: entry.code.label.resolve(LocaleSettings.instance.currentLocale.languageCode)),
   ].take(4).toList();
   unawaited(ref.read(telephonyServiceProvider).setShortcuts(shortcuts));
 }
