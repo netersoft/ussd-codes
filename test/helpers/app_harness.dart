@@ -15,6 +15,9 @@ import 'test_utils.dart';
 /// Records dial requests instead of reaching the platform.
 class FakeTelephonyService extends TelephonyService {
   final List<String> sims;
+
+  /// Countries of the networks the phone is on.
+  List<String> networkCountryIds;
   final dialed = <({String code, bool direct})>[];
   int reviewRequests = 0;
   bool reviewAvailable = true;
@@ -22,7 +25,10 @@ class FakeTelephonyService extends TelephonyService {
   /// What the contact picker answers (null: cancelled).
   String? pickedNumber;
 
-  FakeTelephonyService({this.sims = const []});
+  FakeTelephonyService({this.sims = const [], this.networkCountryIds = const []});
+
+  @override
+  Future<List<String>> networkCountries() async => networkCountryIds;
 
   @override
   bool get canPickContact => true;

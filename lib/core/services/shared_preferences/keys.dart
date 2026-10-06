@@ -3,6 +3,7 @@ abstract class PrefKeys {
   static const language = 'appLanguage';
 
   static const selectedCountry = 'selectedCountry';
+  static const detectedCountry = 'detectedCountry';
   static const directCall = 'directCall';
   static const favorites = 'favorites';
   static const customCodes = 'customCodes';

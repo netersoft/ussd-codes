@@ -13,8 +13,9 @@ import '../../modals/add_code_sheet.dart';
 import '../../modals/country_picker_sheet.dart';
 import '../main_screen.dart';
 
-/// The codes of the selected country, one tab per operator. Opens on the
-/// country and operator of the phone's SIM until the user picks a country.
+/// The codes of the selected country (the one the phone is in, or the one the
+/// user picked), one tab per operator, the phone's SIM operator first. Falls
+/// back to the SIM's country while no country is known.
 class OperatorsScreen extends ConsumerWidget {
   const OperatorsScreen({super.key});
 

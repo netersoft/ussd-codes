@@ -64,6 +64,7 @@
   "secretNotice": "Your PIN is never stored.",
   "requiredField": "Required",
   "pickContact": "Choose a contact",
+  "countryDetected": "Country detected: ${country}",
   "digitsOnly": "Digits only",
 
   "addCode": "Add a code",
