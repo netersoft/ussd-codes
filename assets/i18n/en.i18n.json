@@ -65,6 +65,11 @@
   "requiredField": "Required",
   "pickContact": "Choose a contact",
   "countryDetected": "Country detected: ${country}",
+  "sendingUssd": "Sending…",
+  "operatorResponse": "Operator's response",
+  "emptyUssdResponse": "The operator sent no text back.",
+  "continueInDialer": "Continue",
+  "closeAction": "Close",
   "digitsOnly": "Digits only",
 
   "addCode": "Add a code",

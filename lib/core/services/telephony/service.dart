@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -16,6 +18,25 @@ enum DialOutcome {
   copied,
 
   failed,
+}
+
+/// What the network answered to a code run in the background.
+sealed class UssdResult {
+  const UssdResult();
+}
+
+/// The network's text (a balance, a confirmation, or a menu that can only
+/// be answered in the dialer).
+class UssdAnswered extends UssdResult {
+  final String text;
+
+  const UssdAnswered(this.text);
+}
+
+/// No answer to show: not available here (iOS, Android < 8, no permission)
+/// or the network failed. The code should run the usual way instead.
+class UssdUnavailable extends UssdResult {
+  const UssdUnavailable();
 }
 
 /// Rows the legacy Java app saved: personal codes and favorites.
@@ -78,6 +99,23 @@ class TelephonyService {
     } on PlatformException catch (e) {
       LogHelper.e('Unable to dial', error: e);
       return DialOutcome.failed;
+    }
+  }
+
+  /// Runs [code] in the background and returns the network's answer
+  /// (Android 8+, asks for the phone permission once). Never for device
+  /// codes, which the network doesn't handle.
+  Future<UssdResult> sendUssd(String code, {Duration timeout = const Duration(seconds: 30)}) async {
+    if (!_isAndroid || !await _ensureCallPermission()) return const UssdUnavailable();
+    try {
+      final result = await _channel.invokeMapMethod<String, dynamic>('sendUssd', {'code': code}).timeout(timeout);
+      final text = result?['response'] as String?;
+      return text == null ? const UssdUnavailable() : UssdAnswered(text.trim());
+    } on TimeoutException {
+      return const UssdUnavailable();
+    } on PlatformException catch (e) {
+      LogHelper.w('Unable to send the USSD request', error: e);
+      return const UssdUnavailable();
     }
   }
 

@@ -44,6 +44,10 @@ class _RunCodeSheetState extends ConsumerState<RunCodeSheet> {
 
   bool _dialing = false;
 
+  /// The network's answer once the code ran in the background (null: not run
+  /// yet, or run the usual way).
+  String? _response;
+
   bool get _isIOS => defaultTargetPlatform == TargetPlatform.iOS;
 
   Map<String, String> get _values => {for (final entry in _controllers.entries) entry.key: entry.value.text.trim()};
@@ -58,17 +62,37 @@ class _RunCodeSheetState extends ConsumerState<RunCodeSheet> {
     super.dispose();
   }
 
+  /// Runs the code in the background to show the network's answer here
+  /// when possible (Android, direct mode), the usual way otherwise.
   Future<void> _dial() async {
     if (_dialing || !(_formKey.currentState?.validate() ?? true)) return;
     setState(() => _dialing = true);
 
+    final direct = ref.read(directCallProvider);
+    if (direct && !_isIOS && !widget.code.isDeviceCode) {
+      final result = await ref.read(telephonyServiceProvider).sendUssd(widget.code.fill(_values));
+      if (!mounted) return;
+      if (result case UssdAnswered(:final text)) {
+        unawaited(AnalyticsService.logEvent('run_code', parameters: {'code_id': widget.code.id, 'outcome': 'answered'}));
+        setState(() {
+          _dialing = false;
+          _response = text;
+        });
+        return;
+      }
+    }
+    await _runInDialer(direct: direct);
+  }
+
+  /// Runs the code through the phone app: called directly when allowed, or
+  /// typed in the dialer. A menu answered in the background continues there.
+  Future<void> _runInDialer({required bool direct}) async {
+    setState(() => _dialing = true);
     final messenger = ScaffoldMessenger.of(context);
     final t = context.t;
     final navigator = Navigator.of(context);
 
-    final outcome = await ref
-        .read(telephonyServiceProvider)
-        .dial(widget.code.fill(_values), direct: ref.read(directCallProvider), isDeviceCode: widget.code.isDeviceCode);
+    final outcome = await ref.read(telephonyServiceProvider).dial(widget.code.fill(_values), direct: direct, isDeviceCode: widget.code.isDeviceCode);
     unawaited(AnalyticsService.logEvent('run_code', parameters: {'code_id': widget.code.id, 'outcome': outcome.name}));
 
     if (!mounted) return;
@@ -103,6 +127,43 @@ class _RunCodeSheetState extends ConsumerState<RunCodeSheet> {
     final t = context.t;
     await Clipboard.setData(ClipboardData(text: widget.code.fill(_values)));
     messenger.showSnackBar(SnackBar(content: Text(t.codeCopied), behavior: SnackBarBehavior.floating));
+  }
+
+  List<Widget> _responseView(BuildContext context, String response) {
+    final t = context.t;
+    final theme = Theme.of(context);
+    return [
+      const SizedBox(height: 20),
+      Text(t.operatorResponse, style: theme.textTheme.labelLarge?.copyWith(color: theme.hintColor)),
+      const SizedBox(height: 8),
+      Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          border: Border.all(color: theme.dividerColor),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: SelectableText(
+          response.isEmpty ? t.emptyUssdResponse : response,
+          style: theme.textTheme.bodyLarge?.copyWith(fontStyle: response.isEmpty ? FontStyle.italic : null),
+        ),
+      ),
+      const SizedBox(height: 20),
+      Row(
+        children: [
+          Expanded(
+            child: OutlinedButton.icon(
+              onPressed: _dialing ? null : () => _runInDialer(direct: true),
+              icon: const Icon(Icons.dialpad),
+              label: Text(t.continueInDialer),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: FilledButton(onPressed: () => Navigator.of(context).pop(), child: Text(t.closeAction)),
+          ),
+        ],
+      ),
+    ];
   }
 
   @override
@@ -144,63 +205,69 @@ class _RunCodeSheetState extends ConsumerState<RunCodeSheet> {
                   style: codeTextStyle.copyWith(fontSize: 22, fontWeight: FontWeight.w600, color: theme.colorScheme.primary),
                 ),
               ),
-              for (final (index, param) in params.indexed) ...[
-                const SizedBox(height: 14),
-                TextFormField(
-                  controller: _controllers[param.key],
-                  autofocus: index == 0,
-                  keyboardType: param.type.keyboardType,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  obscureText: param.isSecret,
-                  autocorrect: false,
-                  enableSuggestions: false,
-                  textInputAction: index == params.length - 1 ? TextInputAction.done : TextInputAction.next,
-                  onFieldSubmitted: index == params.length - 1 ? (_) => _dial() : null,
-                  decoration: InputDecoration(
-                    labelText: param.label.text,
-                    border: const OutlineInputBorder(),
-                    prefixIcon: Icon(switch (param.type) {
-                      ParamType.amount => Icons.payments_outlined,
-                      ParamType.phone => Icons.phone_outlined,
-                      ParamType.pin => Icons.lock_outline,
-                      ParamType.number => Icons.pin_outlined,
-                    }),
-                    suffixIcon: param.type == ParamType.phone && canPickContact
-                        ? IconButton(
-                            onPressed: () => _pickContact(param),
-                            icon: const Icon(Icons.contacts_outlined),
-                            tooltip: t.pickContact,
-                          )
-                        : null,
-                  ),
-                  validator: (value) => (value == null || value.trim().isEmpty) ? t.requiredField : null,
-                ),
-              ],
-              if (hasSecret) _Notice(icon: Icons.lock_outline, text: t.secretNotice),
-              if (notice != null) _Notice(icon: Icons.info_outline, text: notice),
-              const SizedBox(height: 20),
-              Row(
-                children: [
-                  // A filled code holding a PIN stays out of the clipboard.
-                  if (!_isIOS && !hasSecret) ...[
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        onPressed: _values.values.any((value) => value.isEmpty) ? null : _copy,
-                        icon: const Icon(Icons.copy),
-                        label: Text(t.copyCode),
-                      ),
+              if (_response case final response?)
+                ..._responseView(context, response)
+              else ...[
+                for (final (index, param) in params.indexed) ...[
+                  const SizedBox(height: 14),
+                  TextFormField(
+                    controller: _controllers[param.key],
+                    autofocus: index == 0,
+                    keyboardType: param.type.keyboardType,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    obscureText: param.isSecret,
+                    autocorrect: false,
+                    enableSuggestions: false,
+                    textInputAction: index == params.length - 1 ? TextInputAction.done : TextInputAction.next,
+                    onFieldSubmitted: index == params.length - 1 ? (_) => _dial() : null,
+                    decoration: InputDecoration(
+                      labelText: param.label.text,
+                      border: const OutlineInputBorder(),
+                      prefixIcon: Icon(switch (param.type) {
+                        ParamType.amount => Icons.payments_outlined,
+                        ParamType.phone => Icons.phone_outlined,
+                        ParamType.pin => Icons.lock_outline,
+                        ParamType.number => Icons.pin_outlined,
+                      }),
+                      suffixIcon: param.type == ParamType.phone && canPickContact
+                          ? IconButton(
+                              onPressed: () => _pickContact(param),
+                              icon: const Icon(Icons.contacts_outlined),
+                              tooltip: t.pickContact,
+                            )
+                          : null,
                     ),
-                    const SizedBox(width: 12),
-                  ],
-                  Expanded(
-                    child: FilledButton.icon(
-                      onPressed: _dialing ? null : _dial,
-                      icon: Icon(_isIOS ? Icons.copy : Icons.call),
-                      label: Text(_isIOS ? t.copyCode : t.dial),
-                    ),
+                    validator: (value) => (value == null || value.trim().isEmpty) ? t.requiredField : null,
                   ),
                 ],
-              ),
+                if (hasSecret) _Notice(icon: Icons.lock_outline, text: t.secretNotice),
+                if (notice != null) _Notice(icon: Icons.info_outline, text: notice),
+                const SizedBox(height: 20),
+                Row(
+                  children: [
+                    // A filled code holding a PIN stays out of the clipboard.
+                    if (!_isIOS && !hasSecret) ...[
+                      Expanded(
+                        child: OutlinedButton.icon(
+                          onPressed: _values.values.any((value) => value.isEmpty) ? null : _copy,
+                          icon: const Icon(Icons.copy),
+                          label: Text(t.copyCode),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                    ],
+                    Expanded(
+                      child: FilledButton.icon(
+                        onPressed: _dialing ? null : _dial,
+                        icon: _dialing
+                            ? const SizedBox.square(dimension: 18, child: CircularProgressIndicator(strokeWidth: 2))
+                            : Icon(_isIOS ? Icons.copy : Icons.call),
+                        label: Text(_dialing && !_isIOS ? t.sendingUssd : (_isIOS ? t.copyCode : t.dial)),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ],
           ),
         ),
