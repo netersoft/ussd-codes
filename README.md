@@ -6,7 +6,7 @@
 
 A directory of USSD codes for mobile operators in West and Central Africa: Benin, Cameroon, Côte d'Ivoire, Mali, Niger, Nigeria, Senegal and Togo. Users run codes in one tap and no longer need to remember them. The app also works offline.
 
-This Flutter app replaces the legacy native Java app ([Play Store](https://play.google.com/store/apps/details?id=com.neteru.mobileussdcodex)). It keeps the same application id, so it ships as an update of the legacy app. It was bootstrapped from the edpage [flutter-starter](https://github.com/edpage-hq/flutter-starter), without its auth, account, media, location and REST API packs.
+This Flutter app replaces the legacy native Java app ([Play Store](https://play.google.com/store/apps/details?id=com.neteru.mobileussdcodex)). It keeps the same application id, so it ships as an update of the legacy app.
 
 Features:
 
