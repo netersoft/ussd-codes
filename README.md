@@ -24,7 +24,7 @@ Features:
 - State management: Riverpod (`riverpod_generator`, code-gen)
 - Routing: go_router (`go_router_builder`)
 - Local storage: SharedPreferences
-- i18n: [Slang](https://pub.dev/packages/slang) (French base, English)
+- i18n: [Slang](https://pub.dev/packages/slang) (French and English, English base locale)
 - Native: a small Kotlin channel (`ussd_codes/telephony` in `MainActivity.kt`) to dial, read the SIM operators and read the legacy app's database
 
 ## Prerequisites
