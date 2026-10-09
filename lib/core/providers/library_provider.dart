@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../catalog/models.dart';
@@ -192,7 +193,12 @@ void quickSettingsTile(Ref ref) {
 }
 
 @Riverpod(keepAlive: true)
-ReviewPrompt reviewPrompt(Ref ref) => ReviewPrompt(locator<SharedPreferencesService>(), ref.watch(telephonyServiceProvider));
+ReviewPrompt reviewPrompt(Ref ref) {
+  final prompt = ReviewPrompt(locator<SharedPreferencesService>(), ref.watch(telephonyServiceProvider));
+  final lifecycle = AppLifecycleListener(onResume: () => unawaited(prompt.onResume()));
+  ref.onDispose(lifecycle.dispose);
+  return prompt;
+}
 
 /// One-time work before the first screen: the catalog is loaded, what the
 /// legacy app saved (favorites, personal codes, country) is imported and the
