@@ -7,6 +7,18 @@ light-theme capture in a phone frame.
 Operators appear by name only, as in the app (no logos). The top-up voucher number in the
 third screenshot is made up.
 
+## Feature graphic
+
+`store/feature_graphic/<lang>.png` is the 1024×500 banner at the top of the listing: the
+app's icon, name and a tagline next to two of the screenshots, cut out of
+`store/screenshots/<lang>/`. Rebuild it after the screenshots:
+
+```bash
+python3 tool/store_screenshots/feature.py
+```
+
+Its icon, screens, names and taglines are under `feature` in `config.json`.
+
 ## Regenerate them
 
 1. Start the shared emulator (`test-phone`, 1080×2400) and install a fresh build:
