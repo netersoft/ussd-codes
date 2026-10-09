@@ -1,0 +1,48 @@
+USSD Codes gathers the USSD codes of mobile operators in 8 African countries. No more searching for the code to check your balance, buy a data bundle, top up or send mobile money: find the code, tap it, done.
+
+★ 8 COUNTRIES, 21 OPERATORS, MORE THAN 300 CODES
+• Benin: MTN, Moov Africa, Celtiis
+• Cameroon: MTN, Orange
+• Côte d'Ivoire: MTN, Moov Africa, Orange
+• Mali: Moov Africa, Orange
+• Niger: Zamani Telecom, Moov Africa, Airtel
+• Nigeria: MTN, Airtel, Glo, 9mobile
+• Senegal: Orange, Yas
+• Togo: Moov Africa, Yas
+The app opens straight on the operator of your SIM card.
+
+★ ALL THE USEFUL CODES
+• Balance and usage
+• Data bundles and data balance
+• Airtime top-up and transfers
+• Mobile money: Orange Money, MTN MoMo, Moov Money, Flooz, Mixx by Yas, Celtiis Cash, Zamani Cash
+• Customer service and operator services
+
+★ CODES BUILT FOR YOU
+For a code that needs a phone number, an amount or a PIN, just fill in the fields: the app builds the code as you type, with the right keyboard. Pick a number from your contacts. Your PIN is masked and never stored, and every code is confirmed before it runs.
+
+★ ONE TAP
+With the Phone permission, the app dials the code directly and shows the operator's reply. Otherwise, the code opens in your phone app, ready to call.
+
+★ DATA BUNDLE COMPARATOR
+Compare the data bundles of the operators by price, volume or price per GB (Benin, Togo and Orange Côte d'Ivoire for now).
+
+★ FAVORITES AND PERSONAL CODES
+• Star the codes you use most
+• Add your own codes
+• Quick Settings tile: open your favorite code from the notification panel
+• Search across every country
+
+★ YOUR PHONE'S CODES TOO
+IMEI number, test menus and other codes of the phone itself, filtered by brand.
+
+★ ALWAYS UP TO DATE
+Operators change their codes: the catalog is updated without waiting for a new version of the app. The codes are on your phone, so the app works without an internet connection.
+
+★ FREE AND RESPECTFUL OF YOUR PRIVACY
+• No ads, no account, no data collected
+• Light and dark theme
+• In English and French
+• Free software (GNU GPL v3)
+
+USSD Codes is an independent app, not affiliated with the operators. Offers change often: check a price before you confirm.
