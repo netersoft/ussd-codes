@@ -1,0 +1,26 @@
+{
+  "font": "assets/fonts/montserrat/montserrat_bold.ttf",
+  "title_color": "#ffffff",
+  "background_top": "#008000",
+  "background_bottom": "#004d00",
+  "bezel_color": "#141f14",
+  "screens": ["countries", "codes", "dial", "bundles", "search", "device"],
+  "titles": {
+    "en": [
+      "USSD codes for 8 countries in Africa",
+      "Every code of your operator, in one tap",
+      "Codes built for you as you type",
+      "Compare data bundles by price",
+      "Search across every country",
+      "Your phone's own codes too"
+    ],
+    "fr": [
+      "Les codes USSD de 8 pays d’Afrique",
+      "Tous les codes de votre opérateur, en un geste",
+      "Le code se construit pendant que vous tapez",
+      "Comparez les forfaits internet par prix",
+      "Cherchez dans tous les pays",
+      "Les codes de votre téléphone aussi"
+    ]
+  }
+}
