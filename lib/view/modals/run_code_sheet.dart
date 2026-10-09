@@ -9,16 +9,23 @@ import '../../core/catalog/models.dart';
 import '../../core/providers/catalog_provider.dart';
 import '../../core/providers/library_provider.dart';
 import '../../core/services/i18n/translations.g.dart';
+import '../../core/services/review/service.dart';
 import '../../core/services/telephony/service.dart';
 import '../components/codes/code_texts.dart';
 
-Future<void> showRunCodeSheet(BuildContext context, {required UssdCode code, Operator? operator}) => showModalBottomSheet<void>(
-  context: context,
-  isScrollControlled: true,
-  useSafeArea: true,
-  showDragHandle: true,
-  builder: (context) => RunCodeSheet(code: code, operator: operator),
-);
+/// Once closed, the sheet may bring up the review prompt, if the operator's
+/// reply was read in it (see [ReviewPrompt]).
+Future<void> showRunCodeSheet(BuildContext context, {required UssdCode code, Operator? operator}) async {
+  final prompt = ProviderScope.containerOf(context, listen: false).read(reviewPromptProvider);
+  await showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    useSafeArea: true,
+    showDragHandle: true,
+    builder: (context) => RunCodeSheet(code: code, operator: operator),
+  );
+  await prompt.onSheetClosed();
+}
 
 /// Confirms a code before running it (USSD codes can buy bundles or send
 /// money), after asking for its params when it has some.
@@ -72,6 +79,7 @@ class _RunCodeSheetState extends ConsumerState<RunCodeSheet> {
       final result = await ref.read(telephonyServiceProvider).sendUssd(widget.code.fill(_values));
       if (!mounted) return;
       if (result case UssdAnswered(:final text)) {
+        ref.read(reviewPromptProvider).onCodeAnswered();
         setState(() {
           _dialing = false;
           _response = text;
@@ -89,9 +97,11 @@ class _RunCodeSheetState extends ConsumerState<RunCodeSheet> {
     final messenger = ScaffoldMessenger.of(context);
     final t = context.t;
     final navigator = Navigator.of(context);
+    final prompt = ref.read(reviewPromptProvider);
 
     final outcome = await ref.read(telephonyServiceProvider).dial(widget.code.fill(_values), direct: direct, isDeviceCode: widget.code.isDeviceCode);
 
+    if (outcome == DialOutcome.called || outcome == DialOutcome.dialerOpened) prompt.onCodeSentToPhoneApp();
     if (!mounted) return;
     navigator.pop();
     final message = switch (outcome) {
