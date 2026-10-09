@@ -22,5 +22,17 @@
       "Cherchez dans tous les pays",
       "Les codes de votre téléphone aussi"
     ]
+  },
+  "feature": {
+    "icon": "assets/images/launcher/icon.png",
+    "screens": ["codes", "dial"],
+    "name": {
+      "en": "USSD Codes",
+      "fr": "Codes USSD"
+    },
+    "tagline": {
+      "fr": "Les codes de 21 opérateurs dans 8 pays d’Afrique",
+      "en": "The codes of 21 operators in 8 African countries"
+    }
   }
 }
