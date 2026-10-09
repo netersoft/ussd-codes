@@ -1,0 +1,48 @@
+Codes USSD rassemble les codes USSD des opérateurs mobiles de 8 pays d’Afrique. Fini les recherches pour retrouver le code qui affiche votre solde, achète un forfait internet, recharge votre crédit ou envoie de l’argent par mobile money : trouvez le code, touchez-le, c’est fait.
+
+★ 8 PAYS, 21 OPÉRATEURS, PLUS DE 300 CODES
+• Bénin : MTN, Moov Africa, Celtiis
+• Cameroun : MTN, Orange
+• Côte d’Ivoire : MTN, Moov Africa, Orange
+• Mali : Moov Africa, Orange
+• Niger : Zamani Telecom, Moov Africa, Airtel
+• Nigeria : MTN, Airtel, Glo, 9mobile
+• Sénégal : Orange, Yas
+• Togo : Moov Africa, Yas
+L’app s’ouvre directement sur l’opérateur de votre carte SIM.
+
+★ TOUS LES CODES UTILES
+• Solde et consommation
+• Forfaits internet et solde internet
+• Recharge de crédit et transferts
+• Mobile money : Orange Money, MTN MoMo, Moov Money, Flooz, Mixx by Yas, Celtiis Cash, Zamani Cash
+• Service client et services de l’opérateur
+
+★ DES CODES COMPOSÉS POUR VOUS
+Pour un code qui demande un numéro, un montant ou un code PIN, remplissez simplement les champs : l’app compose le code au fil de la saisie, avec le bon clavier. Choisissez un numéro dans vos contacts. Votre code PIN est masqué et jamais enregistré, et chaque code est confirmé avant d’être lancé.
+
+★ EN UN GESTE
+Avec l’autorisation Téléphone, l’app lance le code directement et affiche la réponse de l’opérateur. Sinon, le code s’ouvre dans votre application Téléphone, prêt à être appelé.
+
+★ COMPARATEUR DE FORFAITS INTERNET
+Comparez les forfaits internet des opérateurs par prix, par volume ou par prix au Go (Bénin, Togo et Orange Côte d’Ivoire pour l’instant).
+
+★ FAVORIS ET CODES PERSONNELS
+• Mettez en favori les codes que vous utilisez le plus
+• Ajoutez vos propres codes
+• Tuile des réglages rapides : ouvrez votre code favori depuis le volet des notifications
+• Recherche dans tous les pays
+
+★ LES CODES DE VOTRE TÉLÉPHONE AUSSI
+Numéro IMEI, menus de test et autres codes du téléphone lui-même, filtrés par marque.
+
+★ TOUJOURS À JOUR
+Les opérateurs changent leurs codes : le catalogue se met à jour sans attendre une nouvelle version de l’app. Les codes sont sur votre téléphone, donc l’app fonctionne sans connexion internet.
+
+★ GRATUIT ET RESPECTUEUX DE VOTRE VIE PRIVÉE
+• Sans publicité, sans compte, aucune donnée collectée
+• Thème clair et sombre
+• En français et en anglais
+• Logiciel libre (GNU GPL v3)
+
+Codes USSD est une application indépendante, sans lien avec les opérateurs. Les offres changent souvent : vérifiez un prix avant de confirmer.
