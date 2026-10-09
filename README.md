@@ -18,6 +18,23 @@ Features:
 - **Catalog updates.** Codes are a versioned catalog, separate from the app (see [catalog/](catalog/README.md)), and can be updated without a store release.
 - **Legacy migration.** The first launch imports the legacy app's favorites, personal codes and default country.
 
+## Screenshots
+
+<table>
+  <tr>
+    <td><img src="store/screenshots/en/1_countries.png" width="260" alt="USSD codes for 8 countries in Africa"></td>
+    <td><img src="store/screenshots/en/2_codes.png" width="260" alt="Every code of your operator, in one tap"></td>
+    <td><img src="store/screenshots/en/3_dial.png" width="260" alt="Codes built for you as you type"></td>
+  </tr>
+  <tr>
+    <td><img src="store/screenshots/en/4_bundles.png" width="260" alt="Compare data bundles by price"></td>
+    <td><img src="store/screenshots/en/5_search.png" width="260" alt="Search across every country"></td>
+    <td><img src="store/screenshots/en/6_device.png" width="260" alt="Your phone's own codes too"></td>
+  </tr>
+</table>
+
+The Play Store images, in English; other languages are in `store/screenshots/<lang>/`.
+
 ## Tech stack
 
 - Mobile: Flutter, Dart SDK `>=3.8.0 <4.0.0`
