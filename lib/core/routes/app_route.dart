@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../view/screens/main_screen.dart';
 import '../../view/screens/search/search_screen.dart';
