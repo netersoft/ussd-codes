@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:ussd_codes/core/catalog/models.dart';
 import 'package:ussd_codes/core/services/shared_preferences/keys.dart';
 import 'package:ussd_codes/core/services/shared_preferences/service.dart';
