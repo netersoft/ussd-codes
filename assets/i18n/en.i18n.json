@@ -23,7 +23,6 @@
   "system": "System",
   "theme": "Theme",
   "version": "Version",
-
   "operators": "Operators",
   "favorites": "Favorites",
   "phoneCodes": "Phone",
@@ -52,7 +51,6 @@
     "pin": "PIN",
     "number": "value"
   },
-
   "dial": "Dial",
   "copyCode": "Copy code",
   "codeCopied": "Code copied",
@@ -73,7 +71,6 @@
   "shortcutsUnsupported": "Your home screen doesn't support shortcuts.",
   "codeNotFound": "This code is no longer available.",
   "digitsOnly": "Digits only",
-
   "addCode": "Add a code",
   "addCodeFor": "Add a code · ${operator}",
   "codeName": "Name",
@@ -93,7 +90,6 @@
   "noFavorites": "No favorites yet",
   "noFavoritesHint": "Tap a code's star to find it here.",
   "deviceCodesNotice": "These codes are handled by your phone, not your operator. Some only work on some brands.",
-
   "preferences": "Preferences",
   "directCall": "Run codes directly",
   "directCallDescription": "Asks for the Phone permission. When off, the code shows in the dialer.",
@@ -113,7 +109,6 @@
   "contactUs": "Contact us",
   "contactUsDescription": "Suggest your country's codes or report an error",
   "suggestCodesSubject": "USSD Codes: codes suggestion",
-
   "plansTab": "Bundles",
   "plans": {
     "title": "Data bundle comparator",
@@ -136,5 +131,10 @@
     "buyLabel": "${volume} bundle – ${validity}",
     "footer": "Prices taken on ${date} from the operators' sites. Offers change often: check the price before confirming the purchase."
   },
-  "licenseNotice": "Free software under the GNU GPL v3 (code) and CC BY-SA 4.0 (content). © 2018-2026 Netersoft"
+  "licenseNotice": "Free software under the GNU GPL v3 (code) and CC BY-SA 4.0 (content). © 2018-2026 Netersoft",
+  "rateTitle": "Rate USSD Codes",
+  "rateMessage": "A rating or a comment on Google Play helps other people find the app. It takes a minute.",
+  "rateAction": "Rate",
+  "rateLater": "Later",
+  "rateNever": "Don't ask again"
 }

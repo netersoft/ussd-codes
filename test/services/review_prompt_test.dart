@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ussd_codes/core/helpers/ui/rate_dialog.dart';
 import 'package:ussd_codes/core/services/review/service.dart';
 import 'package:ussd_codes/core/services/shared_preferences/service.dart';
 
@@ -10,6 +11,9 @@ void main() {
   late FakeTelephonyService telephony;
   late DateTime now;
   late ReviewPrompt prompt;
+  late int dialogs;
+  late int listings;
+  RateChoice? choice;
 
   setUpAll(() => SharedPreferences.setMockInitialValues({}));
 
@@ -18,7 +22,19 @@ void main() {
     await prefs.preferences!.clear();
     telephony = FakeTelephonyService();
     now = DateTime(2026, 10, 9);
-    prompt = ReviewPrompt(prefs, telephony, now: () => now);
+    dialogs = 0;
+    listings = 0;
+    choice = RateChoice.later;
+    prompt = ReviewPrompt(
+      prefs,
+      telephony,
+      now: () => now,
+      ask: () async {
+        dialogs++;
+        return choice;
+      },
+      openListing: () async => listings++,
+    );
   });
 
   Future<void> launch(int times) async {
@@ -27,10 +43,10 @@ void main() {
     }
   }
 
-  /// A regular user: 5 launches over 3 days.
+  /// A regular user: 3 launches over 1 day.
   Future<void> becomeRegular() async {
-    await launch(5);
-    now = now.add(const Duration(days: 3));
+    await launch(3);
+    now = now.add(const Duration(days: 1));
   }
 
   Future<void> readReply() async {
@@ -90,15 +106,15 @@ void main() {
     expect(telephony.reviewRequests, 0);
   });
 
-  test('waits for 5 launches and 3 days', () async {
-    await launch(4);
+  test('waits for 3 launches and 1 day', () async {
+    await launch(2);
     now = now.add(const Duration(days: 10));
     await readReply();
     expect(telephony.reviewRequests, 0);
 
     await prefs.preferences!.clear();
     await launch(10);
-    now = now.add(const Duration(days: 2));
+    now = now.add(const Duration(hours: 20));
     await returnFromPhoneApp();
     expect(telephony.reviewRequests, 0);
   });
@@ -124,5 +140,56 @@ void main() {
     telephony.reviewAvailable = true;
     await returnFromPhoneApp();
     expect(telephony.reviewRequests, 2);
+  });
+
+  /// The sheet was requested, then [days] days went by.
+  Future<void> afterSheet(int days) async {
+    await becomeRegular();
+    await readReply();
+    now = now.add(Duration(days: days));
+  }
+
+  test('shows the store dialog only after the delay, then at most 3 times 30 days apart', () async {
+    await afterSheet(1);
+    await readReply();
+    expect(dialogs, 0, reason: 'too soon after the sheet');
+
+    now = now.add(ReviewPrompt.dialogDelay);
+    await readReply();
+    expect(dialogs, 1);
+
+    now = now.add(const Duration(days: 10));
+    await readReply();
+    expect(dialogs, 1, reason: 'too soon after the dialog');
+
+    for (var i = 0; i < 4; i++) {
+      now = now.add(ReviewPrompt.dialogGap);
+      await readReply();
+    }
+    expect(dialogs, ReviewPrompt.maxDialogs);
+    expect(listings, 0);
+    expect(telephony.reviewRequests, 1);
+  });
+
+  test('opens the listing and stops asking once the user accepts', () async {
+    await afterSheet(ReviewPrompt.dialogDelay.inDays);
+    choice = RateChoice.rate;
+    await readReply();
+    now = now.add(const Duration(days: 90));
+    await readReply();
+
+    expect(dialogs, 1);
+    expect(listings, 1);
+  });
+
+  test('stops asking once the user opts out', () async {
+    await afterSheet(ReviewPrompt.dialogDelay.inDays);
+    choice = RateChoice.never;
+    await readReply();
+    now = now.add(const Duration(days: 90));
+    await readReply();
+
+    expect(dialogs, 1);
+    expect(listings, 0);
   });
 }
