@@ -23,7 +23,6 @@
   "system": "Système",
   "theme": "Thème",
   "version": "Version",
-
   "operators": "Opérateurs",
   "favorites": "Favoris",
   "phoneCodes": "Téléphone",
@@ -52,7 +51,6 @@
     "pin": "code",
     "number": "valeur"
   },
-
   "dial": "Composer",
   "copyCode": "Copier le code",
   "codeCopied": "Code copié",
@@ -73,7 +71,6 @@
   "shortcutsUnsupported": "Votre écran d'accueil n'accepte pas les raccourcis.",
   "codeNotFound": "Ce code n'est plus disponible.",
   "digitsOnly": "Chiffres uniquement",
-
   "addCode": "Ajouter un code",
   "addCodeFor": "Ajouter un code · ${operator}",
   "codeName": "Nom",
@@ -93,7 +90,6 @@
   "noFavorites": "Aucun favori pour l'instant",
   "noFavoritesHint": "Touchez l'étoile d'un code pour le retrouver ici.",
   "deviceCodesNotice": "Ces codes sont interprétés par votre téléphone, pas par votre opérateur. Certains ne fonctionnent que sur certaines marques.",
-
   "preferences": "Préférences",
   "directCall": "Lancer l'appel directement",
   "directCallDescription": "Demande l'autorisation Téléphone. Désactivé, le code s'affiche dans le composeur.",
@@ -113,7 +109,6 @@
   "contactUs": "Nous contacter",
   "contactUsDescription": "Proposez les codes de votre pays ou signalez une erreur",
   "suggestCodesSubject": "Codes USSD : proposition de codes",
-
   "plansTab": "Forfaits",
   "plans": {
     "title": "Comparateur de forfaits internet",
@@ -136,5 +131,10 @@
     "buyLabel": "Forfait ${volume} – ${validity}",
     "footer": "Prix relevés le ${date} sur les sites des opérateurs. Les offres changent souvent : vérifiez le prix avant de valider l'achat."
   },
-  "licenseNotice": "Logiciel libre sous licence GNU GPL v3 (code) et CC BY-SA 4.0 (contenus). © 2018-2026 Netersoft"
+  "licenseNotice": "Logiciel libre sous licence GNU GPL v3 (code) et CC BY-SA 4.0 (contenus). © 2018-2026 Netersoft",
+  "rateTitle": "Noter Codes USSD",
+  "rateMessage": "Une note ou un commentaire sur Google Play aide d'autres personnes à trouver l'application. Cela prend une minute.",
+  "rateAction": "Noter",
+  "rateLater": "Plus tard",
+  "rateNever": "Ne plus demander"
 }
